@@ -1,4 +1,6 @@
-# SwiftUI-Udemy
+# SwiftUI
+
+<img src="https://img.shields.io/badge/Udemy-EC5252?style=for-the-badge&logo=Udemy&logoColor=white">
 
 [SwiftUI Masterclass 2022 - iOS App Development & Swift](https://www.udemy.com/course/swiftui-masterclass-course-ios-development-with-swift/)
 
