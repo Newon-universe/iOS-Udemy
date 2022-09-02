@@ -9,3 +9,8 @@ Sep 1, 2022
 
 - [x] Section 2 (100%)
 - [x] Section 3 (100%)
+
+---
+Sep 2, 2022
+
+- [x] Section 4 (100%)
