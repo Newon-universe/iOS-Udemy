@@ -14,8 +14,26 @@ struct ContentView: View {
     let haptics = UIImpactFeedbackGenerator(style: .medium)
     
     @State private var isGridViewActive: Bool = false
-    @State private var isAnimating: Bool =false
-    let gridLayout: [GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
+    @State private var isAnimating: Bool = false
+    
+    @State private var gridLayout: [GridItem] = [GridItem(.flexible())]
+    @State private var gridColumn: Int = 1
+    @State private var toolbarIcon: String = "square.grid.2x2"
+    
+    //MARK: - Function
+    func gridSwitch() {
+        gridLayout = Array(repeating: .init(.flexible()), count: gridLayout.count % 3 + 1)
+        gridColumn = gridLayout.count
+        print("Grid number: \(gridColumn)")
+        
+        //toolbar Image
+        switch gridColumn {
+        case 2: toolbarIcon = "square.grid.2x2"
+        case 3: toolbarIcon = "square.grid.3x2"
+        case 1: toolbarIcon = "rectangle.grid.1x2"
+        default: toolbarIcon = "square.grid.2x2"
+        }
+    }
     
     //MARK: - BODY
     
@@ -45,6 +63,9 @@ struct ContentView: View {
                                 AnimalListItemView(animal: animal)
                             }//: Link
                         }//: Loop
+                        
+                        CreditsView()
+                            .modifier(CenterModifier())
                     }//: List
                 }//: Condition
             }//: Group
@@ -70,8 +91,9 @@ struct ContentView: View {
                             isAnimating.toggle()
                             isGridViewActive = true
                             haptics.impactOccurred()
+                            gridSwitch()
                         } label: {
-                            Image(systemName: "square.grid.2x2")
+                            Image(systemName: toolbarIcon)
                                 .font(.title2)
                                 .foregroundColor(isGridViewActive ? .accentColor : .primary)
                         }
