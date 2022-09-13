@@ -21,6 +21,11 @@ Sep 4, 2022
 - [x] Section 5 (100%)
 
 ---
-Sep 5, 2022
+Sep 5, 2022 ~ Sep 11, 2022
 
-- [ ] Section 6 (50%)
+- [x] Section 6 (50%)
+
+---
+Sep 12, 2022
+
+- [x] Section 7 (100%)
