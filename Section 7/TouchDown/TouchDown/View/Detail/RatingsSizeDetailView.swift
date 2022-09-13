@@ -31,8 +31,7 @@ struct RatingsSizeDetailView: View {
                     }
                 }
             }
-            
-            
+                        
             Spacer()
             
             // Sizes
