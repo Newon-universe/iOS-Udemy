@@ -48,3 +48,9 @@ Mohammad Azam - [SwiftUI - Declarative Interfaces for any Apple Device](https://
 Sep 17 ~ Sep 27, 2022
 
 - [x] Section 1 ~ Section 14 (100%)
+
+<br/>
+
+Sep 28, 2022
+
+- [x] Section 15 ~ Section 16 (100%)
