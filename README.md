@@ -54,3 +54,7 @@ Sep 17 ~ Sep 27, 2022
 Sep 28, 2022
 
 - [x] Section 15 ~ Section 16 (100%)
+
+Sep 29, 2022
+
+- [x] Section 27 (100%)
