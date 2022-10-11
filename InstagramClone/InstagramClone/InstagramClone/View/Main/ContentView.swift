@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //MARK: - Properties
+    @EnvironmentObject var viewModel: AuthViewModel
+    
+    //MARK: - Function
+    
+    //MARK: - Body
+    
+    
     var body: some View {
-        MainTabView()
+        Group {
+            if viewModel.userSession == nil {
+                LoginView()
+            } else {
+                withAnimation(.spring()) {
+                    MainTabView()
+                }
+            }
+        }
     }
 }
 
