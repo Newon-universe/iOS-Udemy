@@ -12,18 +12,17 @@ struct ContentView: View {
     //MARK: - Properties
     @EnvironmentObject var viewModel: AuthViewModel
     
-    //MARK: - Function
-    
     //MARK: - Body
-    
     
     var body: some View {
         Group {
             if viewModel.userSession == nil {
                 LoginView()
             } else {
-                withAnimation(.spring()) {
-                    MainTabView()
+                if let user = viewModel.currentUser {
+                    withAnimation(.spring()) {
+                        MainTabView(user: user)
+                    }                    
                 }
             }
         }

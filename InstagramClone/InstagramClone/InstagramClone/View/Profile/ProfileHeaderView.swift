@@ -8,18 +8,30 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
+    
+    //MARK: - Properties
+    let viewModel: ProfileViewModel
+    @State private var profile: UIImage? 
+    
+    //MARK: - Body
+
     var body: some View {
         VStack(alignment: .leading) {
             
             HStack {
                 
                 VStack {
-                    Image("astronut")
+                    Image(uiImage: profile ?? UIImage(systemName: "x.circle.fill")!)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 80, height: 80)
                         .clipShape(Circle())
                         .padding(.leading)
+                        .onAppear {
+                            SearchViewModel.getProfile(imageUrl: viewModel.user.profileImageUrl) { image in
+                                profile = image
+                            }
+                        }
                     
                 }
                 
@@ -33,7 +45,7 @@ struct ProfileHeaderView: View {
                 .padding(.trailing)
             }//: HStack
             
-            Text("Astronut")
+            Text(viewModel.user.fullName)
                 .font(.system(size: 15, weight: .semibold))
                 .padding(.leading, 25)
                 .padding(.top)
@@ -46,7 +58,7 @@ struct ProfileHeaderView: View {
             HStack {
                 Spacer()
                 
-                ProfileActionButton()
+                ProfileActionButton(viewModel: viewModel)
                 
                 Spacer()
             }//: HStack
@@ -56,8 +68,8 @@ struct ProfileHeaderView: View {
     }
 }
 
-struct ProfileHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileHeaderView()
-    }
-}
+//struct ProfileHeaderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileHeaderView()
+//    }
+//}

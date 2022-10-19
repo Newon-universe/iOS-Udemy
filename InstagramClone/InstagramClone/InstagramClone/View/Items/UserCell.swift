@@ -6,26 +6,40 @@
 //
 
 import SwiftUI
+import Kingfisher
+import Firebase
+import FirebaseFirestoreSwift
+import FirebaseStorage
 
 struct UserCell: View {
+    //MARK: - Properties
+    let user: User
+    @State private var profile: UIImage?
+
+    //MARK: - Body
+
     var body: some View {
+        
         HStack {
-            
             // image
-            Image("astronut")
+            Image(uiImage: profile ?? UIImage(systemName: "x.circle.fill")!)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 48, height: 48)
                 .clipShape(Circle())
 //                .cornerRadius(48 / 2)
-            
+                .onAppear {
+                    SearchViewModel.getProfile(imageUrl: user.profileImageUrl) { image in
+                        profile = image
+                    }
+                }
             
             // VStack -> user name, full name
             VStack(alignment: .leading) {
-                Text("Astronut")
+                Text(user.userName)
                     .font(.system(size: 14, weight: .semibold))
                 
-                Text("Kim Newon")
+                Text(user.fullName)
                     .font(.system(size: 14))
             }
             
@@ -34,9 +48,10 @@ struct UserCell: View {
     }
 }
 
-struct UserCell_Previews: PreviewProvider {
-    static var previews: some View {
-        UserCell()
-            .previewLayout(.sizeThatFits)
-    }
-}
+//
+//struct UserCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserCell()
+//            .previewLayout(.sizeThatFits)
+//    }
+//}

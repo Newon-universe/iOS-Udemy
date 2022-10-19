@@ -13,17 +13,21 @@ struct ImageUploader {
     static func uploadImage(imgae: UIImage, completion: @escaping(String) -> Void) {
         guard let imageData = imgae.jpegData(compressionQuality: 0.5) else { return }
         
-        
         let fileName = NSUUID().uuidString
         
-        let ref = Storage.storage().reference(withPath: "/profile_images/\(fileName)")
-
+        let ref = Storage.storage().reference(withPath: "/profile_images/\(fileName).jpg")
         
         ref.putData(imageData, metadata: nil) { result, error in
             if let error = error {
                 print("DEBUG: Failed to upload images \(error)")
                 return
             }
+            
+//            ref.downloadURL{ url, _ in
+//                guard let imageUrl = url?.absoluteString else { return }
+//                completion(imageUrl)
+//
+//            }
             
             guard let imageURL = result?.path else {
                 return

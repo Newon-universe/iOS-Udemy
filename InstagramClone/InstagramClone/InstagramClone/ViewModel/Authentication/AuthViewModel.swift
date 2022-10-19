@@ -11,15 +11,26 @@ import Firebase
 class AuthViewModel: ObservableObject {
     
     @Published var userSession: Firebase.User?
+    @Published var currentUser: User?
     
     static let shared = AuthViewModel()
     
     init() {
         self.userSession = Auth.auth().currentUser
+        fetchUser()
     }
     
-    func logIn() {
-        print("Login")
+    func logIn(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG, Login failed", error.localizedDescription)
+                return
+            }
+            
+            guard let user = result?.user else { return }
+            self.userSession = user
+            self.fetchUser()
+        }
     }
     
     func signUp(
@@ -50,9 +61,10 @@ class AuthViewModel: ObservableObject {
                     "uid": user.uid
                 ]
                 
-                Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
+                COLLECTION_USERS.document(user.uid).setData(data) { _ in
                     print("Successfully uploaded user data")
                     self.userSession = user
+                    self.fetchUser()
                 }
             }
         }
@@ -69,7 +81,30 @@ class AuthViewModel: ObservableObject {
     }
     
     func fetchUser() {
+        guard let uid = userSession?.uid else { return }
         
+        COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
+            
+            //MARK: - Decode 방법 찾기 :<
+            
+//            guard let dictionary = snapshot?.data() else { return }
+//            guard let username = dictionary["userName"] as? String else { return }
+//            guard let email = dictionary["email"] as? String else { return }
+//            guard let profileImageUrl = dictionary["profileImageUrl"] as? String else { return }
+//            guard let fullname = dictionary["fullName"] as? String else { return }
+//
+//            let user = User(userName: username, email: email, profileImageUrl: profileImageUrl, fullName: fullname, uid: uid as String)
+//
+//
+//            print("DEBUG: Username is \(user.userName)")
+//            print("DEBUG: Username is \(user.email)")
+//            print("DEBUG: Username is \(user.uid)")
+            
+            guard let user = try? snapshot?.data(as: User.self) else { return }
+            self.currentUser = user
+            print("DEBUG: User is \(user)")
+            
+        }
     }
     
 }

@@ -35,6 +35,8 @@ struct TabViewItem: View {
 
 struct MainTabView: View {
         
+    let user: User
+    
     var body: some View {
         
         NavigationView {
@@ -51,7 +53,7 @@ struct MainTabView: View {
                 NotificationsView()
                     .tabItem { TabViewItem(type: .notification) }
                 
-                ProfileView()
+                ProfileView(user: user)
                     .tabItem { TabViewItem(type: .setting) }
                 
             } //: TabView
@@ -75,8 +77,8 @@ struct MainTabView: View {
     }
 }
 
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
-    }
-}
+//struct MainTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainTabView()
+//    }
+//}
