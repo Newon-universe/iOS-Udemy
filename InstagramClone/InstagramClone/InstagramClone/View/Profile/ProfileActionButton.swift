@@ -11,7 +11,7 @@ struct ProfileActionButton: View {
     
     //MARK: - Properties
     @ObservedObject var viewModel: ProfileViewModel
-    var isFollwed: Bool { return viewModel.user.isFollowed }
+    var isFollwed: Bool { return viewModel.user.isFollowed ?? false }
     
     //MARK: - Function
     

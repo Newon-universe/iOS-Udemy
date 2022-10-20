@@ -42,7 +42,7 @@ class AuthViewModel: ObservableObject {
     ) {
         guard let image = image else { return }
         
-        ImageUploader.uploadImage(imgae: image) { imageUrl in
+        ImageUploader.uploadImage(imgae: image, type: .profile) { imageUrl in
             Auth.auth().createUser(withEmail: email, password: password) { result, error in
                 if let error = error {
                     print(error.localizedDescription)
@@ -99,8 +99,16 @@ class AuthViewModel: ObservableObject {
 //            print("DEBUG: Username is \(user.userName)")
 //            print("DEBUG: Username is \(user.email)")
 //            print("DEBUG: Username is \(user.uid)")
+                        
             
-            guard let user = try? snapshot?.data(as: User.self) else { return }
+            var user: User? = nil
+            
+            do {
+                user = try snapshot?.data(as: User.self)
+            } catch {
+                print(error)
+            }
+            
             self.currentUser = user
             print("DEBUG: User is \(user)")
             

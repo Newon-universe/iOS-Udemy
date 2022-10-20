@@ -9,13 +9,23 @@ import UIKit
 import Firebase
 import FirebaseStorage
 
-struct ImageUploader {
-    static func uploadImage(imgae: UIImage, completion: @escaping(String) -> Void) {
-        guard let imageData = imgae.jpegData(compressionQuality: 0.5) else { return }
-        
+enum UploadType {
+    case profile
+    case post
+    
+    var filePath: StorageReference {
         let fileName = NSUUID().uuidString
-        
-        let ref = Storage.storage().reference(withPath: "/profile_images/\(fileName).jpg")
+        switch self {
+        case .profile: return Storage.storage().reference(withPath: "/profile_images/\(fileName).jpg")
+        case .post: return Storage.storage().reference(withPath: "/post_images/\(fileName).jpg")
+        }
+    }
+}
+
+struct ImageUploader {
+    static func uploadImage(imgae: UIImage, type: UploadType, completion: @escaping(String) -> Void) {
+        guard let imageData = imgae.jpegData(compressionQuality: 0.5) else { return }
+        let ref = type.filePath
         
         ref.putData(imageData, metadata: nil) { result, error in
             if let error = error {
@@ -23,11 +33,11 @@ struct ImageUploader {
                 return
             }
             
-//            ref.downloadURL{ url, _ in
-//                guard let imageUrl = url?.absoluteString else { return }
-//                completion(imageUrl)
-//
-//            }
+            //            ref.downloadURL{ url, _ in
+            //                guard let imageUrl = url?.absoluteString else { return }
+            //                completion(imageUrl)
+            //
+            //            }
             
             guard let imageURL = result?.path else {
                 return

@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-import Kingfisher
 import Firebase
-import FirebaseFirestoreSwift
 import FirebaseStorage
 
 struct UserCell: View {

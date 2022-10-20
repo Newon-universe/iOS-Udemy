@@ -11,6 +11,7 @@ struct ContentView: View {
     
     //MARK: - Properties
     @EnvironmentObject var viewModel: AuthViewModel
+    @State var selectedIndex = 0
     
     //MARK: - Body
     
@@ -21,8 +22,8 @@ struct ContentView: View {
             } else {
                 if let user = viewModel.currentUser {
                     withAnimation(.spring()) {
-                        MainTabView(user: user)
-                    }                    
+                        MainTabView(user: user, selectedIndex: $selectedIndex)
+                    }
                 }
             }
         }

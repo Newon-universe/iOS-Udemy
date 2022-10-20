@@ -36,28 +36,49 @@ struct TabViewItem: View {
 struct MainTabView: View {
         
     let user: User
+    @Binding var selectedIndex: Int
     
     var body: some View {
         
         NavigationView {
-            TabView {
+            TabView(selection: $selectedIndex) {
                 FeedView()
+                    .onTapGesture {
+                        selectedIndex = 0
+                    }
                     .tabItem { TabViewItem(type: .home) }
+                    .tag(0)
                 
                 SearchView()
+                    .onTapGesture {
+                        selectedIndex = 1
+                    }
                     .tabItem { TabViewItem(type: .search) }
+                    .tag(1)
                 
-                UploadPostView()
+                UploadPostView(tabIndex: $selectedIndex)
+                    .onTapGesture {
+                        selectedIndex = 2
+                    }
                     .tabItem { TabViewItem(type: .post) }
+                    .tag(2)
                 
                 NotificationsView()
+                    .onTapGesture {
+                        selectedIndex = 3
+                    }
                     .tabItem { TabViewItem(type: .notification) }
+                    .tag(3)
                 
                 ProfileView(user: user)
+                    .onTapGesture {
+                        selectedIndex = 4
+                    }
                     .tabItem { TabViewItem(type: .setting) }
+                    .tag(4)
                 
             } //: TabView
-            .navigationTitle("Home")
+            .navigationTitle(tabTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 logOutButton
@@ -73,6 +94,17 @@ struct MainTabView: View {
         } label: {
             Text("Logout")
                 .foregroundColor(.black)
+        }
+    }
+    
+    var tabTitle: String {
+        switch selectedIndex {
+        case 0: return "Feed"
+        case 1: return "Explore"
+        case 2: return "New Post"
+        case 3: return "Notification"
+        case 4: return "Profile"
+        default: return ""
         }
     }
 }
