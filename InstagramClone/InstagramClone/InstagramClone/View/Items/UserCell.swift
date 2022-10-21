@@ -27,7 +27,7 @@ struct UserCell: View {
                 .clipShape(Circle())
 //                .cornerRadius(48 / 2)
                 .onAppear {
-                    SearchViewModel.getProfile(imageUrl: user.profileImageUrl) { image in
+                    ImageDownloader.getProfile(imageUrl: user.profileImageUrl) { image in
                         profile = image
                     }
                 }

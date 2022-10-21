@@ -14,9 +14,12 @@ import FirebaseStorage
 class SearchViewModel: ObservableObject {
     
     @Published var users = [User]()
+    @Published var posts = [Post]()
+    @Published var postPics = [UIImage]()
     
     init() {
         fetchUsers()
+        fetchPosts()
     }
     
     func fetchUsers() {
@@ -31,19 +34,20 @@ class SearchViewModel: ObservableObject {
         }
     }
     
-    static func getProfile(imageUrl: String, completion: @escaping (UIImage?) -> Void) {
-                
-        Storage.storage().reference().child(imageUrl).getData(maxSize: 5 * 1025 * 1024) { data, error in
-            if error == nil && data != nil {
-                let image = UIImage(data: data!)
-                
-                DispatchQueue.main.async {
-                    completion(image)
-                }
+    func fetchPosts() {
+        COLLECTION_POSTS.getDocuments { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            self.posts = documents.compactMap {
+                try? $0.data(as: Post.self)
             }
+            
         }
-        
     }
+    
+    func fetchPostPics() {
+        self.postPics = self.posts.compactMap { ImageDownloader.getPictureGroup(imageUrl: $0.imageUrl) }
+    }
+    
     
     func filterUsers(_ query: String) -> [User] {
         let lowercasedQuery = query.lowercased()

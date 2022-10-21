@@ -12,7 +12,8 @@ struct PostGridView: View {
     //MARK: - Properties
     private let items = [GridItem(), GridItem(), GridItem()]
     private let width = UIScreen.main.bounds.width / 3
-
+    @ObservedObject var viewModel: SearchViewModel
+    
     //MARK: - Function
     
     //MARK: - Body
@@ -20,24 +21,31 @@ struct PostGridView: View {
     var body: some View {
         LazyVGrid(columns: items, spacing: 2) {
             
-            ForEach(0 ..< 10) { _ in
+            ForEach(viewModel.postPics, id: \.self) { postImage in
+                
                 NavigationLink {
                     FeedView()
                 } label: {
-                    Image("dog")
-                        .resizable()
-                        .scaledToFill()
+                    Image(uiImage: postImage)
+                        .scaledToFit()
                         .frame(width: width, height: width)
                         .clipped()
-                } //: Navigation
-            }//: Loop
+                        .onAppear {
+                            viewModel.fetchPostPics()
+                        }
+                }
+                
+            }
             
-        }
-    }
+        } //: Navigation
+    }//: Loop
+    
 }
 
-struct PostGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostGridView()
-    }
-}
+
+
+//struct PostGridView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PostGridView()
+//    }
+//}

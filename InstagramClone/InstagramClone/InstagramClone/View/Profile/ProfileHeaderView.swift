@@ -28,7 +28,7 @@ struct ProfileHeaderView: View {
                         .clipShape(Circle())
                         .padding(.leading)
                         .onAppear {
-                            SearchViewModel.getProfile(imageUrl: viewModel.user.profileImageUrl) { image in
+                            ImageDownloader.getProfile(imageUrl: viewModel.user.profileImageUrl) { image in
                                 profile = image
                             }
                         }

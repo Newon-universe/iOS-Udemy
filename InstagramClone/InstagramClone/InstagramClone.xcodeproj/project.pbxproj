@@ -42,6 +42,9 @@
 		B03E3B6828F06CAE002A9924 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03E3B6728F06CAE002A9924 /* NotificationCell.swift */; };
 		B07FD22A29014A2200FC424F /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FD22929014A2200FC424F /* UploadPostViewModel.swift */; };
 		B07FD22C2901594900FC424F /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FD22B2901594900FC424F /* TextArea.swift */; };
+		B07FD22E29019DCB00FC424F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FD22D29019DCB00FC424F /* Post.swift */; };
+		B07FD23029019E9500FC424F /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FD22F29019E9500FC424F /* FeedViewModel.swift */; };
+		B07FD2322901A2DD00FC424F /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FD2312901A2DC00FC424F /* ImageDownloader.swift */; };
 		B0C39EC029003F8B00CF1F46 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C39EBF29003F8B00CF1F46 /* ProfileViewModel.swift */; };
 		B0C39EC22900429600CF1F46 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C39EC12900429600CF1F46 /* UserService.swift */; };
 		B0F4350428F599C6009CBFAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0F4350328F599C6009CBFAD /* GoogleService-Info.plist */; };
@@ -82,6 +85,9 @@
 		B03E3B6728F06CAE002A9924 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		B07FD22929014A2200FC424F /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
 		B07FD22B2901594900FC424F /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
+		B07FD22D29019DCB00FC424F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		B07FD22F29019E9500FC424F /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		B07FD2312901A2DC00FC424F /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		B0C39EBF29003F8B00CF1F46 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		B0C39EC12900429600CF1F46 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B0F4350328F599C6009CBFAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -164,6 +170,7 @@
 			children = (
 				B0F4350728F5ABCB009CBFAD /* ImageUploader.swift */,
 				B0C39EC12900429600CF1F46 /* UserService.swift */,
+				B07FD2312901A2DC00FC424F /* ImageDownloader.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -201,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				B0F4350928F6BC3A009CBFAD /* User.swift */,
+				B07FD22D29019DCB00FC424F /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +300,7 @@
 		B03E3B4928EF9342002A9924 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				B07FD22F29019E9500FC424F /* FeedViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -401,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B07FD23029019E9500FC424F /* FeedViewModel.swift in Sources */,
 				B03E3B5228EF9431002A9924 /* SearchView.swift in Sources */,
 				B03E3B6228F06148002A9924 /* UserCell.swift in Sources */,
 				B03E3B5028EF941E002A9924 /* FeedView.swift in Sources */,
@@ -422,6 +432,7 @@
 				B01EE7A928F1A9B500A0768E /* ProfileActionButton.swift in Sources */,
 				B01EE7AD28F1C03700A0768E /* LoginView.swift in Sources */,
 				B03E3B6028F05FA6002A9924 /* PostGridView.swift in Sources */,
+				B07FD22E29019DCB00FC424F /* Post.swift in Sources */,
 				B0F4351928F6D6DB009CBFAD /* SearchViewModel.swift in Sources */,
 				B03E3B5428EF9442002A9924 /* NotificationsView.swift in Sources */,
 				B01EE7AB28F1B4BC00A0768E /* ImagePicker.swift in Sources */,
@@ -433,6 +444,7 @@
 				B0F4350828F5ABCB009CBFAD /* ImageUploader.swift in Sources */,
 				B03E3B5E28F05D9F002A9924 /* SearchBar.swift in Sources */,
 				B0F4350628F5A01C009CBFAD /* AuthViewModel.swift in Sources */,
+				B07FD2322901A2DD00FC424F /* ImageDownloader.swift in Sources */,
 				B03E3B5A28EF9E9A002A9924 /* FeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
