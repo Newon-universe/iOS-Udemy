@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01702712904260400677BAB /* PostGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01702702904260400677BAB /* PostGridViewModel.swift */; };
+		B017027329042AE700677BAB /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B017027229042AE700677BAB /* FeedCellViewModel.swift */; };
 		B01EE7A528F1A0F000A0768E /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EE7A428F1A0F000A0768E /* ProfileHeaderView.swift */; };
 		B01EE7A728F1A82500A0768E /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EE7A628F1A82500A0768E /* UserStatView.swift */; };
 		B01EE7A928F1A9B500A0768E /* ProfileActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EE7A828F1A9B500A0768E /* ProfileActionButton.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B01702702904260400677BAB /* PostGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGridViewModel.swift; sourceTree = "<group>"; };
+		B017027229042AE700677BAB /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
 		B01EE7A428F1A0F000A0768E /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		B01EE7A628F1A82500A0768E /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatView.swift; sourceTree = "<group>"; };
 		B01EE7A828F1A9B500A0768E /* ProfileActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionButton.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				B03E3B4928EF9342002A9924 /* Feed */,
 				B0F4351828F6D6DB009CBFAD /* SearchViewModel.swift */,
 				B07FD22929014A2200FC424F /* UploadPostViewModel.swift */,
+				B01702702904260400677BAB /* PostGridViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				B07FD22F29019E9500FC424F /* FeedViewModel.swift */,
+				B017027229042AE700677BAB /* FeedCellViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01702712904260400677BAB /* PostGridViewModel.swift in Sources */,
 				B07FD23029019E9500FC424F /* FeedViewModel.swift in Sources */,
 				B03E3B5228EF9431002A9924 /* SearchView.swift in Sources */,
 				B03E3B6228F06148002A9924 /* UserCell.swift in Sources */,
@@ -437,6 +444,7 @@
 				B03E3B5428EF9442002A9924 /* NotificationsView.swift in Sources */,
 				B01EE7AB28F1B4BC00A0768E /* ImagePicker.swift in Sources */,
 				B0F4350A28F6BC3A009CBFAD /* User.swift in Sources */,
+				B017027329042AE700677BAB /* FeedCellViewModel.swift in Sources */,
 				B01EE7B328F1C40700A0768E /* CustomTextField.swift in Sources */,
 				B01EE7B128F1C04600A0768E /* ResetPasswordView.swift in Sources */,
 				B0C39EC029003F8B00CF1F46 /* ProfileViewModel.swift in Sources */,

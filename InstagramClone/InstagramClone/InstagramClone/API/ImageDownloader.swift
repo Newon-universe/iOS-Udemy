@@ -21,17 +21,15 @@ struct ImageDownloader {
         }
     }
     
-    static func getPictureGroup(imageUrl: String) -> UIImage? {
+    static func getPictureGroup(imageUrl: String) async -> UIImage? {
         
-        var result: UIImage?
-        
-        Storage.storage().reference().child(imageUrl).getData(maxSize: 5 * 1024 * 1024) { data, error in
-            if error == nil && data != nil {
-                result = UIImage(data: data!)
+        return await withCheckedContinuation { continuation in
+            Storage.storage().reference().child(imageUrl).getData(maxSize: 5 * 1024 * 1024) { data, error in
+                if error == nil && data != nil {
+                    continuation.resume(returning: UIImage(data: data!))
+                }
             }
+            
         }
-        .resume()
-        
-        return result
     }
 }

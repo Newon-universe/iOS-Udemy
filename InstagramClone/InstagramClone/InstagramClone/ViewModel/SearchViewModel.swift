@@ -14,12 +14,9 @@ import FirebaseStorage
 class SearchViewModel: ObservableObject {
     
     @Published var users = [User]()
-    @Published var posts = [Post]()
-    @Published var postPics = [UIImage]()
     
     init() {
         fetchUsers()
-        fetchPosts()
     }
     
     func fetchUsers() {
@@ -33,21 +30,6 @@ class SearchViewModel: ObservableObject {
             print("Fetching")
         }
     }
-    
-    func fetchPosts() {
-        COLLECTION_POSTS.getDocuments { snapshot, _ in
-            guard let documents = snapshot?.documents else { return }
-            self.posts = documents.compactMap {
-                try? $0.data(as: Post.self)
-            }
-            
-        }
-    }
-    
-    func fetchPostPics() {
-        self.postPics = self.posts.compactMap { ImageDownloader.getPictureGroup(imageUrl: $0.imageUrl) }
-    }
-    
     
     func filterUsers(_ query: String) -> [User] {
         let lowercasedQuery = query.lowercased()

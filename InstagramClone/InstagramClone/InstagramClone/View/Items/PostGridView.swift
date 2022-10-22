@@ -12,7 +12,14 @@ struct PostGridView: View {
     //MARK: - Properties
     private let items = [GridItem(), GridItem(), GridItem()]
     private let width = UIScreen.main.bounds.width / 3
-    @ObservedObject var viewModel: SearchViewModel
+    let config: PostGridConfiguration
+    
+    @ObservedObject var viewModel: PostGridViewModel
+    
+    init(config: PostGridConfiguration) {
+        self.config = config
+        self.viewModel = PostGridViewModel(config: config)
+    }
     
     //MARK: - Function
     
@@ -21,17 +28,17 @@ struct PostGridView: View {
     var body: some View {
         LazyVGrid(columns: items, spacing: 2) {
             
-            ForEach(viewModel.postPics, id: \.self) { postImage in
+            ForEach(Array(zip(viewModel.posts.indices, viewModel.posts)), id: \.0) { index, post in
                 
                 NavigationLink {
                     FeedView()
                 } label: {
-                    Image(uiImage: postImage)
+                    Image(uiImage: viewModel.postPics[index])
                         .scaledToFit()
                         .frame(width: width, height: width)
                         .clipped()
-                        .onAppear {
-                            viewModel.fetchPostPics()
+                        .task {
+                            await self.viewModel.fetchPostPics(post.imageUrl, index: index)
                         }
                 }
                 

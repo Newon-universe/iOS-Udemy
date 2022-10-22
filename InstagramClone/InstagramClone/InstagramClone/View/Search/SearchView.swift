@@ -30,7 +30,7 @@ struct SearchView: View {
                 if isChange {
                     UserListView(viewModel: viewModel, searchText: $searchText)
                 } else {
-                    PostGridView(viewModel: viewModel)
+                    PostGridView(config: .explore)
                 }
             }
             

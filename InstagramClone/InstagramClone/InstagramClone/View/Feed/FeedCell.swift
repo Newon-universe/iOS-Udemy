@@ -10,52 +10,53 @@ import SwiftUI
 struct FeedCell: View {
     
     //MARK: - Properties
-    @State var post: Post
-    @State private var posterProfile: UIImage?
-    @State private var posterImage: UIImage?
+
+    @ObservedObject var viewModel: FeedCellViewModel
+    var didLike: Bool { return viewModel.post.didLike ?? false }
+    
+    init(viewModel: FeedCellViewModel) {
+        self.viewModel = viewModel
+        Task.init {
+            await viewModel.userPic = ImageDownloader.getPictureGroup(imageUrl: viewModel.post.ownerImageUrl) ?? UIImage(systemName: "x.circle.fill")!
+            await viewModel.postPic = ImageDownloader.getPictureGroup(imageUrl: viewModel.post.imageUrl) ?? UIImage(systemName: "x.circle.fill")!
+        }
+    }
+    
     //MARK: - Body
     
     var body: some View {
         VStack(alignment: .leading) {
             // user info
             HStack {
-                Image(uiImage: posterProfile ?? UIImage(systemName: "x.circle.fill")!)
+                Image(uiImage: viewModel.userPic)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 36, height: 36)
                     .clipped()
                     .cornerRadius(18)
-                    .onAppear {
-                        ImageDownloader.getProfile(imageUrl: post.ownerImageUrl) { image in
-                            posterProfile = image
-                        }
-                    }
+                    
                 
-                Text(post.ownerUsername)
+                Text(viewModel.post.ownerUsername)
                     .font(.system(size: 14, weight: .semibold))
             } //: HStack
             .padding([.leading, .bottom], 8)
             
             
             // post image
-            Image(uiImage: posterImage ?? UIImage(systemName: "x.circle.fill")!)
+            Image(uiImage: viewModel.postPic)
                 .resizable()
                 .scaledToFit()
                 .frame(maxHeight: 440)
-                .onAppear {
-                    ImageDownloader.getProfile(imageUrl: post.imageUrl) { image in
-                        posterImage = image
-                    }
-                }
             
             // action buttons
             HStack(spacing: 16) {
                 Button {
-                    
+                    didLike ? viewModel.unlike() : viewModel.like()
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: didLike ? "heart.fill" : "heart")
                         .resizable()
                         .scaledToFill()
+                        .foregroundColor(didLike ? .red : .black)
                         .frame(width: 20, height: 20)
                         .font(.system(size: 20))
                         .padding(4)
@@ -88,21 +89,21 @@ struct FeedCell: View {
             
             // caption
             
-            Text("\(post.likes) likes")
+            Text("\(viewModel.likeString)")
                 .font(.system(size: 14, weight: .semibold))
                 .padding(.leading, 8)
                 .padding(.bottom, 2)
             
             HStack {
-                Text(post.ownerUsername)
+                Text(viewModel.post.ownerUsername)
                     .font(.system(size: 14, weight: .semibold))
                 + Text(" ")
-                + Text(post.caption)
+                + Text(viewModel.post.caption)
                     .font(.system(size: 15))
             }
             .padding(.horizontal, 8)
             
-            Text(String(format: "\(post.timestamp)", "dd") + "d")
+            Text("\(viewModel.postDate) d")
                 .font(.system(size: 14))
                 .foregroundColor(.gray)
                 .padding(.leading, 8)
