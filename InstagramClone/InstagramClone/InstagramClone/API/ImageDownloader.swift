@@ -21,7 +21,7 @@ struct ImageDownloader {
         }
     }
     
-    static func getPictureGroup(imageUrl: String) async -> UIImage? {
+    static func getAsyncPicture(imageUrl: String) async -> UIImage? {
         
         return await withCheckedContinuation { continuation in
             Storage.storage().reference().child(imageUrl).getData(maxSize: 5 * 1024 * 1024) { data, error in
@@ -29,7 +29,6 @@ struct ImageDownloader {
                     continuation.resume(returning: UIImage(data: data!))
                 }
             }
-            
         }
     }
 }

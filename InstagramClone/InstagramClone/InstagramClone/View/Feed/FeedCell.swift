@@ -10,20 +10,18 @@ import SwiftUI
 struct FeedCell: View {
     
     //MARK: - Properties
-
     @ObservedObject var viewModel: FeedCellViewModel
     var didLike: Bool { return viewModel.post.didLike ?? false }
     
     init(viewModel: FeedCellViewModel) {
         self.viewModel = viewModel
         Task.init {
-            await viewModel.userPic = ImageDownloader.getPictureGroup(imageUrl: viewModel.post.ownerImageUrl) ?? UIImage(systemName: "x.circle.fill")!
-            await viewModel.postPic = ImageDownloader.getPictureGroup(imageUrl: viewModel.post.imageUrl) ?? UIImage(systemName: "x.circle.fill")!
+            await viewModel.userPic = ImageDownloader.getAsyncPicture(imageUrl: viewModel.post.ownerImageUrl) ?? UIImage(systemName: "x.circle.fill")!
+            await viewModel.postPic = ImageDownloader.getAsyncPicture(imageUrl: viewModel.post.imageUrl) ?? UIImage(systemName: "x.circle.fill")!
         }
     }
     
     //MARK: - Body
-    
     var body: some View {
         VStack(alignment: .leading) {
             // user info
@@ -62,8 +60,8 @@ struct FeedCell: View {
                         .padding(4)
                 }
                 
-                Button {
-                    
+                NavigationLink {
+                    CommentView(post: viewModel.post)
                 } label: {
                     Image(systemName: "bubble.right")
                         .resizable()
@@ -72,7 +70,7 @@ struct FeedCell: View {
                         .font(.system(size: 20))
                         .padding(4)
                 }
-                
+
                 Button {
                     
                 } label: {

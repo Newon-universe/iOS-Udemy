@@ -41,7 +41,7 @@ class PostGridViewModel: ObservableObject {
     }
     
     func fetchPostPics(_ url: String, index: Int) async {
-        let image = await ImageDownloader.getPictureGroup(imageUrl: url) ?? UIImage(systemName: "x.circle.fill")!
+        let image = await ImageDownloader.getAsyncPicture(imageUrl: url) ?? UIImage(systemName: "x.circle.fill")!
         
         DispatchQueue.main.async {
             self.postPics[index] = image
