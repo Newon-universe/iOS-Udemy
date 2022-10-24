@@ -33,13 +33,19 @@ struct PostGridView: View {
                 NavigationLink {
                     FeedView()
                 } label: {
-                    Image(uiImage: viewModel.postPics[index])
-                        .scaledToFit()
-                        .frame(width: width, height: width)
-                        .clipped()
-                        .task {
-                            await self.viewModel.fetchPostPics(post.imageUrl, index: index)
-                        }
+                    NavigationLink {
+                        FeedCell(viewModel: FeedCellViewModel(post: post))
+                    } label: {
+                        Image(uiImage: viewModel.postPics[index])
+                            .scaledToFit()
+                            .frame(width: width, height: width)
+                            .clipped()
+                            .task {
+                                await self.viewModel.fetchPostPics(post.imageUrl, index: index)
+                            }
+                            .id(viewModel.postPics[index])
+                    }
+                    
                 }
                 
             }

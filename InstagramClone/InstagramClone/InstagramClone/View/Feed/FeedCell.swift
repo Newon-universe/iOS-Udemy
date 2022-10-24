@@ -32,7 +32,6 @@ struct FeedCell: View {
                     .frame(width: 36, height: 36)
                     .clipped()
                     .cornerRadius(18)
-                    
                 
                 Text(viewModel.post.ownerUsername)
                     .font(.system(size: 14, weight: .semibold))
@@ -41,10 +40,21 @@ struct FeedCell: View {
             
             
             // post image
-            Image(uiImage: viewModel.postPic)
-                .resizable()
-                .scaledToFit()
-                .frame(maxHeight: 440)
+            HStack(alignment: .center) {
+                
+                Spacer()
+                
+                Image(uiImage: viewModel.postPic)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 440)
+                    .transition(AnyTransition.opacity.animation(.easeInOut))
+                    .animation(.easeInOut, value: viewModel.postPic)
+                    .id(viewModel.postPic)
+                
+                Spacer()
+                
+            }
             
             // action buttons
             HStack(spacing: 16) {
@@ -70,7 +80,7 @@ struct FeedCell: View {
                         .font(.system(size: 20))
                         .padding(4)
                 }
-
+                
                 Button {
                     
                 } label: {
