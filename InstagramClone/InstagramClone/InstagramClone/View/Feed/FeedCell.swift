@@ -16,8 +16,12 @@ struct FeedCell: View {
     init(viewModel: FeedCellViewModel) {
         self.viewModel = viewModel
         Task.init {
-            await viewModel.userPic = ImageDownloader.getAsyncPicture(imageUrl: viewModel.post.ownerImageUrl) ?? UIImage(systemName: "x.circle.fill")!
-            await viewModel.postPic = ImageDownloader.getAsyncPicture(imageUrl: viewModel.post.imageUrl) ?? UIImage(systemName: "x.circle.fill")!
+            if viewModel.userPic == nil {
+                await viewModel.userPic = ImageDownloader.getAsyncPicture(imageUrl: viewModel.post.ownerImageUrl) ?? UIImage(systemName: "x.circle.fill")!
+            }
+            if viewModel.postPic == nil {
+                await viewModel.postPic = ImageDownloader.getAsyncPicture(imageUrl: viewModel.post.imageUrl) ?? UIImage(systemName: "x.circle.fill")!
+            }
         }
     }
     
@@ -25,18 +29,25 @@ struct FeedCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             // user info
-            HStack {
-                Image(uiImage: viewModel.userPic)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 36, height: 36)
-                    .clipped()
-                    .cornerRadius(18)
-                
-                Text(viewModel.post.ownerUsername)
-                    .font(.system(size: 14, weight: .semibold))
-            } //: HStack
-            .padding([.leading, .bottom], 8)
+            NavigationLink {
+                if let user = viewModel.user {
+                    ProfileView(user: user)
+                }
+            } label: {
+                HStack {
+                    Image(uiImage: viewModel.userPic ?? UIImage(systemName: "x.circle.fill")!)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 36, height: 36)
+                        .clipped()
+                        .cornerRadius(18)
+                    
+                    Text(viewModel.post.ownerUsername)
+                        .font(.system(size: 14, weight: .semibold))
+                } //: HStack
+                .padding([.leading, .bottom], 8)
+            }
+
             
             
             // post image
@@ -44,7 +55,7 @@ struct FeedCell: View {
                 
                 Spacer()
                 
-                Image(uiImage: viewModel.postPic)
+                Image(uiImage: viewModel.postPic ?? UIImage(systemName: "x.circle.fill")!)
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 440)
@@ -71,7 +82,7 @@ struct FeedCell: View {
                 }
                 
                 NavigationLink {
-                    CommentView(post: viewModel.post)
+                    LazyView(CommentView(post: viewModel.post))
                 } label: {
                     Image(systemName: "bubble.right")
                         .resizable()
@@ -111,7 +122,7 @@ struct FeedCell: View {
             }
             .padding(.horizontal, 8)
             
-            Text("\(viewModel.postDate) d")
+            Text("\(viewModel.timestampString)")
                 .font(.system(size: 14))
                 .foregroundColor(.gray)
                 .padding(.leading, 8)

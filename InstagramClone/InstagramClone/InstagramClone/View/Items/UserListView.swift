@@ -22,7 +22,7 @@ struct UserListView: View {
                 
                 ForEach(users) { user in
                     NavigationLink {
-                        ProfileView(user: user)
+                        LazyView(ProfileView(user: user))
                     } label: {
                         UserCell(user: user)
                             .id(user.id)

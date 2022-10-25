@@ -12,7 +12,7 @@ struct NotificationCell: View {
     //MARK: - Properties
     @ObservedObject var viewModel: NotificationCellViewModel
     @State private var showPostImage = false
-    @State private var profile = UIImage(systemName: "x.circle.fill")!
+    @State private var profile: UIImage?
     @State private var postImage: UIImage?
     var isFollowed: Bool { return viewModel.notification.isFollowed ?? false }
     
@@ -29,21 +29,20 @@ struct NotificationCell: View {
             // image
             NavigationLink {
                 if let user = viewModel.notification.user {
-                    ProfileView(user: user)
+                    LazyView(ProfileView(user: user))
                 }
             } label: {
-                Image(uiImage: profile)
+                Image(uiImage: profile ?? UIImage(systemName: "x.circle.fill")!)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40, height: 40)
                     .clipShape(Circle())
-                    .task {
-                        if let image = await ImageDownloader.getAsyncPicture(imageUrl: viewModel.notification.profileImageUrl) {
+                    .onAppear {
+                        ImageDownloader.getProfile(imageUrl: viewModel.notification.profileImageUrl) { image in
                             self.profile = image
                         }
                     }
                 //                .cornerRadius(48 / 2)
-                
                 
                 // VStack -> user name, full name
                 
@@ -51,7 +50,9 @@ struct NotificationCell: View {
                     .font(.system(size: 14, weight: .semibold))
                 + Text(viewModel.notification.type.notificationMessage)
                     .font(.system(size: 15))
-                
+                + Text(" \(viewModel.timestampString)")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 12))
             }
             
             Spacer()
@@ -59,15 +60,17 @@ struct NotificationCell: View {
             if viewModel.notification.type != .follow {
                 if let post = viewModel.notification.post {
                     NavigationLink {
-                        FeedCell(viewModel: FeedCellViewModel(post: post))
+                        LazyView(FeedCell(viewModel: FeedCellViewModel(post: post)))
                     } label: {
                         Image(uiImage: postImage ?? UIImage(systemName: "x.circle.fill")!)
                             .resizable()
                             .frame(width: 40, height: 40)
                             .scaledToFill()
                             .clipped()
-                            .task {
-                                self.postImage = await ImageDownloader.getAsyncPicture(imageUrl: post.imageUrl)
+                            .onAppear {
+                                ImageDownloader.getProfile(imageUrl: viewModel.notification.post?.imageUrl ?? "") { image in
+                                    self.postImage = image
+                                }
                             }
                     }
                 }
@@ -77,6 +80,7 @@ struct NotificationCell: View {
                     isFollowed ? viewModel.unfolllow() : viewModel.follow()
                 } label: {
                     Text(isFollowed ? "Following" : "Follow")
+                        .padding()
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(isFollowed ? .black : .white)
                         .frame(width: 100, height: 32)

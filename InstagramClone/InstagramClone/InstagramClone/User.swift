@@ -16,7 +16,14 @@ struct User: Identifiable, Decodable {
     let fullName: String
     let uid: String
     var isFollowed: Bool? = false
+    var stats: UserStats?
     
     @DocumentID var id: String?
     var isCurrentUser: Bool { return AuthViewModel.shared.userSession?.uid == id }
+}
+
+struct UserStats: Decodable {
+    var following: Int
+    var posts: Int
+    var followers: Int
 }

@@ -26,21 +26,16 @@ struct ProfileHeaderView: View {
                         .scaledToFill()
                         .frame(width: 80, height: 80)
                         .clipShape(Circle())
-                        .padding(.leading)
-                        .onAppear {
-                            ImageDownloader.getProfile(imageUrl: viewModel.user.profileImageUrl) { image in
-                                profile = image
-                            }
-                        }
-                    
+                        .padding(.leading)                        
                 }
                 
                 Spacer()
                 
                 HStack {
-                    UserStatView(value: 1, title: "Post")
-                    UserStatView(value: 2, title: "Followers")
-                    UserStatView(value: 3, title: "Follwing")
+                    
+                    UserStatView(value: viewModel.user.stats?.posts ?? 0, title: "Post")
+                    UserStatView(value: viewModel.user.stats?.followers ?? 0, title: "Followers")
+                    UserStatView(value: viewModel.user.stats?.following ?? 0, title: "Follwing")
                 } //: HStack
                 .padding(.trailing)
             }//: HStack
@@ -64,6 +59,11 @@ struct ProfileHeaderView: View {
             }//: HStack
             .padding(.top)
 
+        }//: VStack
+        .onAppear {
+            ImageDownloader.getProfile(imageUrl: viewModel.user.profileImageUrl) { image in
+                profile = image
+            }
         }
     }
 }

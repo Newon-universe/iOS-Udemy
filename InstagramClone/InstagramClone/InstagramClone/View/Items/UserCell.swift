@@ -27,8 +27,10 @@ struct UserCell: View {
                 .clipShape(Circle())
 //                .cornerRadius(48 / 2)
                 .onAppear {
-                    ImageDownloader.getProfile(imageUrl: user.profileImageUrl) { image in
-                        profile = image
+                    if profile == nil {
+                        ImageDownloader.getProfile(imageUrl: user.profileImageUrl) { image in
+                            profile = image
+                        }
                     }
                 }
             

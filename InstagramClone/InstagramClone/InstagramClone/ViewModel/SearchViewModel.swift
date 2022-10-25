@@ -36,4 +36,14 @@ class SearchViewModel: ObservableObject {
         return users.filter { $0.fullName.lowercased().contains(lowercasedQuery) || $0.userName.lowercased().contains(lowercasedQuery) }
     }
     
+    static func searchUser(_ uid: String, completion: @escaping (User?) -> Void) {
+        COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
+            guard let user = try? snapshot?.data(as: User.self) else {
+                completion(nil)
+                return
+            }
+            
+            completion(user)
+        }
+    }
 }

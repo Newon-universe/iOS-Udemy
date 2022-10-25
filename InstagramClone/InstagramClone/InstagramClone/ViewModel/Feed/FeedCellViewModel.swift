@@ -9,20 +9,29 @@ import SwiftUI
 
 class FeedCellViewModel: ObservableObject {
     @Published var post: Post
-    var postDate: Int{
-        return Calendar.current.component(.day, from: Date.now) - Calendar.current.component(.day, from: post.timestamp.dateValue())
-    }
-    @Published var userPic = UIImage(systemName: "x.circle.fill")!
-    @Published var postPic = UIImage(systemName: "x.circle.fill")!
+    @Published var user: User?
+    
+    @Published var userPic: UIImage?
+    @Published var postPic: UIImage?
     
     var likeString: String {
         let label = post.likes == 1 ? "like" : "likes"
         return "\(post.likes) \(label)"
     }
     
+    var timestampString: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second, .minute, .hour, .day, .weekOfMonth]
+        formatter.maximumUnitCount = 1
+        formatter.unitsStyle = .abbreviated
+        
+        return formatter.string(from: post.timestamp.dateValue(), to: Date()) ?? ""
+    }
+    
     init(post: Post) {
         self.post = post
         checkIfUserLikedPost()
+        fetchUser(post.ownerUid)
     }
     
     func like() {
@@ -66,7 +75,12 @@ class FeedCellViewModel: ObservableObject {
         COLLECTION_USERS.document(uid).collection("user-likes").document(postId).getDocument { snapshot, error in
             guard let didLike = snapshot?.exists else { return }
             self.post.didLike = didLike
-            print(didLike)
+        }
+    }
+    
+    func fetchUser(_ uid: String) {
+        COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
+            self.user = try? snapshot?.data(as: User.self)
         }
     }
 }

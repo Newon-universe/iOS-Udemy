@@ -14,7 +14,7 @@ enum PostGridConfiguration {
 
 class PostGridViewModel: ObservableObject {
     @Published var posts = [Post]()
-    @Published var postPics = [UIImage]()
+    @Published var postPics = [UIImage?]()
     
     let config: PostGridConfiguration
     
@@ -36,7 +36,7 @@ class PostGridViewModel: ObservableObject {
             self.posts = documents.compactMap {
                 try? $0.data(as: Post.self)
             }
-            self.postPics = [UIImage](repeating: UIImage(systemName: "x.circle.fill")!, count: self.posts.count)
+            self.postPics = [UIImage?](repeating: nil, count: self.posts.count)
         }
     }
     
@@ -53,8 +53,9 @@ class PostGridViewModel: ObservableObject {
             guard let documents = snapshot?.documents else { return }
             self.posts = documents.compactMap {
                 try? $0.data(as: Post.self)
-            }
-            self.postPics = [UIImage](repeating: UIImage(systemName: "x.circle.fill")!, count: self.posts.count)
+            }.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() })
+            
+            self.postPics = [UIImage?](repeating: nil, count: self.posts.count)
         }
     }
 }
