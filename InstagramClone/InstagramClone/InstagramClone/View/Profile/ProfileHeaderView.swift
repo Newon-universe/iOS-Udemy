@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileHeaderView: View {
     
     //MARK: - Properties
-    let viewModel: ProfileViewModel
+    @ObservedObject var viewModel: ProfileViewModel
     @State private var profile: UIImage? 
     
     //MARK: - Body
@@ -45,10 +45,12 @@ struct ProfileHeaderView: View {
                 .padding(.leading, 25)
                 .padding(.top)
             
-            Text("Astronut who move to next")
-                .font(.system(size: 15))
-                .padding([.leading], 25)
-                .padding(.top, -7)
+            if let bio = viewModel.user.bio {
+                Text(bio)
+                    .font(.system(size: 15))
+                    .padding([.leading], 25)
+                    .padding(.top, -7)
+            }
             
             HStack {
                 Spacer()

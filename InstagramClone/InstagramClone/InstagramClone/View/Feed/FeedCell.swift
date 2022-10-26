@@ -44,6 +44,7 @@ struct FeedCell: View {
                     
                     Text(viewModel.post.ownerUsername)
                         .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.black)
                 } //: HStack
                 .padding([.leading, .bottom], 8)
             }

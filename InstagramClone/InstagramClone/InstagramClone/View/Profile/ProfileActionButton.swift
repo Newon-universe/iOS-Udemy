@@ -12,6 +12,7 @@ struct ProfileActionButton: View {
     //MARK: - Properties
     @ObservedObject var viewModel: ProfileViewModel
     var isFollwed: Bool { return viewModel.user.isFollowed ?? false }
+    @State private var showEditProfile = false
     
     //MARK: - Function
     
@@ -20,7 +21,7 @@ struct ProfileActionButton: View {
     var body: some View {
         if viewModel.user.isCurrentUser {
             Button {
-                
+                showEditProfile.toggle()
             } label: {
                 Text("Edit Profile")
                     .font(.system(size: 14, weight: .semibold))
@@ -30,6 +31,9 @@ struct ProfileActionButton: View {
                         RoundedRectangle(cornerRadius: 3)
                             .stroke(.gray, lineWidth: 1)
                     }
+            }
+            .sheet(isPresented: $showEditProfile) {
+                EditProfileView(user: $viewModel.user)
             }
         } else {
             // follow and message button
