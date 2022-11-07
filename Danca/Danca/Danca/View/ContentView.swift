@@ -1,20 +1,21 @@
 //
 //  ContentView.swift
-//  Isometric Animation
+//  Danca
 //
-//  Created by Kim Yewon on 2022/11/02.
+//  Created by Kim Yewon on 2022/11/05.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Home()
+        HomeView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
