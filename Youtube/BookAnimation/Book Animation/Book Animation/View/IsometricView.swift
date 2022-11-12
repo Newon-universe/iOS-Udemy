@@ -17,7 +17,6 @@ struct CustomProjection: GeometryEffect {
         }
     }
     
-    
     func effectValue(size: CGSize) -> ProjectionTransform {
         var transform = CATransform3DIdentity
         transform.m11 = value == 0 ? 0.0001: value
