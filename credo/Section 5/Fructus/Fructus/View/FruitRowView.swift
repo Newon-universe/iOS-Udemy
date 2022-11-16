@@ -13,7 +13,6 @@ struct FruitRowView: View {
     var fruit: Fruit
     //MARK: - BODY
     
-    
     var body: some View {
         HStack {
             Image(fruit.image)

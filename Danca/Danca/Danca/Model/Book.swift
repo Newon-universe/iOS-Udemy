@@ -12,6 +12,11 @@ struct Book {
     private var _coverImage: Image
     private var _section: [Section]?
     
+    init(coverImage: Image, section: [Section]) {
+        _coverImage = coverImage
+        _section = section
+    }
+    
     var coverImage: Image {
         get { _coverImage }
         set { _coverImage = newValue }
@@ -57,8 +62,6 @@ struct Book {
             _section?[index] = newSection
         }
     }
-    
-    
 }
 
 enum WordsType {
@@ -70,6 +73,13 @@ enum WordsType {
 
 struct Section {
     var title: String?
-    var words: [[String:WordsType]]?
+    var words: [Word]?
     var date: Date
+}
+
+struct Word {
+    var studyWord: String
+    var translatedWord: String
+    var examples: [String]? = nil
+    var image: Image? = nil
 }

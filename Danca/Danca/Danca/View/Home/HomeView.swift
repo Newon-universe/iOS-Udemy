@@ -8,24 +8,42 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    var book: [Book] = Library().loadBooks()
+    @State private var selectedBook: Int? = nil
+    
     var body: some View {
-        HStack(alignment: .center) {
-            
-            ProfileView()
-            
-            ZStack() {
-                Text("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA")
-            }
-            
-        } //: HStack
+        
+        ScrollViewReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 35) {
+                    ForEach(book.indices, id:\.self) { index in
+                        book[index].coverImage
+                            .resizable()
+                            .frame(
+                                width: selectedBook == index ? 350 : 300,
+                                height: selectedBook == index ? 450 : 400
+                            )
+                            .cornerRadius(10)
+                            .id(index)
+                            .onTapGesture {
+                                withAnimation {
+                                    proxy.scrollTo(index, anchor: .center)
+                                    selectedBook = index
+                                }
+                            }
+                    }//: ForEach
+                }//: HStack
+            }//: ScrollView
+            .padding(.horizontal, 30)
+        }//: ScrollViewReader
     }
 }
-
 
 struct ProfileView: View {
     var body: some View {
         ZStack {
-
+            
             HStack {
                 Spacer()
                 
@@ -37,10 +55,8 @@ struct ProfileView: View {
             
             VStack {
                 Spacer()
-                
-                
             }
-
+            
         }
         .padding(.horizontal, 100)
         .background (
