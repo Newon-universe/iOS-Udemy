@@ -11,32 +11,49 @@ struct HomeView: View {
     
     var book: [Book] = Library().loadBooks()
     @State private var selectedBook: Int? = nil
+    @State private var isSelected: Bool = false
     
     var body: some View {
         
-        ScrollViewReader { proxy in
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 35) {
-                    ForEach(book.indices, id:\.self) { index in
-                        book[index].coverImage
-                            .resizable()
-                            .frame(
-                                width: selectedBook == index ? 350 : 300,
-                                height: selectedBook == index ? 450 : 400
-                            )
-                            .cornerRadius(10)
-                            .id(index)
-                            .onTapGesture {
-                                withAnimation {
-                                    proxy.scrollTo(index, anchor: .center)
-                                    selectedBook = index
+        NavigationView {
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 35) {
+                        NavigationLink(isActive: $isSelected) {
+                            BookView()
+                        } label: {
+                            EmptyView()
+                        }//: NavigationLink
+                        
+                        ForEach(book.indices, id:\.self) { index in
+                            book[index].coverImage
+                                .resizable()
+                                .frame(
+                                    width: selectedBook == index ? 350 : 300,
+                                    height: selectedBook == index ? 450 : 400
+                                )
+                                .cornerRadius(10)
+                                .id(index)
+                                .onTapGesture {
+                                    if selectedBook != index {
+                                        withAnimation {
+                                            proxy.scrollTo(index, anchor: .center)
+                                            selectedBook = index
+                                        }
+                                    } else {
+                                        isSelected = true
+                                    }
                                 }
-                            }
-                    }//: ForEach
-                }//: HStack
-            }//: ScrollView
-            .padding(.horizontal, 30)
-        }//: ScrollViewReader
+                        }//: ForEach
+                    }//: HStack
+                    
+                }//: ScrollView
+                .padding(.horizontal, 30)
+            }//: ScrollViewReader
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        
+        
     }
 }
 
