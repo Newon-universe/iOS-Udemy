@@ -77,6 +77,7 @@ struct ContentView: View {
     }
 }
 
+
 struct Star: Shape {
     
     let starPoints: Int
@@ -86,18 +87,38 @@ struct Star: Shape {
         set { starThickness = newValue }
     }
     
+    
+//    CreateStar(starPoints: 4, starThickness: $starThickness, animateStar: $animateYellow, fillColor: .yellow, starSizeStart: 0.2, starSizeEnd: 0.4, shadowColor: .yellow)
+//        .offset(y: 100)
+//        .onAppear {
+//            withAnimation(.easeOut(duration: 2.3).repeatForever(autoreverses: true)) {
+//                animateYellow.toggle()
+//                starThickness = 0.35
+//            }
+//        }
+    
     func path(in rect: CGRect) -> Path {
         // make sure the star has at least 3 points
         guard starPoints >= 3 else { return Path() }
         
         // create an x and y point to start the drawing from
+//        var = 변수
+//        let = 상수
+//        CGPoint == float 를 개같이 쓴거
+
         let drawPoint = CGPoint(x: rect.width / 1.2, y: rect.height / 0.5)
         
         // make the angle of the star straight up (change this value to change the stars angle)
+        // 각도를 표현하는 방법 == 2가지 (1바퀴를 360도 == 일반적인 각도 / 1바퀴를 2파이 == 라디안)
+        // 직교좌표계? (0, 0 과 1, 0 잇는 선분)
+        // 양수 == 반시계방향 회전이 국룰
+        // 음수 == 시계방향 회전
+        
         var starAngle = -CGFloat.pi / 2
         
         // adjust the stars angle based on how many points are chosen
-        let adjustedStarAngle = .pi * 2 / CGFloat(starPoints * 2)
+//        let adjustedStarAngle = .pi * 2 / CGFloat(starPoints * 2)
+        let adjustedStarAngle = .pi / CGFloat(starPoints)
         
         // adust the inner x and y points of the star based on the star thickness
         let pointX = drawPoint.x * starThickness

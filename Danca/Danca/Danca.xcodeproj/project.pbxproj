@@ -13,11 +13,14 @@
 		B041FC67291658600046F0C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B041FC66291658600046F0C4 /* Preview Assets.xcassets */; };
 		B041FC76291666150046F0C4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B041FC75291666150046F0C4 /* LoginView.swift */; };
 		B041FC7A291669540046F0C4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B041FC79291669540046F0C4 /* HomeView.swift */; };
+		B0422747292A5B2A00D52AA1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0422746292A5B2A00D52AA1 /* ColorExtension.swift */; };
 		B05FE655292673AC0045B856 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE654292673AC0045B856 /* BookView.swift */; };
 		B076BFC4291FD58F0006B50D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B076BFC3291FD58F0006B50D /* Profile.swift */; };
 		B076BFC6291FDF140006B50D /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B076BFC5291FDF140006B50D /* Book.swift */; };
 		B076BFC8291FE85E0006B50D /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B076BFC7291FE85E0006B50D /* CollectionExtension.swift */; };
 		B076BFCA291FEB4B0006B50D /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B076BFC9291FEB4B0006B50D /* Library.swift */; };
+		B0D2129A293B8866009B3200 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D21299293B8866009B3200 /* ProfileView.swift */; };
+		B0D23A312932279D0001E0C5 /* IsometricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D23A302932279D0001E0C5 /* IsometricView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,11 +31,14 @@
 		B041FC66291658600046F0C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B041FC75291666150046F0C4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B041FC79291669540046F0C4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B0422746292A5B2A00D52AA1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		B05FE654292673AC0045B856 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		B076BFC3291FD58F0006B50D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B076BFC5291FDF140006B50D /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		B076BFC7291FE85E0006B50D /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		B076BFC9291FEB4B0006B50D /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		B0D21299293B8866009B3200 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B0D23A302932279D0001E0C5 /* IsometricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsometricView.swift; path = "../../../../../Youtube/IsometricAnimation/Isometric Animation/IsometricView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		B041FC6D291658A70046F0C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B0D23A2F2932278C0001E0C5 /* Util */,
 				B05FE6532926738F0045B856 /* Book */,
 				B041FC7329165BBF0046F0C4 /* Items */,
 				B041FC74291663ED0046F0C4 /* Login */,
@@ -119,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				B076BFC7291FE85E0006B50D /* CollectionExtension.swift */,
+				B0422746292A5B2A00D52AA1 /* ColorExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -164,8 +172,17 @@
 			isa = PBXGroup;
 			children = (
 				B05FE654292673AC0045B856 /* BookView.swift */,
+				B0D21299293B8866009B3200 /* ProfileView.swift */,
 			);
 			path = Book;
+			sourceTree = "<group>";
+		};
+		B0D23A2F2932278C0001E0C5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B0D23A302932279D0001E0C5 /* IsometricView.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,11 +259,14 @@
 				B041FC76291666150046F0C4 /* LoginView.swift in Sources */,
 				B076BFC8291FE85E0006B50D /* CollectionExtension.swift in Sources */,
 				B076BFCA291FEB4B0006B50D /* Library.swift in Sources */,
+				B0D2129A293B8866009B3200 /* ProfileView.swift in Sources */,
 				B041FC7A291669540046F0C4 /* HomeView.swift in Sources */,
 				B076BFC6291FDF140006B50D /* Book.swift in Sources */,
 				B041FC622916585E0046F0C4 /* ContentView.swift in Sources */,
+				B0D23A312932279D0001E0C5 /* IsometricView.swift in Sources */,
 				B076BFC4291FD58F0006B50D /* Profile.swift in Sources */,
 				B041FC602916585E0046F0C4 /* DancaApp.swift in Sources */,
+				B0422747292A5B2A00D52AA1 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

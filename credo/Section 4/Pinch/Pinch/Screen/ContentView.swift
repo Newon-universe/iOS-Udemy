@@ -31,7 +31,6 @@ struct ContentView: View {
         return pages[pageIndex - 1].imageName
     }
     
-    
     //MARK: - CONTENT
     var body: some View {
         NavigationView {

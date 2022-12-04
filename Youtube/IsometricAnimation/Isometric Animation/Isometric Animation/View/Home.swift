@@ -18,12 +18,14 @@ struct Home: View {
         //MARK: - Declare your own View's Here
         
         VStack(spacing: 20) {
-            IsometricView(depth: animate ? 35 : 0) {
+            IsometricView(depth: animate ? 1.5 : 0) {
                 ImageView()
             } bottom: {
-                ImageView()
+                Rectangle()
+                    .fill(Color.blue)
             } side: {
-                ImageView()
+                Rectangle()
+                    .fill(Color.green)
             }
             .frame(width: 180, height: 330)
             //MARK: - Animating It with Projection's
@@ -109,6 +111,7 @@ struct CustomProjection: GeometryEffect {
         return .init(.init(a: 1, b: b, c: c, d: 1, tx: 0, ty: 0))
     }
 }
+
 
 struct IsometricView<Content: View, Bottom: View, Side: View>: View {
     var content: Content

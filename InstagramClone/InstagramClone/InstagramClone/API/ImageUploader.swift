@@ -33,17 +33,17 @@ struct ImageUploader {
                 return
             }
             
-            //            ref.downloadURL{ url, _ in
-            //                guard let imageUrl = url?.absoluteString else { return }
-            //                completion(imageUrl)
-            //
-            //            }
-            
-            guard let imageURL = result?.path else {
-                return
+            ref.downloadURL{ url, _ in
+                guard let imageUrl = url?.absoluteString else { return }
+                completion(imageUrl)
+                
             }
             
-            completion(imageURL)
+//            guard let imageURL = result?.path else {
+//                return
+//            }
+            
+//            completion(imageURL)
         }
         print("Successfully uploaded image")
         

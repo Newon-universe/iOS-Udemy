@@ -41,6 +41,10 @@ struct Book {
         }
     }
     
+    func getAllSection() -> [Section]? {
+        return _section
+    }
+    
     func getSection(index: Int) -> Section {
         guard let sections = _section else {
             fatalError("No section")
@@ -77,7 +81,8 @@ struct Section {
     var date: Date
 }
 
-struct Word {
+struct Word: Identifiable {
+    let id = UUID()
     var studyWord: String
     var translatedWord: String
     var examples: [String]? = nil

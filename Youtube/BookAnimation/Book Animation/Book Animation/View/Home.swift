@@ -131,9 +131,12 @@ struct Home: View {
         GeometryReader {
             let size = $0.size
             
+            
             //MARK: - Animation Calculation's
             let rect = $0.frame(in: .global)
-            let minX = rect.minX - 50 < 0 ? (rect.minX - 50) : -(rect.minX - 50)
+            // minX minY 가 좌표값 ?
+            
+            let minX = rect.minX - 200 < 0 ? (rect.minX - 200) : -(rect.minX - 200)
             let progress = (minX) / rect.width
             //make your custom rotation
             let rotation = progress * 25

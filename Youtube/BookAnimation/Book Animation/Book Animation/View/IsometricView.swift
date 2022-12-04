@@ -24,6 +24,7 @@ struct CustomProjection: GeometryEffect {
     }
 }
 
+
 struct IsometricView<Content: View, Bottom: View, Side: View>: View {
     var content: Content
     var bottom: Bottom
