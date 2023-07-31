@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F4219673-8121-4F44-82A1-22F10CA378F4"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F692D741-7020-476C-906D-CB783CB698AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CollectionView-kelvin fok/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "observe()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15D679F6-E946-4B96-AE1D-EF956785E22E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CollectionView-kelvin fok/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "setupNavigation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9700BD4-4489-461C-B723-401DE48DC21F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CollectionView-kelvin fok/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "setupDataSource()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A9700BD4-4489-461C-B723-401DE48DC21F - 234e0e5b393e3d98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CollectionView_kelvin_fok.CollectionViewController.setupDataSource() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS/kelvin-fok/CollectionView-kelvin%20fok/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "A9700BD4-4489-461C-B723-401DE48DC21F - 19943afe6423d0b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UICollectionView, Foundation.IndexPath, CollectionView_kelvin_fok.Product) -&gt; Swift.Optional&lt;__C.UICollectionViewCell&gt; in CollectionView_kelvin_fok.CollectionViewController.setupDataSource() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS/kelvin-fok/CollectionView-kelvin%20fok/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "180">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8284E8B3-DA0F-4938-8EF4-4E8B8C6A7F75"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CollectionView-kelvin fok/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "setupCompositionalLayout()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8284E8B3-DA0F-4938-8EF4-4E8B8C6A7F75 - 843f2c586c258dd0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CollectionView_kelvin_fok.CollectionViewController.setupCompositionalLayout() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS/kelvin-fok/CollectionView-kelvin%20fok/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "8284E8B3-DA0F-4938-8EF4-4E8B8C6A7F75 - dea9d576ce4071e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, __C.NSCollectionLayoutEnvironment) -&gt; Swift.Optional&lt;__C.NSCollectionLayoutSection&gt; in CollectionView_kelvin_fok.CollectionViewController.setupCompositionalLayout() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS/kelvin-fok/CollectionView-kelvin%20fok/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2862BD32-0DE9-48AF-BC98-A5831AE9079A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CollectionView-kelvin fok/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "setupCollectionView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15807D3A-ACCF-49FF-B0CF-21E89DD80EA0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CollectionView-kelvin fok/controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "loadView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
