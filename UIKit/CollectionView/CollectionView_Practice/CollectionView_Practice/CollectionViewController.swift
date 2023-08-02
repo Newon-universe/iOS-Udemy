@@ -12,13 +12,14 @@ class CollectionViewController: UICollectionViewController {
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, Product>!
     
-    
     enum Section: Int, CaseIterable {
         case paging
         case grid
     }
     
     @Published private var products: [Product] = []
+    @Published private var pets: [Product] = []
+    
     private var cancellabels = Set<AnyCancellable>()
     private var isPaginating = false
     
@@ -34,6 +35,7 @@ class CollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         fetchProducts()
+        fetchPets()
         observe()
         setupDataSource()
         setupCollectionViewController()
@@ -119,6 +121,18 @@ class CollectionViewController: UICollectionViewController {
 //                group.contentInsets = .init(top: 4, leading: 4, bottom: 4, trailing: 4)
                 
                 let section = NSCollectionLayoutSection(group: group)
+                let footerSize = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .absolute(44)
+                )
+                
+                let footer = NSCollectionLayoutBoundarySupplementaryItem(
+                    layoutSize: footerSize,
+                    elementKind: "hahaha",
+                    alignment: .bottom
+                )
+                section.boundarySupplementaryItems = [footer]
+                
 //                section.orthogonalScrollingBehavior = .groupPagingCentered
                 return section
             }
@@ -126,6 +140,8 @@ class CollectionViewController: UICollectionViewController {
         
         return layout
     }
+    
+    static let categoryHeaderId = "categoryHeaderId"
     
     func setupCollectionViewController() {
         
@@ -136,6 +152,11 @@ class CollectionViewController: UICollectionViewController {
         collectionView.register(
               ProductCell.self,
               forCellWithReuseIdentifier: ProductCell.pagingIdentifier
+        )
+        collectionView.register(
+            UICollectionReusableView.self,
+            forSupplementaryViewOfKind: "hahaha",
+            withReuseIdentifier: "hahaha"
         )
         collectionView.register(
               ProductCell.self,
@@ -151,6 +172,14 @@ class CollectionViewController: UICollectionViewController {
                 self?.reloadSnapshot()
             }
             .store(in: &cancellabels)
+        
+        $pets
+            .filter { !$0.isEmpty }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] pets in
+                self?.reloadSnapshot()
+            }
+            .store(in: &cancellabels)
     }
 
     
@@ -159,7 +188,7 @@ class CollectionViewController: UICollectionViewController {
             let currentCount = products.count
             var newItems = [Product]()
             
-            for i in 1 ..< 21 {
+            for i in 1 ..< 11 {
                 let newCount = currentCount + i
                 let item = Product(
                     name: "Product \(newCount)",
@@ -172,11 +201,29 @@ class CollectionViewController: UICollectionViewController {
         }
     }
     
+    func fetchPets(completion: (()-> Void)? = nil) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [unowned self] in
+            let currentCount = pets.count
+            var newItems = [Product]()
+            
+            for i in 1 ..< 11 {
+                let newCount = currentCount + i
+                let item = Product(
+                    name: "Product \(newCount)",
+                    imageURL: "https://source.unsplash.com/random/?pet&\(newCount)"
+                )
+                newItems.append(item)
+            }
+            pets.append(contentsOf: newItems)
+            completion?()
+        }
+    }
+    
     func reloadSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Product>()
         snapshot.appendSections([.paging, .grid])
         snapshot.appendItems(products, toSection: .paging)
-        snapshot.appendItems(products, toSection: .grid)
+        snapshot.appendItems(pets, toSection: .grid)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
