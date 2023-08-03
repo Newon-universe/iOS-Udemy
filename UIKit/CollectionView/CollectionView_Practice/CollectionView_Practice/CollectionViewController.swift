@@ -121,17 +121,6 @@ class CollectionViewController: UICollectionViewController {
 //                group.contentInsets = .init(top: 4, leading: 4, bottom: 4, trailing: 4)
                 
                 let section = NSCollectionLayoutSection(group: group)
-                let footerSize = NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(1.0),
-                    heightDimension: .absolute(44)
-                )
-                
-                let footer = NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: footerSize,
-                    elementKind: "hahaha",
-                    alignment: .bottom
-                )
-                section.boundarySupplementaryItems = [footer]
                 
 //                section.orthogonalScrollingBehavior = .groupPagingCentered
                 return section
@@ -144,7 +133,6 @@ class CollectionViewController: UICollectionViewController {
     static let categoryHeaderId = "categoryHeaderId"
     
     func setupCollectionViewController() {
-        
         collectionView.register(
               UICollectionViewCell.self,
               forCellWithReuseIdentifier: "cellId"
@@ -152,11 +140,6 @@ class CollectionViewController: UICollectionViewController {
         collectionView.register(
               ProductCell.self,
               forCellWithReuseIdentifier: ProductCell.pagingIdentifier
-        )
-        collectionView.register(
-            UICollectionReusableView.self,
-            forSupplementaryViewOfKind: "hahaha",
-            withReuseIdentifier: "hahaha"
         )
         collectionView.register(
               ProductCell.self,
