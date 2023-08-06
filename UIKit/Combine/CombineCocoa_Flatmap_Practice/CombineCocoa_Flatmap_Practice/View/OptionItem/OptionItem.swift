@@ -27,7 +27,6 @@ class OptionItem: UIView {
     private lazy var VStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [label, segmentedControll])
         stackView.axis = .vertical
-        stackView.spacing = 5
         return stackView
     }()
     
@@ -54,7 +53,6 @@ class OptionItem: UIView {
         }
         
         segmentedControll.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
         }

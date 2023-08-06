@@ -38,26 +38,14 @@ class PriceView: UIView {
         return label
     }()
     
-    private lazy var spacer: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
     private lazy var VStack: UIStackView = {
         let stackView = UIStackView(
-            arrangedSubviews: [notificationLabel, priceLabel, spacer]
+            arrangedSubviews: [notificationLabel, priceLabel]
         )
         
         stackView.axis = .vertical
         stackView.backgroundColor = UIColor.white
-        
-        return stackView
-    }()
-    
-    private lazy var container: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [VStack])
-        stackView.axis = .vertical
-        stackView.backgroundColor = UIColor.white
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -71,23 +59,20 @@ class PriceView: UIView {
     }
     
     private func layout() {
-        addSubview(container)
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
         
-        container.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        container.layer.cornerRadius = 5
-        container.layer.masksToBounds = true
+        backgroundColor = .white
+        addSubview(VStack)
         
         VStack.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
+            make.leading.equalTo(snp.leading).offset(12)
+            make.trailing.equalTo(snp.trailing).offset(-12)
+            make.top.equalTo(snp.top).offset(12)
+            make.bottom.equalTo(snp.bottom).offset(-12)
         }
         
-        spacer.snp.makeConstraints { make in
-            make.height.equalTo(10)
-        }
+        VStack.layer.cornerRadius = 5
+        VStack.layer.masksToBounds = true
     }
 }
