@@ -75,4 +75,15 @@ class PriceView: UIView {
         VStack.layer.cornerRadius = 5
         VStack.layer.masksToBounds = true
     }
+    
+    func configure(price: Double) {
+        let text = NSMutableAttributedString(
+            string: "$\(price)",
+            attributes: [
+                .font: ThemeFont.regular(ofSize: 17),
+                .foregroundColor: UIColor.black
+            ]
+        )
+        priceLabel.attributedText = text
+    }
 }

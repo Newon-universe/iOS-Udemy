@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import Combine
+import CombineCocoa
 
 class OptionItem: UIView {
     
@@ -27,6 +29,7 @@ class OptionItem: UIView {
     private lazy var VStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [label, segmentedControll])
         stackView.axis = .vertical
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -43,18 +46,10 @@ class OptionItem: UIView {
         addSubview(VStack)
         
         VStack.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        label.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
-        }
-        
-        segmentedControll.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().offset(-24)
+            make.top.equalTo(snp.top).offset(10)
+            make.bottom.equalTo(snp.bottom).offset(-10)
+            make.leading.equalTo(snp.leading).offset(24)
+            make.trailing.equalTo(snp.trailing).offset(-24)
         }
     }
     
@@ -66,7 +61,7 @@ class OptionItem: UIView {
         
         segmentedControll.removeAllSegments()
         segment.enumerated().forEach { index, item in
-            segmentedControll.insertSegment(withTitle: item, at: index, animated: false)
+            segmentedControll.insertSegment(withTitle: item.capitalized, at: index, animated: false)
         }
         segmentedControll.selectedSegmentIndex = 0
         

@@ -14,14 +14,35 @@ class OptionView: UIView {
     private lazy var numberOfPassengerSegment: OptionItem = OptionItem()
     private lazy var seatTypeSegment: OptionItem = OptionItem()
     
-    private var destinationPublisher: AnyPublisher<Int, Never> {
-        return destinationSegment.segmentedControll.selectedSegmentIndexPublisher
+    @Published var finalPrice: Double = 0
+    
+    private var destinationPublisher: AnyPublisher<Destination, Never> {
+        return destinationSegment.segmentedControll.selectedSegmentIndexPublisher.flatMap {
+            if Destination.allCases.indices.contains($0) {
+                return Just(Destination.allCases[$0]).eraseToAnyPublisher()
+            } else {
+                return Empty().eraseToAnyPublisher()
+            }
+        }.eraseToAnyPublisher()
     }
-    private var numberOfPassengerPublisher: AnyPublisher<Int, Never> {
-        return numberOfPassengerSegment.segmentedControll.selectedSegmentIndexPublisher
+    private var numberOfPassengerPublisher: AnyPublisher<NumberOfPassenger, Never> {
+        return numberOfPassengerSegment.segmentedControll.selectedSegmentIndexPublisher.flatMap {
+            if NumberOfPassenger.allCases.indices.contains($0) {
+                return Just(NumberOfPassenger.allCases[$0]).eraseToAnyPublisher()
+            } else {
+                return Empty().eraseToAnyPublisher()
+            }
+        }.eraseToAnyPublisher()
     }
-    private var seatTypeSegmentPublisher: AnyPublisher<Int, Never> {
-        return seatTypeSegment.segmentedControll.selectedSegmentIndexPublisher
+    
+    private var seatTypeSegmentPublisher: AnyPublisher<SeatType, Never> {
+        return seatTypeSegment.segmentedControll.selectedSegmentIndexPublisher.flatMap {
+            if SeatType.allCases.indices.contains($0) {
+                return Just(SeatType.allCases[$0]).eraseToAnyPublisher()
+            } else {
+                return Empty().eraseToAnyPublisher()
+            }
+        }.eraseToAnyPublisher()
     }
     
     private var cancellables = Set<AnyCancellable>()
@@ -47,6 +68,7 @@ class OptionView: UIView {
     init() {
         super.init(frame: .zero)
         layout()
+        observe()
     }
     
     required init?(coder: NSCoder) {
@@ -54,20 +76,14 @@ class OptionView: UIView {
     }
     
     private func observe() {
-        destinationPublisher.sink { index in
-            print("index \(index)")
-        }
-        .store(in: &cancellables)
+        Publishers.CombineLatest3(destinationPublisher, numberOfPassengerPublisher, seatTypeSegmentPublisher).sink { [weak self] (destination, numberOfPassenger, seatType) in
+            let price = destination.costPerPassenger * numberOfPassenger.doubleValue * seatType.priceMultiplier
+            self?.finalPrice = price
+        }.store(in: &cancellables)
         
-        numberOfPassengerPublisher.sink { index in
-            print("index \(index)")
-        }
-        .store(in: &cancellables)
-        
-        seatTypeSegmentPublisher.sink { index in
-            print("index \(index)")
-        }
-        .store(in: &cancellables)
+        button.tapPublisher.sink { _ in
+            print("book button tapped")
+        }.store(in: &cancellables)
     }
     
     private func layout() {
@@ -101,6 +117,7 @@ class OptionView: UIView {
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
             make.bottom.equalToSuperview().offset(-15)
+            make.height.equalTo(48)
         }
     }
 }

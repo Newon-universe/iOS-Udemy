@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 import CombineCocoa
 
 class ViewController: UIViewController {
@@ -15,12 +16,15 @@ class ViewController: UIViewController {
     private let optionView = OptionView()
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleView, priceView, UIView()])
+        let stackView = UIStackView(arrangedSubviews: [titleView, priceView, optionView, UIView()])
         stackView.axis = .vertical
+        stackView.spacing = 25
         return stackView
     }()
     
 
+    private var cancellabels = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -28,16 +32,19 @@ class ViewController: UIViewController {
     }
 
     private func layout() {
-//        [titleView, priceView].forEach { view.addSubview($0) }
         view.backgroundColor = .systemGray5
         view.addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
-            make.leading.equalTo(view.snp.leading).offset(16)
-            make.trailing.equalTo(view.snp.trailing).offset(-16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.leading.equalTo(view.snp.leading).offset(24)
+            make.trailing.equalTo(view.snp.trailing).offset(-24)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
         }
+        
+        optionView.$finalPrice.sink { [weak self] price in
+            self?.priceView.configure(price: price)
+        }.store(in: &cancellabels)
         
 //        titleView.snp.makeConstraints { make in
 //            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(15)
