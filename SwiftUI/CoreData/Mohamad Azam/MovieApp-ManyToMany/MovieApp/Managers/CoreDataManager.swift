@@ -12,7 +12,6 @@ import SwiftUI
 class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer
-    
     static let shared = CoreDataManager()
     
     private init() {

@@ -8,9 +8,11 @@
 import Foundation
 import CoreData
 
-class CoreDataManager: ObservableObject {
+class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer
+    static let shared = CoreDataManager()
+
     
     init() {
         // CoreData Model name
@@ -21,6 +23,10 @@ class CoreDataManager: ObservableObject {
             }
         }
     }
+    var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
     
     func getAllMovies() -> [Movie] {
         // you can specify what kind of object you're trying to fetch so that when you get the object, it will be of type movie.

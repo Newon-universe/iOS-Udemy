@@ -33,7 +33,6 @@ enum SortDirection: CaseIterable {
 }
 
 enum SortOptions: String, CaseIterable {
-    
     case title
     case releaseDate
     case rating
@@ -74,7 +73,7 @@ class MovieListViewModel: NSObject, ObservableObject {
         // You can apply multiple sort descriptors.
 //        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true), NSSortDescriptor(key: "rating", ascending: false)]
         
-        let fetchedResultsController: NSFetchedResultsController<Movie> = NSFetchedResultsController(
+        fetchedResultsController = NSFetchedResultsController(
             fetchRequest: request,
             managedObjectContext: CoreDataManager.shared.viewContext,
             sectionNameKeyPath: nil,
@@ -84,7 +83,7 @@ class MovieListViewModel: NSObject, ObservableObject {
         try? fetchedResultsController.performFetch()
         
         DispatchQueue.main.async {
-            self.movies = (fetchedResultsController.fetchedObjects ?? []).map(MovieViewModel.init)
+            self.movies = (self.fetchedResultsController.fetchedObjects ?? []).map(MovieViewModel.init)
         }
     }
     

@@ -20,7 +20,5 @@ extension Review: BaseModel {
         } catch {
             return [] 
         }
-        
     }
-    
 }
