@@ -58,6 +58,19 @@ class ViewModel {
             .eraseToAnyPublisher()
     }
     
+    
+    func fetch_by_async_combine2() async -> AnyPublisher<[Post], Error> {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: [Post].self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+    }
+    
+    
+    
+    
     @available(*, deprecated, message: "Use fetch_by_async_combine instead")
     func legacy_fetchPosts() async -> Result<[Post], MyError> {
         return await withCheckedContinuation { continuation in

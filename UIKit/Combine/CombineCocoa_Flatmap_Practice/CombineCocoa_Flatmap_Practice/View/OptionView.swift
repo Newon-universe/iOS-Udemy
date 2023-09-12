@@ -25,6 +25,7 @@ class OptionView: UIView {
             }
         }.eraseToAnyPublisher()
     }
+    
     private var numberOfPassengerPublisher: AnyPublisher<NumberOfPassenger, Never> {
         return numberOfPassengerSegment.segmentedControll.selectedSegmentIndexPublisher.flatMap {
             if NumberOfPassenger.allCases.indices.contains($0) {

@@ -29,10 +29,17 @@ class ViewController: UIViewController {
         
         Task {
             let posts = await vm.fetch_by_async_combine()
+            
             cancellabel = posts.sink(
-                receiveCompletion: { error in
-                    print("ㅁㅁㅁㅁㅁ async combine error \(error) ㅁㅁㅁㅁㅁ")
-                }, receiveValue: { posts in
+                receiveCompletion: { status in
+                    switch status {
+                    case .finished: break
+                    case .failure(let error):
+                        print("Receiver error \(error)")
+                        break
+                    }
+                },
+                receiveValue: { posts in
                     print("ㅁㅁㅁㅁㅁ async combine fetch ㅁㅁㅁㅁㅁㅁ")
                 }
             )
@@ -48,6 +55,7 @@ class ViewController: UIViewController {
             }
         }
         
+        
         Task {
             do {
                 let posts = try await vm.legacyV2_fetchPosts()
@@ -56,9 +64,6 @@ class ViewController: UIViewController {
                 print("****** continuation throw error \(error)*******")
             }
         }
-                
     }
-
-
 }
 
