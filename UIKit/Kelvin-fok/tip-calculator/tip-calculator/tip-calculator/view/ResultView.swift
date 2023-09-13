@@ -112,7 +112,6 @@ class ResultView: UIView {
         amoutPerPersonLabel.attributedText = text
         totalBillView.configure(amount: result.totalBill)
         totalTipView.configure(amount: result.totalTip)
-        
     }
     
     private func layout() {
