@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B02DF23E2AB1E9FA00FC6009 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DF23D2AB1E9FA00FC6009 /* UIButton+Extension.swift */; };
+		B02DF2402AB2085700FC6009 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DF23F2AB2085700FC6009 /* UIImage+Extension.swift */; };
+		B02DF2442AB211FC00FC6009 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02DF2432AB211FC00FC6009 /* UIView+Extension.swift */; };
 		B05AF4A42AB187990075BFA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AF4A32AB187990075BFA7 /* AppDelegate.swift */; };
 		B05AF4A62AB187990075BFA7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AF4A52AB187990075BFA7 /* SceneDelegate.swift */; };
 		B05AF4A82AB187990075BFA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AF4A72AB187990075BFA7 /* ViewController.swift */; };
@@ -25,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		B02DF23D2AB1E9FA00FC6009 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		B02DF23F2AB2085700FC6009 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		B02DF2432AB211FC00FC6009 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B05AF4A02AB187990075BFA7 /* Giphy-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Giphy-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05AF4A32AB187990075BFA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B05AF4A52AB187990075BFA7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				B02DF23D2AB1E9FA00FC6009 /* UIButton+Extension.swift */,
+				B02DF23F2AB2085700FC6009 /* UIImage+Extension.swift */,
+				B02DF2432AB211FC00FC6009 /* UIView+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -245,9 +251,11 @@
 				B05AF4A82AB187990075BFA7 /* ViewController.swift in Sources */,
 				B05AF4A42AB187990075BFA7 /* AppDelegate.swift in Sources */,
 				B05AF4C02AB1BD010075BFA7 /* GiphyFont.swift in Sources */,
+				B02DF2402AB2085700FC6009 /* UIImage+Extension.swift in Sources */,
 				B05AF4D72AB1C3850075BFA7 /* TabBar.swift in Sources */,
 				B05AF4A62AB187990075BFA7 /* SceneDelegate.swift in Sources */,
 				B05AF4D52AB1C0DA0075BFA7 /* GiphySize.swift in Sources */,
+				B02DF2442AB211FC00FC6009 /* UIView+Extension.swift in Sources */,
 				B02DF23E2AB1E9FA00FC6009 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

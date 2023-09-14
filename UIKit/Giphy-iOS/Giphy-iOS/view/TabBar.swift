@@ -13,16 +13,13 @@ final class TabBar: UIView {
     
     private let homeButton: UIButton = {
         var button = UIButton()
-        button.setImage(UIImage(systemName: "house"), for: .normal)
+        let buttomImage = UIImage(systemName: "house")
+        button.setImage(buttomImage, for: .normal)
         
         button.imageView?.snp.makeConstraints { make in
             make.width.equalTo(26)
             make.height.equalTo(24)
         }
-        
-        let startColor = UIColor.blue
-        let endColor = UIColor.green
-        button.setGradientBackground(colors: [startColor, endColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
         
         return button
     }()
@@ -35,9 +32,7 @@ final class TabBar: UIView {
             make.size.equalTo(24)
         }
         
-        let startColor = UIColor.green
-        let endColor = UIColor.cyan
-        button.setGradientBackground(colors: [startColor, endColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
+        button.tintColor = .systemOrange
         
         return button
     }()
@@ -50,9 +45,7 @@ final class TabBar: UIView {
             make.size.equalTo(24)
         }
         
-        let startColor = UIColor.cyan
-        let endColor = UIColor.white
-        button.setGradientBackground(colors: [startColor, endColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
+        button.tintColor = .systemCyan
         
         return button
     }()
@@ -68,6 +61,9 @@ final class TabBar: UIView {
         return stackView
     }()
     
+    let gradientLayer = CAGradientLayer()
+    
+    
     init() {
         super.init(frame: .zero)
         layout()
@@ -78,7 +74,10 @@ final class TabBar: UIView {
     }
     
     private func layout() {
-        backgroundColor = .black
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0, 1]
+        layer.addSublayer(gradientLayer)
+        
         addSubview(hStackView)
         
         hStackView.snp.makeConstraints { make in
@@ -87,6 +86,14 @@ final class TabBar: UIView {
             make.trailing.equalTo(snp.trailing).offset(-40)
         }
         
+        snp.makeConstraints { make in
+            make.height.equalTo(72)
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bounds
     }
     
     func configure() {
