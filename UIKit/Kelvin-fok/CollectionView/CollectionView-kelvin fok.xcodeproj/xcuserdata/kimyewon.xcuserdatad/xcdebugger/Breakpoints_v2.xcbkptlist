@@ -81,6 +81,36 @@
                   endingLineNumber = "82"
                   offsetFromSymbolStart = "180">
                </Location>
+               <Location
+                  uuid = "A9700BD4-4489-461C-B723-401DE48DC21F - 13cea660e7315c44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CollectionView_kelvin_fok.CollectionViewController.setupDataSource() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS-Udemy/UIKit/Kelvin-fok/CollectionView/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "A9700BD4-4489-461C-B723-401DE48DC21F - 291492c5ba2cb168"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UICollectionView, Foundation.IndexPath, CollectionView_kelvin_fok.Product) -&gt; Swift.Optional&lt;__C.UICollectionViewCell&gt; in CollectionView_kelvin_fok.CollectionViewController.setupDataSource() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS-Udemy/UIKit/Kelvin-fok/CollectionView/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "180">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -129,6 +159,36 @@
                   endingLineNumber = "112"
                   offsetFromSymbolStart = "52">
                </Location>
+               <Location
+                  uuid = "8284E8B3-DA0F-4938-8EF4-4E8B8C6A7F75 - b4bf8463b22aec84"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CollectionView_kelvin_fok.CollectionViewController.setupCompositionalLayout() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS-Udemy/UIKit/Kelvin-fok/CollectionView/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "8284E8B3-DA0F-4938-8EF4-4E8B8C6A7F75 - ee297d4d104f1035"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, __C.NSCollectionLayoutEnvironment) -&gt; Swift.Optional&lt;__C.NSCollectionLayoutSection&gt; in CollectionView_kelvin_fok.CollectionViewController.setupCompositionalLayout() -&gt; ()"
+                  moduleName = "CollectionView-kelvin fok"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kimyewon/Desktop/iOS-Udemy/UIKit/Kelvin-fok/CollectionView/CollectionView-kelvin%20fok/controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "52">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -145,22 +205,6 @@
             startingLineNumber = "152"
             endingLineNumber = "152"
             landmarkName = "setupCollectionView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "15807D3A-ACCF-49FF-B0CF-21E89DD80EA0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CollectionView-kelvin fok/controller/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "loadView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
