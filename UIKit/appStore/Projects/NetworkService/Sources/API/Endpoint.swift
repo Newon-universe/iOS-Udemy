@@ -1,0 +1,71 @@
+//
+//  Endpoint.swift
+//  NetworkService
+//
+//  Created by Kim Yewon on 2023/09/24.
+//  Copyright © 2023 labo.summer. All rights reserved.
+//
+
+import Foundation
+import Utils
+
+enum Endpoint {
+    
+    case fetchApp(url: String = "", term: String, country: String = "KR", limit: Int = 10)
+    
+    var request: URLRequest? {
+        guard let url = self.url else { assertionFailure("URL is not valid"); return nil }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = self.httpMethod
+        request.httpBody = self.httpBody
+        request.addValues(for: self)
+        
+        return request
+    }
+    
+    private var url: URL? {
+        var components = URLComponents()
+        components.scheme = Constants.SCHEME
+        components.host = Constants.BASE_URL
+        components.port = Constants.PORT
+        components.path = self.path
+        components.queryItems = self.queryItems
+        
+        return components.url
+    }
+    
+    private var path: String {
+        switch self {
+        case .fetchApp(url: let url, _, _, _): return url
+        }
+    }
+    
+    private var queryItems: [URLQueryItem] {
+        switch self {
+        case .fetchApp(_, let term, let country, let limit):
+            return [
+                URLQueryItem(name: "term", value: term),
+                URLQueryItem(name: "country", value: country),
+                URLQueryItem(name: "entity", value: "software"),
+                URLQueryItem(name: "limit", value: String(limit)),
+            ]
+        }
+    }
+    
+    private var httpMethod: String {
+        switch self {
+        case .fetchApp: return HTTP.Method.get.rawValue
+        }
+    }
+    
+    private var httpBody: Data? {
+        switch self {
+        case .fetchApp: return nil
+        }
+    }
+}
+
+//MARK: - for httpBody, Here is examples.
+// return try? JSONEncoder().encode( SomeStruecture() )
+// return try? JSONSerialization.data(withJSONObject: ["Key": "Value", options: []]

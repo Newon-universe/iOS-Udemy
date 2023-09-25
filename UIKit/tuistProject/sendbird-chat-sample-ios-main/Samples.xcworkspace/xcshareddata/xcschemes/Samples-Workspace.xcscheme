@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1010"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "879EA5BA794D04F8B122EC1E"
+               BuildableName = "AddExtraDataMessageOpenChannel.app"
+               BlueprintName = "AddExtraDataMessageOpenChannel"
+               ReferencedContainer = "container:Apps/AddExtraDataMessageOpenChannel/AddExtraDataMessageOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D4A3CEC99B1B41CBBB49DDDE"
+               BuildableName = "AddRemoveOperatorsGroupChannel.app"
+               BlueprintName = "AddRemoveOperatorsGroupChannel"
+               ReferencedContainer = "container:Apps/AddRemoveOperatorsGroupChannel/AddRemoveOperatorsGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC870DC35D90486518787583"
+               BuildableName = "AddStructuredDataMessageOpenChannel.app"
+               BlueprintName = "AddStructuredDataMessageOpenChannel"
+               ReferencedContainer = "container:Apps/AddStructuredDataMessageOpenChannel/AddStructuredDataMessageOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "45C454E0A31DCEE1639E0CC8"
+               BuildableName = "BanUnBanUserGroupChannel.app"
+               BlueprintName = "BanUnBanUserGroupChannel"
+               ReferencedContainer = "container:Apps/BanUnBanUserGroupChannel/BanUnBanUserGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A1971C0E0B4AA6902C19C352"
+               BuildableName = "BasicGroupChannel.app"
+               BlueprintName = "BasicGroupChannel"
+               ReferencedContainer = "container:Apps/BasicGroupChannel/BasicGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A7DBD47D517348CBFF1E128F"
+               BuildableName = "BasicOpenChannel.app"
+               BlueprintName = "BasicOpenChannel"
+               ReferencedContainer = "container:Apps/BasicOpenChannel/BasicOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E50C68E61F47FB756E8BA09B"
+               BuildableName = "CategorizeMessageGroupChannel.app"
+               BlueprintName = "CategorizeMessageGroupChannel"
+               ReferencedContainer = "container:Apps/CategorizeMessageGroupChannel/CategorizeMessageGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FE836F4A9FB9C66CDE66B173"
+               BuildableName = "CategorizeMessageOpenChannel.app"
+               BlueprintName = "CategorizeMessageOpenChannel"
+               ReferencedContainer = "container:Apps/CategorizeMessageOpenChannel/CategorizeMessageOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5DF4D3979CC5D701DAE2F884"
+               BuildableName = "CategorizeWithCustomTypeGroupChannel.app"
+               BlueprintName = "CategorizeWithCustomTypeGroupChannel"
+               ReferencedContainer = "container:Apps/CategorizeWithCustomTypeGroupChannel/CategorizeWithCustomTypeGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2FD6E16C8B3C436DA1449B9C"
+               BuildableName = "CategorizeWithCustomTypeOpenChannel.app"
+               BlueprintName = "CategorizeWithCustomTypeOpenChannel"
+               ReferencedContainer = "container:Apps/CategorizeWithCustomTypeOpenChannel/CategorizeWithCustomTypeOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C3160FCF675F131E6CB646B"
+               BuildableName = "ChannelTypesGroupChannel.app"
+               BlueprintName = "ChannelTypesGroupChannel"
+               ReferencedContainer = "container:Apps/ChannelTypesGroupChannel/ChannelTypesGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E8EED59F1D0D66A15DA76E29"
+               BuildableName = "CommonModule.framework"
+               BlueprintName = "CommonModule"
+               ReferencedContainer = "container:Modules/CommonModule/CommonModule.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D3C17F50A3B5C249C1B3B3E3"
+               BuildableName = "CopyMessageOpenChannel.app"
+               BlueprintName = "CopyMessageOpenChannel"
+               ReferencedContainer = "container:Apps/CopyMessageOpenChannel/CopyMessageOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4F1EF71A03BB6317B63FEA22"
+               BuildableName = "DeleteMessageOpenChannel.app"
+               BlueprintName = "DeleteMessageOpenChannel"
+               ReferencedContainer = "container:Apps/DeleteMessageOpenChannel/DeleteMessageOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4E2DD868106F4763EBE9A9A0"
+               BuildableName = "FreezeUnFreezeGroupChannel.app"
+               BlueprintName = "FreezeUnFreezeGroupChannel"
+               ReferencedContainer = "container:Apps/FreezeUnFreezeGroupChannel/FreezeUnFreezeGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9AC6A02ADA4F19C482B6A9F3"
+               BuildableName = "GenerateThumbnailForFileOpenChannel.app"
+               BlueprintName = "GenerateThumbnailForFileOpenChannel"
+               ReferencedContainer = "container:Apps/GenerateThumbnailForFileOpenChannel/GenerateThumbnailForFileOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0686EB4E45C86C66DBC61654"
+               BuildableName = "HideOrArchiveGroupChannel.app"
+               BlueprintName = "HideOrArchiveGroupChannel"
+               ReferencedContainer = "container:Apps/HideOrArchiveGroupChannel/HideOrArchiveGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B3B395FD6136F57D630138BD"
+               BuildableName = "Kingfisher.framework"
+               BlueprintName = "Kingfisher"
+               ReferencedContainer = "container:Tuist/Dependencies/SwiftPackageManager/.build/checkouts/Kingfisher/Kingfisher.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9DE07B881937C8C4DA624567"
+               BuildableName = "LocalCachingGroupChannel.app"
+               BlueprintName = "LocalCachingGroupChannel"
+               ReferencedContainer = "container:Apps/LocalCachingGroupChannel/LocalCachingGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "67B6423ED786E681EF280433"
+               BuildableName = "MarkAsReadGroupChannel.app"
+               BlueprintName = "MarkAsReadGroupChannel"
+               ReferencedContainer = "container:Apps/MarkAsReadGroupChannel/MarkAsReadGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04CF3094D7BDACB78F375E5A"
+               BuildableName = "MembersReadMessageGroupChannel.app"
+               BlueprintName = "MembersReadMessageGroupChannel"
+               ReferencedContainer = "container:Apps/MembersReadMessageGroupChannel/MembersReadMessageGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E65C6EF67951BB2A6B3E484"
+               BuildableName = "MembersUnReadMessageGroupChannel.app"
+               BlueprintName = "MembersUnReadMessageGroupChannel"
+               ReferencedContainer = "container:Apps/MembersUnReadMessageGroupChannel/MembersUnReadMessageGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B6F7AF6835C97697969846A2"
+               BuildableName = "MentionUsersInMessageGroupChannel.app"
+               BlueprintName = "MentionUsersInMessageGroupChannel"
+               ReferencedContainer = "container:Apps/MentionUsersInMessageGroupChannel/MentionUsersInMessageGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "32DFE51F96DA04AE68349356"
+               BuildableName = "MentionUsersInMessageOpenChannel.app"
+               BlueprintName = "MentionUsersInMessageOpenChannel"
+               ReferencedContainer = "container:Apps/MentionUsersInMessageOpenChannel/MentionUsersInMessageOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "100843A48D97DA16E0B81CD2"
+               BuildableName = "MessageThreadingGroupChannel.app"
+               BlueprintName = "MessageThreadingGroupChannel"
+               ReferencedContainer = "container:Apps/MessageThreadingGroupChannel/MessageThreadingGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6D110E5C0978BC909AC7CD16"
+               BuildableName = "MessageThreadingOpenChannel.app"
+               BlueprintName = "MessageThreadingOpenChannel"
+               ReferencedContainer = "container:Apps/MessageThreadingOpenChannel/MessageThreadingOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "343FBC4FD45315E3725C3AAE"
+               BuildableName = "MessageUndeliveredCountGroupChannel.app"
+               BlueprintName = "MessageUndeliveredCountGroupChannel"
+               ReferencedContainer = "container:Apps/MessageUndeliveredCountGroupChannel/MessageUndeliveredCountGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "27A969AAD451FA7A19EDCA9F"
+               BuildableName = "MetaDataCounterOpenChannel.app"
+               BlueprintName = "MetaDataCounterOpenChannel"
+               ReferencedContainer = "container:Apps/MetaDataCounterOpenChannel/MetaDataCounterOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0F05CFC86791C88A6AA137EA"
+               BuildableName = "MuteAndUnMuteUsersGroupChannel.app"
+               BlueprintName = "MuteAndUnMuteUsersGroupChannel"
+               ReferencedContainer = "container:Apps/MuteAndUnMuteUsersGroupChannel/MuteAndUnMuteUsersGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9470D2391CBB955E73AF4932"
+               BuildableName = "MutedAndBannedUsersListGroupChannel.app"
+               BlueprintName = "MutedAndBannedUsersListGroupChannel"
+               ReferencedContainer = "container:Apps/MutedAndBannedUsersListGroupChannel/MutedAndBannedUsersListGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BBB932509F97A1D78687CCF9"
+               BuildableName = "OpenGraphTagsGroupChannel.app"
+               BlueprintName = "OpenGraphTagsGroupChannel"
+               ReferencedContainer = "container:Apps/OpenGraphTagsGroupChannel/OpenGraphTagsGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5F8ADB786D2370856A63B892"
+               BuildableName = "OpenGraphTagsOpenChannel.app"
+               BlueprintName = "OpenGraphTagsOpenChannel"
+               ReferencedContainer = "container:Apps/OpenGraphTagsOpenChannel/OpenGraphTagsOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "369D641207F486795BBC6F4B"
+               BuildableName = "OperatorsListGroupChannel.app"
+               BlueprintName = "OperatorsListGroupChannel"
+               ReferencedContainer = "container:Apps/OperatorsListGroupChannel/OperatorsListGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "052475EC31D500FC4CD55B60"
+               BuildableName = "OrderedMembersOperatorsGroupChannel.app"
+               BlueprintName = "OrderedMembersOperatorsGroupChannel"
+               ReferencedContainer = "container:Apps/OrderedMembersOperatorsGroupChannel/OrderedMembersOperatorsGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AE2C9C0B322C96E5D2EC5261"
+               BuildableName = "PinMessageGroupChannel.app"
+               BlueprintName = "PinMessageGroupChannel"
+               ReferencedContainer = "container:Apps/PinMessageGroupChannel/PinMessageGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "23BAFE38AA69C509AEEDA746"
+               BuildableName = "PollsGroupChannel.app"
+               BlueprintName = "PollsGroupChannel"
+               ReferencedContainer = "container:Apps/PollsGroupChannel/PollsGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7EE756B69640006DEBB906CB"
+               BuildableName = "PushNotificationsGroupChannel.app"
+               BlueprintName = "PushNotificationsGroupChannel"
+               ReferencedContainer = "container:Apps/PushNotificationsGroupChannel/PushNotificationsGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "62B1C4F1129C85A0DF2CE4AF"
+               BuildableName = "PushNotificationsTranslationGroupChannel.app"
+               BlueprintName = "PushNotificationsTranslationGroupChannel"
+               ReferencedContainer = "container:Apps/PushNotificationsTranslationGroupChannel/PushNotificationsTranslationGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6CF9CEF272A9A6F7ED5755A0"
+               BuildableName = "ReactToMessageGroupChannel.app"
+               BlueprintName = "ReactToMessageGroupChannel"
+               ReferencedContainer = "container:Apps/ReactToMessageGroupChannel/ReactToMessageGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EF95461527F38E085EAFF5AA"
+               BuildableName = "ReportMessageUserGroupChannel.app"
+               BlueprintName = "ReportMessageUserGroupChannel"
+               ReferencedContainer = "container:Apps/ReportMessageUserGroupChannel/ReportMessageUserGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C5C2A6C21EE678EEC42ADB5"
+               BuildableName = "ReportMessageUserOpenChannel.app"
+               BlueprintName = "ReportMessageUserOpenChannel"
+               ReferencedContainer = "container:Apps/ReportMessageUserOpenChannel/ReportMessageUserOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D20F2B9E88F458FEA16955E4"
+               BuildableName = "ScheduledMessagesGroupChannel.app"
+               BlueprintName = "ScheduledMessagesGroupChannel"
+               ReferencedContainer = "container:Apps/ScheduledMessagesGroupChannel/ScheduledMessagesGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9CA718744DDB9D7E168BE292"
+               BuildableName = "SendVariousTypesOfFileOpenChannel.app"
+               BlueprintName = "SendVariousTypesOfFileOpenChannel"
+               ReferencedContainer = "container:Apps/SendVariousTypesOfFileOpenChannel/SendVariousTypesOfFileOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3FE43BC5ED0F0CF1DFA7B9FB"
+               BuildableName = "TrackFileUploadAndCancelGroupChannel.app"
+               BlueprintName = "TrackFileUploadAndCancelGroupChannel"
+               ReferencedContainer = "container:Apps/TrackFileUploadAndCancelGroupChannel/TrackFileUploadAndCancelGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E130476D43FAC51593B3FA8A"
+               BuildableName = "TypingIndicatorGroupChannel.app"
+               BlueprintName = "TypingIndicatorGroupChannel"
+               ReferencedContainer = "container:Apps/TypingIndicatorGroupChannel/TypingIndicatorGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6CD2900FFEBEDC3AA88DDFB8"
+               BuildableName = "UpdateDeleteMessageGroupChannel.app"
+               BlueprintName = "UpdateDeleteMessageGroupChannel"
+               ReferencedContainer = "container:Apps/UpdateDeleteMessageGroupChannel/UpdateDeleteMessageGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B4D99FE7CEEBCB8499DEAC41"
+               BuildableName = "UpdateMessageOpenChannel.app"
+               BlueprintName = "UpdateMessageOpenChannel"
+               ReferencedContainer = "container:Apps/UpdateMessageOpenChannel/UpdateMessageOpenChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "901C6F97B1FE1D86B3AFDF4B"
+               BuildableName = "UserDoNotDisturbSnooze.app"
+               BlueprintName = "UserDoNotDisturbSnooze"
+               ReferencedContainer = "container:Apps/UserDoNotDisturbSnooze/UserDoNotDisturbSnooze.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0DB0261844BDBCFB24DBA1DD"
+               BuildableName = "UserNickNameAndPicture.app"
+               BlueprintName = "UserNickNameAndPicture"
+               ReferencedContainer = "container:Apps/UserNickNameAndPicture/UserNickNameAndPicture.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2B85F57C54D79E23775119D6"
+               BuildableName = "iOSTrueGroupChannel.app"
+               BlueprintName = "iOSTrueGroupChannel"
+               ReferencedContainer = "container:Apps/iOSTrueGroupChannel/iOSTrueGroupChannel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "879EA5BA794D04F8B122EC1E"
+            BuildableName = "AddExtraDataMessageOpenChannel.app"
+            BlueprintName = "AddExtraDataMessageOpenChannel"
+            ReferencedContainer = "container:Apps/AddExtraDataMessageOpenChannel/AddExtraDataMessageOpenChannel.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "879EA5BA794D04F8B122EC1E"
+            BuildableName = "AddExtraDataMessageOpenChannel.app"
+            BlueprintName = "AddExtraDataMessageOpenChannel"
+            ReferencedContainer = "container:Apps/AddExtraDataMessageOpenChannel/AddExtraDataMessageOpenChannel.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

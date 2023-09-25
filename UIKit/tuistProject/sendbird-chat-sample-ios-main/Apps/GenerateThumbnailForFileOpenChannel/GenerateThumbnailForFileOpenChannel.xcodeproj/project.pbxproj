@@ -1,0 +1,547 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09F40235CB5EB79BE1DDEB24 /* OpenChannelViewController+FileMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1936E33CF3205BE17D1E9F /* OpenChannelViewController+FileMessage.swift */; };
+		1507F51B45B24034FD4248B4 /* CreateOpenChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A79B83ED36C1F2BF7648AAF /* CreateOpenChannelViewController.swift */; };
+		3CCD323F7EAAF354E9CA360E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0855D800F16CF76759D1119A /* Assets.xcassets */; };
+		4094273BEBE7A6FFBC129892 /* OpenChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725C251A4F0258C3E2BE0D02 /* OpenChannelViewController.swift */; };
+		4B2F766A2B21F81816AD3499 /* Bundle+GenerateThumbnailForFileOpenChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0250A764AE2181CC53EE1BEB /* Bundle+GenerateThumbnailForFileOpenChannel.swift */; };
+		595FF4BB9DAB1FA00E5F4453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B40672344068EE530C19DAF /* AppDelegate.swift */; };
+		65642917470D0B349911349A /* Assets+GenerateThumbnailForFileOpenChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED504FE473AEADE58C2E70B /* Assets+GenerateThumbnailForFileOpenChannel.swift */; };
+		690D380C186976934EF8E761 /* OpenChannelViewController+EditMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A3DCB322B064BDF1304F7A /* OpenChannelViewController+EditMessage.swift */; };
+		72BBEB9D0653FE0850F9DDC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8343FC1E1D784DF52E8D44 /* Main.storyboard */; };
+		7AE78EE583E60735B5BBB449 /* CommonModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAFB89DDB3A12185574403B2 /* CommonModule.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		894078D29414C9A0CA2600D7 /* CommonModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFB89DDB3A12185574403B2 /* CommonModule.framework */; platformFilter = ios; };
+		8F61C38D6CC30141745918BC /* GenerateThumbnailFileMessageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F683CD6C4BD237EB6467 /* GenerateThumbnailFileMessageUseCase.swift */; };
+		A66221A75050C8A076CEAAC8 /* SendbirdChatSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF4D7369C5135C035D48ABB9 /* SendbirdChatSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8FA9C313E033EB17B33B0E7 /* OpenChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B025DA4207752F746BA923F9 /* OpenChannelListViewController.swift */; };
+		C1B002AB12B488C51EBD5879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F177D12BE661C3661B90AC96 /* LaunchScreen.storyboard */; };
+		D383B732917880563F003BEE /* OpenChannelParticipantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB90DA5FDBCF75621BA8F16 /* OpenChannelParticipantListViewController.swift */; };
+		E5B51682E004661D721A9BF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E393156B6CBC0F097D3724 /* ViewController.swift */; };
+		F612C6C7C6FBAE708AB5BCE2 /* OpenChannelViewController+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45645FD7BF03E04D78F6E042 /* OpenChannelViewController+Setting.swift */; };
+		FBA2C0D204EC2715EF1C0F42 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCEB83E39DEB32A92422326 /* SettingViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		79E7E5939F44E2044E6B2ABB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7AE78EE583E60735B5BBB449 /* CommonModule.framework in Embed Frameworks */,
+				A66221A75050C8A076CEAAC8 /* SendbirdChatSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0250A764AE2181CC53EE1BEB /* Bundle+GenerateThumbnailForFileOpenChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+GenerateThumbnailForFileOpenChannel.swift"; sourceTree = "<group>"; };
+		0855D800F16CF76759D1119A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16A3DCB322B064BDF1304F7A /* OpenChannelViewController+EditMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenChannelViewController+EditMessage.swift"; sourceTree = "<group>"; };
+		2ED504FE473AEADE58C2E70B /* Assets+GenerateThumbnailForFileOpenChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assets+GenerateThumbnailForFileOpenChannel.swift"; sourceTree = "<group>"; };
+		3A79B83ED36C1F2BF7648AAF /* CreateOpenChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOpenChannelViewController.swift; sourceTree = "<group>"; };
+		3B40672344068EE530C19DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		45645FD7BF03E04D78F6E042 /* OpenChannelViewController+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenChannelViewController+Setting.swift"; sourceTree = "<group>"; };
+		725C251A4F0258C3E2BE0D02 /* OpenChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelViewController.swift; sourceTree = "<group>"; };
+		8E542449872E9C79BF519D89 /* GenerateThumbnailForFileOpenChannel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenerateThumbnailForFileOpenChannel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95F4F683CD6C4BD237EB6467 /* GenerateThumbnailFileMessageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateThumbnailFileMessageUseCase.swift; sourceTree = "<group>"; };
+		B025DA4207752F746BA923F9 /* OpenChannelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelListViewController.swift; sourceTree = "<group>"; };
+		B2E393156B6CBC0F097D3724 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BBB90DA5FDBCF75621BA8F16 /* OpenChannelParticipantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChannelParticipantListViewController.swift; sourceTree = "<group>"; };
+		BD1936E33CF3205BE17D1E9F /* OpenChannelViewController+FileMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenChannelViewController+FileMessage.swift"; sourceTree = "<group>"; };
+		BD8343FC1E1D784DF52E8D44 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BF4D7369C5135C035D48ABB9 /* SendbirdChatSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SendbirdChatSDK.xcframework; sourceTree = "<group>"; };
+		DCCEB83E39DEB32A92422326 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EAF5565D4CE40D9B5ACE2371 /* GenerateThumbnailForFileOpenChannel.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = GenerateThumbnailForFileOpenChannel.plist; sourceTree = "<group>"; };
+		EAFB89DDB3A12185574403B2 /* CommonModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F177D12BE661C3661B90AC96 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD23A6ECA88A5C994309FE8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				894078D29414C9A0CA2600D7 /* CommonModule.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05463903D1E583C7756F7147 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0855D800F16CF76759D1119A /* Assets.xcassets */,
+				F177D12BE661C3661B90AC96 /* LaunchScreen.storyboard */,
+				BD8343FC1E1D784DF52E8D44 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		12FAE5AA831425E0E18F00F4 /* sendbird-chat-sdk-ios */ = {
+			isa = PBXGroup;
+			children = (
+				300F7430AA8FB4FA04D3847E /* SendbirdChatSDK */,
+			);
+			path = "sendbird-chat-sdk-ios";
+			sourceTree = "<group>";
+		};
+		1A463F45933532007DAF7631 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				725C251A4F0258C3E2BE0D02 /* OpenChannelViewController.swift */,
+				16A3DCB322B064BDF1304F7A /* OpenChannelViewController+EditMessage.swift */,
+				BD1936E33CF3205BE17D1E9F /* OpenChannelViewController+FileMessage.swift */,
+				45645FD7BF03E04D78F6E042 /* OpenChannelViewController+Setting.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		2423C207A03CF4B8C882BF0B /* Participant */ = {
+			isa = PBXGroup;
+			children = (
+				BBB90DA5FDBCF75621BA8F16 /* OpenChannelParticipantListViewController.swift */,
+			);
+			path = Participant;
+			sourceTree = "<group>";
+		};
+		269C951264F2649F88896C00 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2ED504FE473AEADE58C2E70B /* Assets+GenerateThumbnailForFileOpenChannel.swift */,
+				0250A764AE2181CC53EE1BEB /* Bundle+GenerateThumbnailForFileOpenChannel.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2E30485FA185C43E429966DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAFB89DDB3A12185574403B2 /* CommonModule.framework */,
+				8E542449872E9C79BF519D89 /* GenerateThumbnailForFileOpenChannel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		300F7430AA8FB4FA04D3847E /* SendbirdChatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BF4D7369C5135C035D48ABB9 /* SendbirdChatSDK.xcframework */,
+			);
+			path = SendbirdChatSDK;
+			sourceTree = "<group>";
+		};
+		3816FB8850CEA96F51A3EE67 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				FDB829365399FB3184B430E6 /* Derived */,
+				05463903D1E583C7756F7147 /* Resources */,
+				591551FE72D02FA8C72756F2 /* Sources */,
+				59B07B2EBCEBACDAE31528CD /* Tuist */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		40653CFFF7CA8FA165E5AF0D /* ChannelList */ = {
+			isa = PBXGroup;
+			children = (
+				B025DA4207752F746BA923F9 /* OpenChannelListViewController.swift */,
+			);
+			path = ChannelList;
+			sourceTree = "<group>";
+		};
+		591551FE72D02FA8C72756F2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1A463F45933532007DAF7631 /* Channel */,
+				40653CFFF7CA8FA165E5AF0D /* ChannelList */,
+				FCCA96E7EB1852ECBF786C3A /* CreateChannel */,
+				2423C207A03CF4B8C882BF0B /* Participant */,
+				7816B0EF382680F88A84383D /* Setting */,
+				E5D743C0E4B26409CB9330C0 /* UseCase */,
+				3B40672344068EE530C19DAF /* AppDelegate.swift */,
+				B2E393156B6CBC0F097D3724 /* ViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		592898CFBA22BAC3DFEBD55A = {
+			isa = PBXGroup;
+			children = (
+				3816FB8850CEA96F51A3EE67 /* Project */,
+				A250E0D5CBA9250352526EB4 /* Frameworks */,
+				2E30485FA185C43E429966DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		59B07B2EBCEBACDAE31528CD /* Tuist */ = {
+			isa = PBXGroup;
+			children = (
+				E0F0E945C37D50DFD84D41F9 /* Dependencies */,
+			);
+			name = Tuist;
+			path = ../../Tuist;
+			sourceTree = "<group>";
+		};
+		65BDD1C5FACCC08CEF40E27C /* InfoPlists */ = {
+			isa = PBXGroup;
+			children = (
+				EAF5565D4CE40D9B5ACE2371 /* GenerateThumbnailForFileOpenChannel.plist */,
+			);
+			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		7816B0EF382680F88A84383D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				DCCEB83E39DEB32A92422326 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		8850C09C660F35FE06E6E440 /* SwiftPackageManager */ = {
+			isa = PBXGroup;
+			children = (
+				BDB21A003EBA6064845DA32C /* .build */,
+			);
+			path = SwiftPackageManager;
+			sourceTree = "<group>";
+		};
+		8E4A53E7A8143DF77D793A1C /* artifacts */ = {
+			isa = PBXGroup;
+			children = (
+				12FAE5AA831425E0E18F00F4 /* sendbird-chat-sdk-ios */,
+			);
+			path = artifacts;
+			sourceTree = "<group>";
+		};
+		A250E0D5CBA9250352526EB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDB21A003EBA6064845DA32C /* .build */ = {
+			isa = PBXGroup;
+			children = (
+				8E4A53E7A8143DF77D793A1C /* artifacts */,
+			);
+			path = .build;
+			sourceTree = "<group>";
+		};
+		E0F0E945C37D50DFD84D41F9 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				8850C09C660F35FE06E6E440 /* SwiftPackageManager */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		E5D743C0E4B26409CB9330C0 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				95F4F683CD6C4BD237EB6467 /* GenerateThumbnailFileMessageUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		FCCA96E7EB1852ECBF786C3A /* CreateChannel */ = {
+			isa = PBXGroup;
+			children = (
+				3A79B83ED36C1F2BF7648AAF /* CreateOpenChannelViewController.swift */,
+			);
+			path = CreateChannel;
+			sourceTree = "<group>";
+		};
+		FDB829365399FB3184B430E6 /* Derived */ = {
+			isa = PBXGroup;
+			children = (
+				65BDD1C5FACCC08CEF40E27C /* InfoPlists */,
+				269C951264F2649F88896C00 /* Sources */,
+			);
+			path = Derived;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9AC6A02ADA4F19C482B6A9F3 /* GenerateThumbnailForFileOpenChannel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14712C7B2F3C48A2252D5D2E /* Build configuration list for PBXNativeTarget "GenerateThumbnailForFileOpenChannel" */;
+			buildPhases = (
+				29CEB393EDF724B03E1DB56F /* Sources */,
+				79CCE1C23D756CB0191721E8 /* Resources */,
+				79E7E5939F44E2044E6B2ABB /* Embed Frameworks */,
+				BD23A6ECA88A5C994309FE8B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GenerateThumbnailForFileOpenChannel;
+			productName = GenerateThumbnailForFileOpenChannel;
+			productReference = 8E542449872E9C79BF519D89 /* GenerateThumbnailForFileOpenChannel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC66409FA2972EFEA390EBD9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = Sendbird;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 4BEA6512CFACAD70A7F2C8C6 /* Build configuration list for PBXProject "GenerateThumbnailForFileOpenChannel" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 592898CFBA22BAC3DFEBD55A;
+			productRefGroup = 2E30485FA185C43E429966DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AC6A02ADA4F19C482B6A9F3 /* GenerateThumbnailForFileOpenChannel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79CCE1C23D756CB0191721E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CCD323F7EAAF354E9CA360E /* Assets.xcassets in Resources */,
+				C1B002AB12B488C51EBD5879 /* LaunchScreen.storyboard in Resources */,
+				72BBEB9D0653FE0850F9DDC7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		29CEB393EDF724B03E1DB56F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65642917470D0B349911349A /* Assets+GenerateThumbnailForFileOpenChannel.swift in Sources */,
+				4B2F766A2B21F81816AD3499 /* Bundle+GenerateThumbnailForFileOpenChannel.swift in Sources */,
+				595FF4BB9DAB1FA00E5F4453 /* AppDelegate.swift in Sources */,
+				690D380C186976934EF8E761 /* OpenChannelViewController+EditMessage.swift in Sources */,
+				09F40235CB5EB79BE1DDEB24 /* OpenChannelViewController+FileMessage.swift in Sources */,
+				F612C6C7C6FBAE708AB5BCE2 /* OpenChannelViewController+Setting.swift in Sources */,
+				4094273BEBE7A6FFBC129892 /* OpenChannelViewController.swift in Sources */,
+				A8FA9C313E033EB17B33B0E7 /* OpenChannelListViewController.swift in Sources */,
+				1507F51B45B24034FD4248B4 /* CreateOpenChannelViewController.swift in Sources */,
+				D383B732917880563F003BEE /* OpenChannelParticipantListViewController.swift in Sources */,
+				FBA2C0D204EC2715EF1C0F42 /* SettingViewController.swift in Sources */,
+				8F61C38D6CC30141745918BC /* GenerateThumbnailFileMessageUseCase.swift in Sources */,
+				E5B51682E004661D721A9BF9 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		05FAC19DC14006B863719D20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2141FD88CCF27F49793C241C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RM4A5PXTUX;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Derived/InfoPlists/GenerateThumbnailForFileOpenChannel.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.chat.GenerateThumbnailForFileOpenChannel;
+				PRODUCT_NAME = GenerateThumbnailForFileOpenChannel;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.8.1;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		44CC04997E2AB8A6B0D554B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RM4A5PXTUX;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Derived/InfoPlists/GenerateThumbnailForFileOpenChannel.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.chat.GenerateThumbnailForFileOpenChannel;
+				PRODUCT_NAME = GenerateThumbnailForFileOpenChannel;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.8.1;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		979B5CABCD430A73AF567D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14712C7B2F3C48A2252D5D2E /* Build configuration list for PBXNativeTarget "GenerateThumbnailForFileOpenChannel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2141FD88CCF27F49793C241C /* Debug */,
+				44CC04997E2AB8A6B0D554B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4BEA6512CFACAD70A7F2C8C6 /* Build configuration list for PBXProject "GenerateThumbnailForFileOpenChannel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05FAC19DC14006B863719D20 /* Debug */,
+				979B5CABCD430A73AF567D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC66409FA2972EFEA390EBD9 /* Project object */;
+}

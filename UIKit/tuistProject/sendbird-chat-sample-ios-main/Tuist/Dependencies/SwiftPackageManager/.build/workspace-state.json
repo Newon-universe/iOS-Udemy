@@ -1,0 +1,59 @@
+{
+  "object" : {
+    "artifacts" : [
+      {
+        "kind" : "xcframework",
+        "packageRef" : {
+          "identity" : "sendbird-chat-sdk-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/sendbird/sendbird-chat-sdk-ios",
+          "name" : "SendbirdChatSDK"
+        },
+        "path" : "/Users/kimyewon/Desktop/iOS/tuistProject/sendbird-chat-sample-ios-main/Tuist/Dependencies/SwiftPackageManager/.build/artifacts/sendbird-chat-sdk-ios/SendbirdChatSDK/SendbirdChatSDK.xcframework",
+        "source" : {
+          "checksum" : "43a4dbb4528386be35007757672cfd2f14058dae9d62b7e3aabf90c0b91ec247",
+          "type" : "remote",
+          "url" : "https://github.com/sendbird/sendbird-chat-sdk-ios/releases/download/v4.9.6/SendbirdChatSDK.xcframework.zip"
+        },
+        "targetName" : "SendbirdChatSDK"
+      }
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "kingfisher",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/onevcat/Kingfisher",
+          "name" : "Kingfisher"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "c1f60c63f356d364f4284ba82961acbe7de79bcc",
+            "version" : "7.8.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "Kingfisher"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "sendbird-chat-sdk-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/sendbird/sendbird-chat-sdk-ios",
+          "name" : "SendbirdChatSDK"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "034334c784b4a93879c7933fe1fab5d924151202",
+            "version" : "4.9.6"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "sendbird-chat-sdk-ios"
+      }
+    ]
+  },
+  "version" : 6
+}

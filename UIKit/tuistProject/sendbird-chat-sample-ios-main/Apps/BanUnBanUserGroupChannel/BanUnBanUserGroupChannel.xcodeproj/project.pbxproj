@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E9D841B358E6A5F342618F /* Assets+BanUnBanUserGroupChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA81A63211E7A43F5754BC9 /* Assets+BanUnBanUserGroupChannel.swift */; };
+		02AEDC72BD6897558DD611F3 /* GroupChannelViewController+EditMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B54501FB2C2229F2DCFE5 /* GroupChannelViewController+EditMessage.swift */; };
+		0FA9CF20110A7A496CE1926A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0815FBD03922EFDF1F2897 /* AppDelegate.swift */; };
+		103B99FC01E282E13F863621 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FACA9A80A751B302C37A3 /* SettingViewController.swift */; };
+		14AA0692FD777018176CC0AA /* GroupChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69090D8D74B76AAB882A7B51 /* GroupChannelListViewController.swift */; };
+		1A3D57E403618DF9B9E44AC1 /* GroupChannelViewController+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836EAF8EAC789B8DF3A5A65 /* GroupChannelViewController+Setting.swift */; };
+		1A763F953DD7D7E928EDD2CF /* SendbirdChatSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B144D3064697EBC234D7FD3 /* SendbirdChatSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		39F6DF02F4DB0C52D88BBB60 /* Bundle+BanUnBanUserGroupChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72E41FE8E1BCF1A6D8A989 /* Bundle+BanUnBanUserGroupChannel.swift */; };
+		4C7D4C86BA5A0F9273C364B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1038172D257F44948FEB7 /* ViewController.swift */; };
+		5C579D5A912B73911E08E81D /* GroupChannelMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419E5AACDE6022966F9F7B9 /* GroupChannelMemberCell.swift */; };
+		62FAFCB4546F3A0413968EB2 /* BanAndUnBanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8001E3B7015CF89BA253BC6E /* BanAndUnBanUseCase.swift */; };
+		6E2E5315943ED750C15632C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0E25C9E0D68D91F3E35B84 /* Main.storyboard */; };
+		6F60E2B531252F003CB86432 /* GroupChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBA2AED04FA2BCA0EACFB8 /* GroupChannelViewController.swift */; };
+		85909204416B448C6AE75EEB /* CommonModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07B1F76F968F1E798A2BDA1F /* CommonModule.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EAA543805D0BC9028170CEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3F275C83AC822DD9B3398 /* LaunchScreen.storyboard */; };
+		B47A501EDCBC42AE7A40531E /* CreateGroupChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081D44E0C3E3C1529C6F022 /* CreateGroupChannelViewController.swift */; };
+		D1D020626575743879DF136B /* GroupChannelMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EDBBEB2A66559309424E9F /* GroupChannelMemberListViewController.swift */; };
+		D2F05F9713ECD8EF9C62E6B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D56B9D2B79BB850272038356 /* Assets.xcassets */; };
+		E4FA4E05F1911082EB1F4899 /* CommonModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B1F76F968F1E798A2BDA1F /* CommonModule.framework */; platformFilter = ios; };
+		E7E82CD86EB4E8454C63DD67 /* GroupChannelViewController+FileMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AFD5A12562F22D0B962EF9 /* GroupChannelViewController+FileMessage.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		08D161C48BCCA2206874C966 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				85909204416B448C6AE75EEB /* CommonModule.framework in Embed Frameworks */,
+				1A763F953DD7D7E928EDD2CF /* SendbirdChatSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		04F3895B7B93A0624177E8BF /* BanUnBanUserGroupChannel.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = BanUnBanUserGroupChannel.plist; sourceTree = "<group>"; };
+		07B1F76F968F1E798A2BDA1F /* CommonModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1836EAF8EAC789B8DF3A5A65 /* GroupChannelViewController+Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChannelViewController+Setting.swift"; sourceTree = "<group>"; };
+		3B144D3064697EBC234D7FD3 /* SendbirdChatSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SendbirdChatSDK.xcframework; sourceTree = "<group>"; };
+		3F0815FBD03922EFDF1F2897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		52FBA2AED04FA2BCA0EACFB8 /* GroupChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChannelViewController.swift; sourceTree = "<group>"; };
+		5C0B54501FB2C2229F2DCFE5 /* GroupChannelViewController+EditMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChannelViewController+EditMessage.swift"; sourceTree = "<group>"; };
+		69090D8D74B76AAB882A7B51 /* GroupChannelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChannelListViewController.swift; sourceTree = "<group>"; };
+		6EE3F275C83AC822DD9B3398 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8001E3B7015CF89BA253BC6E /* BanAndUnBanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanAndUnBanUseCase.swift; sourceTree = "<group>"; };
+		8A7FACA9A80A751B302C37A3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		8C72E41FE8E1BCF1A6D8A989 /* Bundle+BanUnBanUserGroupChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+BanUnBanUserGroupChannel.swift"; sourceTree = "<group>"; };
+		A5A1038172D257F44948FEB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF0E25C9E0D68D91F3E35B84 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D0AFD5A12562F22D0B962EF9 /* GroupChannelViewController+FileMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupChannelViewController+FileMessage.swift"; sourceTree = "<group>"; };
+		D56B9D2B79BB850272038356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D634BE94272A0073B3801167 /* BanUnBanUserGroupChannel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanUnBanUserGroupChannel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6EDBBEB2A66559309424E9F /* GroupChannelMemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChannelMemberListViewController.swift; sourceTree = "<group>"; };
+		DDA81A63211E7A43F5754BC9 /* Assets+BanUnBanUserGroupChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assets+BanUnBanUserGroupChannel.swift"; sourceTree = "<group>"; };
+		E081D44E0C3E3C1529C6F022 /* CreateGroupChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupChannelViewController.swift; sourceTree = "<group>"; };
+		E419E5AACDE6022966F9F7B9 /* GroupChannelMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChannelMemberCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A46A27A4267B332C2736217 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4FA4E05F1911082EB1F4899 /* CommonModule.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0ACA6B05752E02EDCE321448 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8A7FACA9A80A751B302C37A3 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1D4C9ABF9D1FD62C1B362BFE /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				CF088B407477BFDC6D3B7FCB /* SwiftPackageManager */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		2DC1F74DC7194437038EF02D = {
+			isa = PBXGroup;
+			children = (
+				6CC84296287BE3AC89730AFD /* Project */,
+				E5C91EC29C93E1BA510C7987 /* Frameworks */,
+				AA7BD8191825B6FCE4E7D69C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F1B666920C50D0F733B9472 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				52FBA2AED04FA2BCA0EACFB8 /* GroupChannelViewController.swift */,
+				5C0B54501FB2C2229F2DCFE5 /* GroupChannelViewController+EditMessage.swift */,
+				D0AFD5A12562F22D0B962EF9 /* GroupChannelViewController+FileMessage.swift */,
+				1836EAF8EAC789B8DF3A5A65 /* GroupChannelViewController+Setting.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		4BF06DEB08909D6BF52D00B5 /* sendbird-chat-sdk-ios */ = {
+			isa = PBXGroup;
+			children = (
+				E476E482A0760E3EE605C703 /* SendbirdChatSDK */,
+			);
+			path = "sendbird-chat-sdk-ios";
+			sourceTree = "<group>";
+		};
+		51DF3712A9F4AEE1916E6B53 /* .build */ = {
+			isa = PBXGroup;
+			children = (
+				F0B7523A5212600A9EC0F2EA /* artifacts */,
+			);
+			path = .build;
+			sourceTree = "<group>";
+		};
+		5A36F3403307C06ECEC385CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D56B9D2B79BB850272038356 /* Assets.xcassets */,
+				6EE3F275C83AC822DD9B3398 /* LaunchScreen.storyboard */,
+				BF0E25C9E0D68D91F3E35B84 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6CC84296287BE3AC89730AFD /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				9E52B3F1825EE5491F15B73A /* Derived */,
+				5A36F3403307C06ECEC385CF /* Resources */,
+				75A373707F181AA9DBEA2D0A /* Sources */,
+				AD1EDFBEC8607C5D7E87601F /* Tuist */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		748FCD73D34B1DA6D8B5BCB0 /* ChannelList */ = {
+			isa = PBXGroup;
+			children = (
+				69090D8D74B76AAB882A7B51 /* GroupChannelListViewController.swift */,
+			);
+			path = ChannelList;
+			sourceTree = "<group>";
+		};
+		75A373707F181AA9DBEA2D0A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3F1B666920C50D0F733B9472 /* Channel */,
+				748FCD73D34B1DA6D8B5BCB0 /* ChannelList */,
+				A1313E0A19BCDB9435D12F2F /* CreateChannel */,
+				D6498588B6970CB9F87B5056 /* MemberList */,
+				0ACA6B05752E02EDCE321448 /* Setting */,
+				D76C3A810127DAA53D73B0A5 /* UseCase */,
+				3F0815FBD03922EFDF1F2897 /* AppDelegate.swift */,
+				A5A1038172D257F44948FEB7 /* ViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8A2BAD0BBA866933C03E89FC /* InfoPlists */ = {
+			isa = PBXGroup;
+			children = (
+				04F3895B7B93A0624177E8BF /* BanUnBanUserGroupChannel.plist */,
+			);
+			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		9E52B3F1825EE5491F15B73A /* Derived */ = {
+			isa = PBXGroup;
+			children = (
+				8A2BAD0BBA866933C03E89FC /* InfoPlists */,
+				A44C2E7C540C6A0DD645ED2E /* Sources */,
+			);
+			path = Derived;
+			sourceTree = "<group>";
+		};
+		A1313E0A19BCDB9435D12F2F /* CreateChannel */ = {
+			isa = PBXGroup;
+			children = (
+				E081D44E0C3E3C1529C6F022 /* CreateGroupChannelViewController.swift */,
+			);
+			path = CreateChannel;
+			sourceTree = "<group>";
+		};
+		A44C2E7C540C6A0DD645ED2E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DDA81A63211E7A43F5754BC9 /* Assets+BanUnBanUserGroupChannel.swift */,
+				8C72E41FE8E1BCF1A6D8A989 /* Bundle+BanUnBanUserGroupChannel.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		AA7BD8191825B6FCE4E7D69C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D634BE94272A0073B3801167 /* BanUnBanUserGroupChannel.app */,
+				07B1F76F968F1E798A2BDA1F /* CommonModule.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD1EDFBEC8607C5D7E87601F /* Tuist */ = {
+			isa = PBXGroup;
+			children = (
+				1D4C9ABF9D1FD62C1B362BFE /* Dependencies */,
+			);
+			name = Tuist;
+			path = ../../Tuist;
+			sourceTree = "<group>";
+		};
+		CF088B407477BFDC6D3B7FCB /* SwiftPackageManager */ = {
+			isa = PBXGroup;
+			children = (
+				51DF3712A9F4AEE1916E6B53 /* .build */,
+			);
+			path = SwiftPackageManager;
+			sourceTree = "<group>";
+		};
+		D6498588B6970CB9F87B5056 /* MemberList */ = {
+			isa = PBXGroup;
+			children = (
+				E419E5AACDE6022966F9F7B9 /* GroupChannelMemberCell.swift */,
+				D6EDBBEB2A66559309424E9F /* GroupChannelMemberListViewController.swift */,
+			);
+			path = MemberList;
+			sourceTree = "<group>";
+		};
+		D76C3A810127DAA53D73B0A5 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				8001E3B7015CF89BA253BC6E /* BanAndUnBanUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		E476E482A0760E3EE605C703 /* SendbirdChatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3B144D3064697EBC234D7FD3 /* SendbirdChatSDK.xcframework */,
+			);
+			path = SendbirdChatSDK;
+			sourceTree = "<group>";
+		};
+		E5C91EC29C93E1BA510C7987 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0B7523A5212600A9EC0F2EA /* artifacts */ = {
+			isa = PBXGroup;
+			children = (
+				4BF06DEB08909D6BF52D00B5 /* sendbird-chat-sdk-ios */,
+			);
+			path = artifacts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45C454E0A31DCEE1639E0CC8 /* BanUnBanUserGroupChannel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE2E11891C5CE9E6E1C53A1E /* Build configuration list for PBXNativeTarget "BanUnBanUserGroupChannel" */;
+			buildPhases = (
+				D6FF48B2FF229D4B72A1B052 /* Sources */,
+				E02C50F375CB0C7102D03BDE /* Resources */,
+				08D161C48BCCA2206874C966 /* Embed Frameworks */,
+				9A46A27A4267B332C2736217 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BanUnBanUserGroupChannel;
+			productName = BanUnBanUserGroupChannel;
+			productReference = D634BE94272A0073B3801167 /* BanUnBanUserGroupChannel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBF16171D5F18610FE3423EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = Sendbird;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 8E3E30857426CADE13B7CFBF /* Build configuration list for PBXProject "BanUnBanUserGroupChannel" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2DC1F74DC7194437038EF02D;
+			productRefGroup = AA7BD8191825B6FCE4E7D69C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45C454E0A31DCEE1639E0CC8 /* BanUnBanUserGroupChannel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E02C50F375CB0C7102D03BDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2F05F9713ECD8EF9C62E6B6 /* Assets.xcassets in Resources */,
+				8EAA543805D0BC9028170CEF /* LaunchScreen.storyboard in Resources */,
+				6E2E5315943ED750C15632C5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D6FF48B2FF229D4B72A1B052 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E9D841B358E6A5F342618F /* Assets+BanUnBanUserGroupChannel.swift in Sources */,
+				39F6DF02F4DB0C52D88BBB60 /* Bundle+BanUnBanUserGroupChannel.swift in Sources */,
+				0FA9CF20110A7A496CE1926A /* AppDelegate.swift in Sources */,
+				02AEDC72BD6897558DD611F3 /* GroupChannelViewController+EditMessage.swift in Sources */,
+				E7E82CD86EB4E8454C63DD67 /* GroupChannelViewController+FileMessage.swift in Sources */,
+				1A3D57E403618DF9B9E44AC1 /* GroupChannelViewController+Setting.swift in Sources */,
+				6F60E2B531252F003CB86432 /* GroupChannelViewController.swift in Sources */,
+				14AA0692FD777018176CC0AA /* GroupChannelListViewController.swift in Sources */,
+				B47A501EDCBC42AE7A40531E /* CreateGroupChannelViewController.swift in Sources */,
+				5C579D5A912B73911E08E81D /* GroupChannelMemberCell.swift in Sources */,
+				D1D020626575743879DF136B /* GroupChannelMemberListViewController.swift in Sources */,
+				103B99FC01E282E13F863621 /* SettingViewController.swift in Sources */,
+				62FAFCB4546F3A0413968EB2 /* BanAndUnBanUseCase.swift in Sources */,
+				4C7D4C86BA5A0F9273C364B6 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3CEFC79E03F33CFE4607D6BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5403FAA4E8EC9E5A42697C6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RM4A5PXTUX;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Derived/InfoPlists/BanUnBanUserGroupChannel.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.chat.BanUnBanUserGroupChannel;
+				PRODUCT_NAME = BanUnBanUserGroupChannel;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.8.1;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7826858B65B703741A410E4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RM4A5PXTUX;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Derived/InfoPlists/BanUnBanUserGroupChannel.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sendbird.chat.BanUnBanUserGroupChannel;
+				PRODUCT_NAME = BanUnBanUserGroupChannel;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.8.1;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D06ABDC8D13125F1ACE45CD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E3E30857426CADE13B7CFBF /* Build configuration list for PBXProject "BanUnBanUserGroupChannel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D06ABDC8D13125F1ACE45CD6 /* Debug */,
+				3CEFC79E03F33CFE4607D6BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE2E11891C5CE9E6E1C53A1E /* Build configuration list for PBXNativeTarget "BanUnBanUserGroupChannel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5403FAA4E8EC9E5A42697C6B /* Debug */,
+				7826858B65B703741A410E4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBF16171D5F18610FE3423EC /* Project object */;
+}
