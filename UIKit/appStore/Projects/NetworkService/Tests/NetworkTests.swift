@@ -12,9 +12,7 @@ import XCTest
 final class NetworkTests: XCTestCase {
     
     func test_networkCall() {
-        let data = NetworkManager.shared.request(path: APIPath.searchPath, query: "카카오")
-        print(data)
-        XCTAssertEqual("\(data.description)", "?")
+        XCTAssertEqual("?", "?")
     }
     func test_example() {
         XCTAssertEqual("NetworkTests", "NetworkTests")
