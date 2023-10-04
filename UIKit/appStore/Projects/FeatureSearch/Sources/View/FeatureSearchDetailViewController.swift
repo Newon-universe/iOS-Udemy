@@ -209,9 +209,9 @@ public class FeatureSearchDetailViewController: UIViewController {
         }
     }
     
-    func configure(item: SearchResult) {
+    func configure(item: iTuensModel) {
         titleLabel.attributedText = NSAttributedString(
-            string: item.title ?? "",
+            string: item.artistName ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize),
                 .foregroundColor: UIAsset.fontBlack.color
@@ -219,7 +219,7 @@ public class FeatureSearchDetailViewController: UIViewController {
         )
         
         subTitleLabel.attributedText = NSAttributedString(
-            string: item.subTitle ?? "",
+            string: item.description ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
                 .foregroundColor: UIAsset.fontGray.color

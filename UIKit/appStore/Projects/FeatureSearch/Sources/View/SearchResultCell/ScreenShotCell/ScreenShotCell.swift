@@ -13,7 +13,7 @@ import Combine
 import CombineCocoa
 
 
-class ScreenShotCell: UICollectionViewCell{
+class ScreenShotCell: UICollectionViewCell {
     static let identifier = CellIdentifier.appScreenShotCell.rawValue
     
     private let screenView: UIImageView = {
@@ -43,6 +43,6 @@ class ScreenShotCell: UICollectionViewCell{
     }
     
     func configure(item: AppScreenShot) {
-        
+        screenView.load(url: item.image)
     }
 }

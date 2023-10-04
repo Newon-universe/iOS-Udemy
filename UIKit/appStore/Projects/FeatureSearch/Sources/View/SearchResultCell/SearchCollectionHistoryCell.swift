@@ -61,7 +61,7 @@ class SearchCollectionHistoryCell: UICollectionViewCell{
         }
     }
     
-    func configure(item: SearchResult) {
-        titleLabel.text = item.title
+    func configure(item: String) {
+        titleLabel.text = item
     }
 }

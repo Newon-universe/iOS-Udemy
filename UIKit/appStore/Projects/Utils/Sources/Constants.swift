@@ -8,8 +8,11 @@
 import Foundation
 
 public struct Constants {
-    public static let BASE_URL: String = Bundle.main.infoDictionary?["BASE_URL"] as? String ?? ""
-    public static let API_KEY: String = Bundle.main.infoDictionary?["API_KEY"] as? String ?? ""
+//    public static let BASE_URL: String = Bundle.main.infoDictionary?["BASE_URL"] as? String ?? ""
+//    public static let API_KEY: String = Bundle.main.infoDictionary?["API_KEY"] as? String ?? ""
+    public static let BASE_URL: String = "itunes.apple.com"
+    public static let API_KEY: String = ""
+    public static let PATH_SEARCH: String = "/search"
     public static let SCHEME = "https"
     public static let PORT: Int? = nil
 }

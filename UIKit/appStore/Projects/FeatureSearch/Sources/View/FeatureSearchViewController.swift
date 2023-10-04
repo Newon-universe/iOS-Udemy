@@ -11,6 +11,7 @@ import Combine
 import CombineCocoa
 import SnapKit
 import Core
+import NetworkService
 import UI
 import Utils
 
@@ -21,7 +22,7 @@ let sampleSearchRelated = ["카카오뱅크", "카카오페이", "카카오페�
 
 public class FeatureSearchViewController: UIViewController {
     private var cancellabels = Set<AnyCancellable>()
-    private var resultViewModel = FeatureSearchResultViewModel(searchResults: [])
+    private var resultViewModel = FeatureSearchResultViewModel(searchResults: iTuensDataResponseModel(from: nil))
     
     private lazy var resultController = FeatureSearchResultViewController(navigationController: navigationController, viewModel: resultViewModel)
     private lazy var searchController: UISearchController = {
@@ -39,9 +40,8 @@ public class FeatureSearchViewController: UIViewController {
             .sink { [weak self] _ in
                 if let value = controller.searchBar.text {
                     self?.resultViewModel.histories += [value]
+                    self?.resultViewModel.fetchApp()
                 }
-                
-                self?.resultController.reloadResultSnapshot()
             }
             .store(in: &self.cancellabels)
         
@@ -66,6 +66,7 @@ public class FeatureSearchViewController: UIViewController {
 
         return button
     }()
+    
     private lazy var titleView: UIStackView = {
         
         let widthSpacer = DividerFactory.build(width: CGFloat.greatestFiniteMagnitude)
@@ -76,6 +77,7 @@ public class FeatureSearchViewController: UIViewController {
         
         return contentView
     }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         
@@ -96,8 +98,6 @@ public class FeatureSearchViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        
-        resultViewModel.requestResponse()
     }
     
     private func layout() {

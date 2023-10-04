@@ -1,37 +1,12 @@
 //
-//  RatingViewFactory.swift
+//  UIStackView+Extensions.swift
 //  UI
 //
-//  Created by Kim Yewon on 2023/09/20.
+//  Created by Kim Yewon on 2023/10/04.
 //  Copyright © 2023 labo.summer. All rights reserved.
 //
 
 import UIKit
-import SnapKit
-
-public struct RatingViewFactory {
-    public static func build(
-        rating: Double = 0,
-        size: CGFloat = AppStoreSize.captionSize,
-        count: String
-    ) -> UIStackView {
-        let label = UILabelFactory.build(text: " \(count)", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color)
-        
-        var stackView: UIStackView = {
-            let view = UIStackView()
-            view.axis = .horizontal
-            view.spacing = 1
-            view.backgroundColor = .white
-            view.tintColor = UIAsset.fontGray.color
-            return view
-        }()
-        
-        stackView.configure(rating: rating, size: size, count: count)
-        stackView.addArrangedSubview(label)
-        
-        return stackView
-    }
-}
 
 extension UIStackView {
     private static let starFillImage: UIImage? = {

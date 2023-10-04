@@ -24,19 +24,12 @@ struct AppScreenShot: Hashable {
 class SearchCollectionResultCell: UICollectionViewCell {
     static let identifier = CellIdentifier.searchResultCell.rawValue
     private var cancellabels = Set<AnyCancellable>()
-    @Published private var screenShots: [AppScreenShot] = [
-        AppScreenShot(image: "abc"),
-        AppScreenShot(image: "1bc"),
-        AppScreenShot(image: "5bc"),
-        AppScreenShot(image: "7bc"),
-    ]
+    private var screenShots: [AppScreenShot] = []
     
     private var titleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize))
     private var subTitleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color)
-    private lazy var ratingView: UIStackView = {
-        let view = RatingViewFactory.build(rating: Double(3.5), count: "1.1만")
-        return view
-    }()
+    
+    private lazy var ratingView: UIStackView = UIStackView()
         
     lazy var labelContainer: UIStackView = {
         let stackView = UIStackView(
@@ -52,6 +45,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
     let logoView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIAsset.backgroundGray.color
+        
         imageView.addCornerRadius(radius: 12)
         return imageView
     }()
@@ -127,16 +121,16 @@ class SearchCollectionResultCell: UICollectionViewCell {
         }
         
         screenShotCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(logoView.snp.bottom)
+            make.top.equalTo(logoView.snp.bottom).offset(AppStoreSize.defaultPadding)
             make.leading.equalTo(logoView.snp.leading)
             make.trailing.equalTo(downloadButton.snp.trailing)
             make.bottom.equalToSuperview()
         }
     }
     
-    func configure(item: SearchResult) {
+    func configure(item: iTuensModel) {
         titleLabel.attributedText = NSAttributedString(
-            string: item.title ?? "",
+            string: item.trackCensoredName ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize),
                 .foregroundColor: UIAsset.fontBlack.color
@@ -144,12 +138,27 @@ class SearchCollectionResultCell: UICollectionViewCell {
         )
         
         subTitleLabel.attributedText = NSAttributedString(
-            string: item.subTitle ?? "",
+            string: item.description ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
                 .foregroundColor: UIAsset.fontGray.color
             ]
         )
+        
+        logoView.load(url: item.artworkUrl512 ?? "")
+        
+        ratingView.configure(rating: item.averageUserRating ?? 0, count: item.userRatingCount)
+        
+        
+        
+        DispatchQueue.main.async {
+            if let itemScreenShots = item.screenshotUrls {
+                self.screenShots = itemScreenShots.map { AppScreenShot(image: $0) }
+                self.reloadScreenShotDataSource()
+            } else {
+                self.reloadScreenShotDataSource()
+            }
+        }
     }
 }
 

@@ -13,12 +13,11 @@ import Core
 import UI
 import Utils
 
-
 public class FeatureSearchResultViewController: UICollectionViewController {
     private weak var featureNavigaionController: UINavigationController?
-    private var viewModel: FeatureSearchResultViewModel
+    var viewModel: FeatureSearchResultViewModel
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, SearchResult>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, DataSourceItem>!
     
     public enum Section: Int, CaseIterable {
         case history
@@ -43,19 +42,26 @@ public class FeatureSearchResultViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         setupCollectionViewController()
         setupDataSource()
+        
+        self.viewModel.$searchResults
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak weakedSelf = self] ituneModels in
+                weakedSelf?.reloadResultSnapshot()
+            }).store(in: &cancellabels)        
     }
     
+    
     func reloadHistorySnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, SearchResult>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, DataSourceItem>()
         snapshot.appendSections([.history, .result])
-        snapshot.appendItems(viewModel.histories.compactMap { SearchResult(title: $0) }.tail, toSection: .history)
+        snapshot.appendItems(viewModel.histories.compactMap { DataSourceItem.searchHistory(History(title: $0)) }.tail, toSection: .history)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     func reloadResultSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, SearchResult>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, DataSourceItem>()
         snapshot.appendSections([.history, .result])
-        snapshot.appendItems(viewModel.searchResults, toSection: .result)
+        snapshot.appendItems(viewModel.searchResults.compactMap { DataSourceItem.searchResult($0) }, toSection: .result)
         dataSource.apply(snapshot,animatingDifferences: false)
     }
 }
@@ -87,8 +93,7 @@ extension FeatureSearchResultViewController {
                     for: indexPath
                 ) as! SearchCollectionHistoryCell
 
-                
-                cell.configure(item: item)
+                cell.configure(item: self.viewModel.histories[indexPath.row])
                 return cell
                 
             case .result:
@@ -97,7 +102,7 @@ extension FeatureSearchResultViewController {
                     for: indexPath
                 ) as! SearchCollectionResultCell
                 
-                cell.configure(item: item)
+                cell.configure(item: self.viewModel.searchResults[indexPath.row])
                 return cell
             }
         })
@@ -141,11 +146,12 @@ extension FeatureSearchResultViewController {
                 let group = NSCollectionLayoutGroup.horizontal(
                     layoutSize: .init(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .fractionalHeight(0.43)
+                        heightDimension: .fractionalHeight(0.45)
                     ),
                     subitems: [item]
                 )
-                group.contentInsets = .init(top: AppStoreSize.defaultPadding * 0.5, leading: AppStoreSize.defaultPadding, bottom: 5, trailing: AppStoreSize.defaultPadding)
+                
+                group.contentInsets = .init(top: AppStoreSize.defaultPadding, leading: AppStoreSize.defaultPadding, bottom: 5, trailing: AppStoreSize.defaultPadding)
                 
                 let section = NSCollectionLayoutSection(group: group)
                 return section
@@ -170,7 +176,7 @@ extension FeatureSearchResultViewController {
     
     public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailViewController = FeatureSearchDetailViewController()
-        let item = SearchResult(title: "카카오뱅크", subTitle: "이미 모두의 은행")
+        let item = viewModel.searchResults[indexPath.row]
         detailViewController.configure(item: item)
         
         self.featureNavigaionController?.pushViewController(detailViewController, animated: true)

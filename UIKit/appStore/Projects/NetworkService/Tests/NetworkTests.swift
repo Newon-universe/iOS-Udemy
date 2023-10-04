@@ -11,8 +11,8 @@ import XCTest
 
 final class NetworkTests: XCTestCase {
     
-    func test_networkCall() {
-        XCTAssertEqual("?", "?")
+    func test_app_search_call() {
+        
     }
     func test_example() {
         XCTAssertEqual("NetworkTests", "NetworkTests")

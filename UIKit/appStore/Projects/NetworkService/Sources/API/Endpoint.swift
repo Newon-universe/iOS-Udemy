@@ -9,9 +9,9 @@
 import Foundation
 import Utils
 
-enum Endpoint {
+public enum Endpoint {
     
-    case fetchApp(url: String = "", term: String, country: String = "KR", limit: Int = 10)
+    case fetchApp(term: String, country: String = "KR", limit: Int = 10)
     
     var request: URLRequest? {
         guard let url = self.url else { assertionFailure("URL is not valid"); return nil }
@@ -24,26 +24,19 @@ enum Endpoint {
         return request
     }
     
-    private var url: URL? {
+    private var url: URL? {        
         var components = URLComponents()
         components.scheme = Constants.SCHEME
         components.host = Constants.BASE_URL
-        components.port = Constants.PORT
-        components.path = self.path
+        components.path = Constants.PATH_SEARCH
         components.queryItems = self.queryItems
         
         return components.url
     }
     
-    private var path: String {
-        switch self {
-        case .fetchApp(url: let url, _, _, _): return url
-        }
-    }
-    
     private var queryItems: [URLQueryItem] {
         switch self {
-        case .fetchApp(_, let term, let country, let limit):
+        case .fetchApp(let term, let country, let limit):
             return [
                 URLQueryItem(name: "term", value: term),
                 URLQueryItem(name: "country", value: country),

@@ -14,28 +14,31 @@ import Utils
 
 public final class FeatureSearchResultViewModel: ObservableObject {
     
-    private var cancellabels = Set<AnyCancellable>()
+//    struct Input {
+//        let searchPublisher: AnyPublisher<String, Never>
+//    }
     
-    @Published public var searchResults: [SearchResult] = []
+//    struct Output {
+//        let updateViewPublisher: AnyPublisher<[iTuensDataResponseModel], Never>
+//    }
+    
+    
+    private var cancellabels = Set<AnyCancellable>()
+    @Published public var searchResults: [iTuensModel]
     
     public var histories: [String] {
         get {
-            (UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue) as? [String] ?? [String]())
+            (UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue)?.tail as? [String] ?? [String]())
         }
         set {
             var attachValue = newValue
-            if attachValue.count >= 10 { attachValue.remove(at: 1) }
+            if attachValue.count > 10 { attachValue.remove(at: 1) }
             UserDefaults.standard.set(attachValue, forKey: UserDefaultsKeys.searchHistory.rawValue)
         }
     }
     
-    func requestResponse() {
-        
-    }
-    
-    init(cancellabels: Set<AnyCancellable> = Set<AnyCancellable>(), searchResults: [SearchResult]) {
-        self.cancellabels = cancellabels
-        self.searchResults = searchResults
+    init(searchResults: iTuensDataResponseModel) {
+        self.searchResults = searchResults.results ?? []
         
         if UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue) as? [String] ?? [String]() == [String]() {
             var history = UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue) as? [String] ?? [String]()
@@ -44,7 +47,14 @@ public final class FeatureSearchResultViewModel: ObservableObject {
         }
     }
     
-    init() {
-        searchResults = []
+    
+    public func fetchApp() {
+        guard let searchTerm = self.histories.last else { return }
+        NetworkService<iTuensDataResponseModel, Error>.fetchApp(with: Endpoint.fetchApp(term: searchTerm)) { result in
+            switch result {
+            case .success(let response): DispatchQueue.main.async { self.searchResults = response.results ?? [] }
+            case .failure(_): DispatchQueue.main.async { self.searchResults = [] }
+            }
+        }
     }
 }
