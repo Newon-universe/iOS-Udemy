@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Utils
 
 public struct RatingViewFactory {
     public static func build(
@@ -15,8 +16,6 @@ public struct RatingViewFactory {
         size: CGFloat = AppStoreSize.captionSize,
         count: String
     ) -> UIStackView {
-        let label = UILabelFactory.build(text: " \(count)", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color)
-        
         var stackView: UIStackView = {
             let view = UIStackView()
             view.axis = .horizontal
@@ -27,7 +26,6 @@ public struct RatingViewFactory {
         }()
         
         stackView.configure(rating: rating, size: size, count: count)
-        stackView.addArrangedSubview(label)
         
         return stackView
     }
@@ -52,11 +50,8 @@ extension UIStackView {
     public func configure(
         rating: Double = 0,
         size: CGFloat = AppStoreSize.captionSize,
-        count: String
+        count: Int64?
     ) {
-        self.arrangedSubviews.forEach {
-            self.removeArrangedSubview($0)
-        }
         
         for i in 0 ..< 5 {
             let button = UIButton()
@@ -77,7 +72,10 @@ extension UIStackView {
             self.addArrangedSubview(button)
         }
         
-        let label = UILabelFactory.build(text: " \(count)", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color)
+        let label = UILabelFactory.build(text: " \(count.abbreviateCount)", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontSemiBlack.color)
         self.addArrangedSubview(label)
+        self.tintColor = UIAsset.fontSemiBlack.color
+        self.axis = .horizontal
+        
     }
 }

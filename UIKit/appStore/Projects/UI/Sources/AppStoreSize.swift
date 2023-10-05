@@ -40,9 +40,17 @@ public struct AppStoreSize {
         }
     }
     
+    public static var smallImageSize: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return CGFloat(60)
+        } else {
+            return CGFloat(75)
+        }
+    }
+    
     public static var middleImageSize: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return CGFloat(70)
+            return CGFloat(65)
         } else {
             return CGFloat(85)
         }

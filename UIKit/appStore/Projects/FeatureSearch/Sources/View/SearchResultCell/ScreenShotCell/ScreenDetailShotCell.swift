@@ -18,6 +18,8 @@ class ScreenDetailShotCell: UICollectionViewCell{
         return view
     }()
     
+    private let activityIndicator = UIActivityIndicatorView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()

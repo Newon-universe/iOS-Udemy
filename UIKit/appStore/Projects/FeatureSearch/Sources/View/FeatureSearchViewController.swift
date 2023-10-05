@@ -15,11 +15,6 @@ import NetworkService
 import UI
 import Utils
 
-#if DEBUG
-let sampleHistory = ["최근 검색어", "버스시간표", "포토샵", "쇼핑", "일본 지하철"]
-let sampleSearchRelated = ["카카오뱅크", "카카오페이", "카카오페이지"]
-#endif
-
 public class FeatureSearchViewController: UIViewController {
     private var cancellabels = Set<AnyCancellable>()
     private var resultViewModel = FeatureSearchResultViewModel(searchResults: iTuensDataResponseModel(from: nil))
@@ -39,8 +34,8 @@ public class FeatureSearchViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 if let value = controller.searchBar.text {
-                    self?.resultViewModel.histories += [value]
-                    self?.resultViewModel.fetchApp()
+                    self?.resultViewModel.histories = [value]
+                    self?.resultViewModel.fetchApp(for: value)
                 }
             }
             .store(in: &self.cancellabels)
@@ -81,9 +76,16 @@ public class FeatureSearchViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         
-        
         tableView.didSelectRowPublisher
-            .sink { tableView.deselectRow(at: $0, animated: true) }
+            .sink {
+                tableView.deselectRow(at: $0, animated: true)
+                let term = self.resultViewModel.histories[$0.item - 1]
+                DispatchQueue.main.async {
+                    self.resultViewModel.fetchApp(for: term)
+                    self.searchController.isActive = true
+                    self.searchController.showsSearchResultsController = true
+                }
+            }
             .store(in: &cancellabels)
         
         return tableView
@@ -150,12 +152,18 @@ extension FeatureSearchViewController: UITableViewDataSource {
                          .foregroundColor: indexPath.row == 0 ? UIAsset.fontBlack.color : UIAsset.mainBlue.color
             ]
         )
-
+        content.textProperties.numberOfLines = 1
+        content.textProperties.lineBreakMode = .byTruncatingTail
+        
+        
         cell.contentConfiguration = content
         
         if indexPath.row == 0 || indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
+        } else {
+            cell.separatorInset = UIEdgeInsets(top: 10, left: AppStoreSize.defaultPadding, bottom: 10, right: AppStoreSize.defaultPadding)
         }
+        
         
         return cell
     }

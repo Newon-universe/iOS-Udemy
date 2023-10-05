@@ -16,12 +16,11 @@ import UI
 public class FeatureSearchDetailViewController: UIViewController {
 
     private var cancellabels = Set<AnyCancellable>()
-    @Published private var screenShots: [AppScreenShot] = [
-        AppScreenShot(image: "abc"),
-        AppScreenShot(image: "1bc"),
-        AppScreenShot(image: "5bc"),
-        AppScreenShot(image: "7bc")
-    ]
+    private var screenShotCollectionView: UICollectionView!
+    private var screenShotDataSource: UICollectionViewDiffableDataSource<ScreenshotEnum, AppScreenShot>!
+    
+    private var viewModel: FeatureSearchDetailViewModel
+    
     
     let logoView: UIImageView = {
         let imageView = UIImageView()
@@ -31,7 +30,7 @@ public class FeatureSearchDetailViewController: UIViewController {
     }()
     
     private var titleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize))
-    private var subTitleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color)
+    private var subTitleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color, maximumLines: 2)
     lazy var labelContainer: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [titleLabel, subTitleLabel]
@@ -89,28 +88,7 @@ public class FeatureSearchDetailViewController: UIViewController {
         return button
     }()
     
-    private lazy var ratingView: UIStackView = {
-        let starLabel = UILabelFactory.build(text: "3.4", font: AppStoreFont.demibold(ofSize: AppStoreSize.contentSize))
-        starLabel.textColor = UIAsset.fontGray.color
-        let view = RatingViewFactory.build(rating: Double(3.5), count: "")
-        
-        let starContainer = UIStackView(
-            arrangedSubviews: [starLabel, view]
-        )
-        starContainer.axis = .horizontal
-        starContainer.spacing = 2
-        
-        let ratingCountLabel = UILabelFactory.build(text: "1.1만개의 평가", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize - 2))
-        ratingCountLabel.textColor = UIAsset.fontGray.color
-        
-        let container = UIStackView(
-            arrangedSubviews: [starContainer, ratingCountLabel]
-        )
-        container.axis = .vertical
-        container.alignment = .leading
-        container.spacing = 5
-        return container
-    }()
+    private lazy var ratingView = UIStackView()
     private lazy var categoryView: UIStackView = {
         let rankLabel = UILabelFactory.build(text: "#4", font: AppStoreFont.demibold(ofSize: AppStoreSize.contentSize))
         rankLabel.textColor = UIAsset.fontGray.color
@@ -126,6 +104,7 @@ public class FeatureSearchDetailViewController: UIViewController {
         container.spacing = 5
         return container
     }()
+    
     private lazy var ageView: UIStackView = {
         let ageLabel = UILabelFactory.build(text: "4+", font: AppStoreFont.demibold(ofSize: AppStoreSize.contentSize))
         ageLabel.textColor = UIAsset.fontGray.color
@@ -151,13 +130,19 @@ public class FeatureSearchDetailViewController: UIViewController {
         return stackView
     }()
     
-    private var screenShotCollectionView: UICollectionView!
-    private var screenShotDataSource: UICollectionViewDiffableDataSource<ScreenshotEnum, AppScreenShot>!
+    init(viewModel: FeatureSearchDetailViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     public override func viewDidLoad() {
         setupScreenShotCollectionViewController()
-        layout()
         setupScreenShotDataSource()
+        layout()
         reloadScreenShotDataSource()
     }
     
@@ -178,7 +163,7 @@ public class FeatureSearchDetailViewController: UIViewController {
         labelContainer.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(logoView.snp.trailing).offset(10)
-            make.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-AppStoreSize.defaultPadding)
         }
         
         downloadButton.snp.makeConstraints { make in
@@ -211,7 +196,7 @@ public class FeatureSearchDetailViewController: UIViewController {
     
     func configure(item: iTuensModel) {
         titleLabel.attributedText = NSAttributedString(
-            string: item.artistName ?? "",
+            string: viewModel.item.trackName ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize),
                 .foregroundColor: UIAsset.fontBlack.color
@@ -219,18 +204,28 @@ public class FeatureSearchDetailViewController: UIViewController {
         )
         
         subTitleLabel.attributedText = NSAttributedString(
-            string: item.description ?? "",
+            string: viewModel.item.description ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
-                .foregroundColor: UIAsset.fontGray.color
+                .foregroundColor: UIAsset.fontSemiBlack.color
             ]
         )
+        
+        logoView.load(url: viewModel.item.artworkUrl512 ?? "") {
+            
+        }
+        
+        ratingView.arrangedSubviews.forEach {
+            ratingView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+        ratingView.configure(rating: viewModel.item.averageUserRating ?? 0, count: Int64(item.userRatingCount ?? 0))
     }
 }
 
 
 extension FeatureSearchDetailViewController {
-    static func setupScreenShotCollectionViewCompositionalLayout() -> UICollectionViewFlowLayout {
+    static func setupScreenShotCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         
         let itemWidth = UIScreen.main.bounds.width * 0.3
@@ -245,7 +240,7 @@ extension FeatureSearchDetailViewController {
     }
     
     func setupScreenShotCollectionViewController() {
-        screenShotCollectionView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: SearchCollectionResultCell.setupScreenShotCollectionViewCompositionalLayout())
+        screenShotCollectionView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: SearchCollectionResultCell.setupScreenShotCollectionViewFlowLayout())
                 
         screenShotCollectionView.register(
             ScreenDetailShotCell.self,
@@ -270,8 +265,8 @@ extension FeatureSearchDetailViewController {
     func reloadScreenShotDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<ScreenshotEnum, AppScreenShot>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(screenShots, toSection: .main)
-        screenShotDataSource.apply(snapshot,animatingDifferences: false)
+        snapshot.appendItems(viewModel.screenShots, toSection: .main)
+        screenShotDataSource.apply(snapshot, animatingDifferences: false)
     }
 }
 

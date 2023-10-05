@@ -9,8 +9,7 @@
 import UIKit
 
 extension UIImageView {
-    public func load(url: String) {
-        print(url)
+    public func load(url: String, completion: @escaping () -> Void) {
         guard let url = URL(string: url) else { return }
         
         DispatchQueue.global().async { [weak self] in

@@ -14,7 +14,8 @@ let project = Project.framework(name: "UI",
                                 platform: .iOS, dependencies: [
                                     .project(target: "Utils", path: "../Utils"),
                                     .external(name: "CombineCocoa"),
-                                    .external(name: "SnapKit")
+                                    .external(name: "SnapKit"),
+                                    .external(name: "Kingfisher")
                                 ],
                                 isNeedResources: true
 )
