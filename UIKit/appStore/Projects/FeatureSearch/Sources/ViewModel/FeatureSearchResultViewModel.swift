@@ -22,7 +22,6 @@ public final class FeatureSearchResultViewModel: ObservableObject {
 //        let updateViewPublisher: AnyPublisher<[iTuensDataResponseModel], Never>
 //    }
     
-    
     private var cancellabels = Set<AnyCancellable>()
     @Published public var searchResults: [iTuensModel]
     
@@ -31,9 +30,14 @@ public final class FeatureSearchResultViewModel: ObservableObject {
             (UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue)?.tail as? [String] ?? [String]())
         }
         set {
-            var attachValue = newValue
-            if attachValue.count > 10 { attachValue.remove(at: 1) }
-            UserDefaults.standard.set(attachValue, forKey: UserDefaultsKeys.searchHistory.rawValue)
+            guard var history = UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue) as? [String],
+                  let newValue = newValue.first,
+                  !history.contains(newValue)
+            else { return }
+
+            if history.count > 10 { history.remove(at: 1) }
+            history.append(newValue)
+            UserDefaults.standard.set(history, forKey: UserDefaultsKeys.searchHistory.rawValue)
         }
     }
     
@@ -48,8 +52,7 @@ public final class FeatureSearchResultViewModel: ObservableObject {
     }
     
     
-    public func fetchApp() {
-        guard let searchTerm = self.histories.last else { return }
+    public func fetchApp(for searchTerm: String) {
         NetworkService<iTuensDataResponseModel, Error>.fetchApp(with: Endpoint.fetchApp(term: searchTerm)) { result in
             switch result {
             case .success(let response): DispatchQueue.main.async { self.searchResults = response.results ?? [] }

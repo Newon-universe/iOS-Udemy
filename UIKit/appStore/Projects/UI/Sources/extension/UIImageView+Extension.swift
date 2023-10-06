@@ -10,7 +10,6 @@ import UIKit
 
 extension UIImageView {
     public func load(url: String) {
-        print(url)
         guard let url = URL(string: url) else { return }
         
         DispatchQueue.global().async { [weak self] in

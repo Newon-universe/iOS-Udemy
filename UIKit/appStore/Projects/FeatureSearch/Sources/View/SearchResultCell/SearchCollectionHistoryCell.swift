@@ -20,8 +20,9 @@ class SearchCollectionHistoryCell: UICollectionViewCell{
         view.tintColor = UIAsset.fontGray.color
         return view
     }()
+    
     private let titleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize))
-    private let divider = DividerFactory.build(color: UIAsset.fontGray.color)
+    private let divider = DividerFactory.build(color: UIAsset.fontSemiBlack.color)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,13 +51,15 @@ class SearchCollectionHistoryCell: UICollectionViewCell{
         
         titleLabel.snp.makeConstraints { make in
             make.left.equalTo(leftView.snp.right).offset(10)
+            make.right.equalToSuperview().offset(-AppStoreSize.defaultPadding)
             make.top.equalTo(leftView.snp.top)
             make.bottom.equalTo(leftView.snp.bottom)
         }
         
         divider.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(AppStoreSize.defaultPadding)
-            make.left.right.bottom.equalToSuperview()
+            make.left.bottom.equalToSuperview()
+            make.right.equalToSuperview().offset(-AppStoreSize.defaultPadding)
             make.height.equalTo(0.2)
         }
     }

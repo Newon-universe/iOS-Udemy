@@ -29,30 +29,38 @@ extension UIStackView {
         size: CGFloat = AppStoreSize.captionSize,
         count: String
     ) {
-        self.arrangedSubviews.forEach {
-            self.removeArrangedSubview($0)
-        }
-        
-        for i in 0 ..< 5 {
-            let button = UIButton()
-            
-            if i < Int(rating) {
-                button.setImage(UIStackView.starFillImage, for: .normal)
-            } else if Double(i) < rating {
-                button.setImage(UIStackView.starHalfImage, for: .normal)
-            } else {
-                button.setImage(UIStackView.starEmptyImage, for: .normal)
+        DispatchQueue.main.async {
+            self.arrangedSubviews.forEach {
+                self.removeArrangedSubview($0)
+                $0.removeFromSuperview()
             }
             
-            button.snp.makeConstraints { make in
-                make.width.equalTo(AppStoreSize.captionSize)
-                make.height.equalTo(AppStoreSize.captionSize)
+            for i in 0 ..< 5 {
+                let button = UIButton()
+                
+                if i < Int(rating) {
+                    button.setImage(UIStackView.starFillImage, for: .normal)
+                } else if Double(i) < rating {
+                    button.setImage(UIStackView.starHalfImage, for: .normal)
+                } else {
+                    button.setImage(UIStackView.starEmptyImage, for: .normal)
+                }
+                
+                button.snp.makeConstraints { make in
+                    make.width.equalTo(AppStoreSize.captionSize)
+                    make.height.equalTo(AppStoreSize.captionSize)
+                }
+                
+                self.addArrangedSubview(button)
             }
             
-            self.addArrangedSubview(button)
+            let label = UILabelFactory.build(
+                text: " \(count)",
+                font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
+                textColor: UIAsset.fontGray.color
+            )
+            
+            self.addArrangedSubview(label)
         }
-        
-        let label = UILabelFactory.build(text: " \(count)", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color)
-        self.addArrangedSubview(label)
     }
 }

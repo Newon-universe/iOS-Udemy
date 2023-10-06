@@ -15,7 +15,8 @@ public struct UILabelFactory {
         backgroundColor: UIColor = .clear,
         textColor: UIColor = UIAsset.fontBlack.color,
         textAlignment: NSTextAlignment = .left,
-        attributedText: NSAttributedString? = nil
+        attributedText: NSAttributedString? = nil,
+        maximumLines: Int = 1
     ) -> UILabel {
         let label = UILabel()
         
@@ -29,6 +30,8 @@ public struct UILabelFactory {
         label.textAlignment = textAlignment
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = maximumLines
+        label.lineBreakMode = .byTruncatingTail
         
         return label
     }

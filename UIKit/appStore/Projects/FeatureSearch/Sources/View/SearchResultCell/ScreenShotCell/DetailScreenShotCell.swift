@@ -9,14 +9,18 @@
 import UIKit
 import UI
 
-class ScreenDetailShotCell: UICollectionViewCell{
+class DetailScreenShotCell: UICollectionViewCell{
     static let identifier = CellIdentifier.appScreenDetailCell.rawValue
     
     private let screenView: UIImageView = {
         let view = UIImageView()
         view.addCornerRadius(radius: 15)
+        view.layer.borderWidth = 0.2
+        view.layer.borderColor = UIAsset.fontGray.color.cgColor
         return view
     }()
+    
+    private let activityIndicator = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,13 +36,11 @@ class ScreenDetailShotCell: UICollectionViewCell{
         addSubview(screenView)
         
         screenView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(AppStoreSize.defaultPadding)
-            make.bottom.equalToSuperview().offset(-AppStoreSize.defaultPadding)
-            make.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
     func configure(item: AppScreenShot) {
-        
+        screenView.load(url: item.image)
     }
 }

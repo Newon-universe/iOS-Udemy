@@ -9,7 +9,7 @@
 import Foundation
 
 extension Optional where Wrapped == Int64 {
-    public func abbreviateCount() -> String {
+    public var abbreviateCount: String {
         if let value = self {
             switch value {
             case let x where x >= 10000:

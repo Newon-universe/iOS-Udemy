@@ -39,17 +39,15 @@ public class FeatureSearchResultViewController: UICollectionViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setupCollectionViewController()
         setupDataSource()
         
         self.viewModel.$searchResults
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak weakedSelf = self] ituneModels in
+            .sink(receiveValue: { [weak weakedSelf = self] _ in
                 weakedSelf?.reloadResultSnapshot()
-            }).store(in: &cancellabels)        
+            }).store(in: &cancellabels)
     }
-    
     
     func reloadHistorySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, DataSourceItem>()
@@ -130,9 +128,9 @@ extension FeatureSearchResultViewController {
                     ),
                     subitems: [item]
                 )
+                
                 group.contentInsets = .init(top: AppStoreSize.defaultPadding, leading: AppStoreSize.defaultPadding, bottom: 5, trailing: 0)
                 let section = NSCollectionLayoutSection(group: group)
-                
                 return section
                 
             case .result:
@@ -152,7 +150,6 @@ extension FeatureSearchResultViewController {
                 )
                 
                 group.contentInsets = .init(top: AppStoreSize.defaultPadding, leading: AppStoreSize.defaultPadding, bottom: 5, trailing: AppStoreSize.defaultPadding)
-                
                 let section = NSCollectionLayoutSection(group: group)
                 return section
             }
@@ -175,7 +172,8 @@ extension FeatureSearchResultViewController {
     }
     
     public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = FeatureSearchDetailViewController()
+        let detailViewModel = FeatureSearchDetailViewModel(item: viewModel.searchResults[indexPath.row])
+        let detailViewController = FeatureSearchDetailViewController(viewModel: detailViewModel)
         let item = viewModel.searchResults[indexPath.row]
         detailViewController.configure(item: item)
         

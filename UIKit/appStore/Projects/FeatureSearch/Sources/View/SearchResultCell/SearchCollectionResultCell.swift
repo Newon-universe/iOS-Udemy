@@ -26,8 +26,16 @@ class SearchCollectionResultCell: UICollectionViewCell {
     private var cancellabels = Set<AnyCancellable>()
     private var screenShots: [AppScreenShot] = []
     
-    private var titleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize))
-    private var subTitleLabel = UILabelFactory.build(text: "", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontGray.color)
+    private var titleLabel = UILabelFactory.build(
+        text: "",
+        font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize)
+    )
+    
+    private var subTitleLabel = UILabelFactory.build(
+        text: "",
+        font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
+        textColor: UIAsset.fontSemiBlack.color
+    )
     
     private lazy var ratingView: UIStackView = UIStackView()
         
@@ -42,11 +50,14 @@ class SearchCollectionResultCell: UICollectionViewCell {
         return stackView
     }()
     
+    private let activityIndicator = UIActivityIndicatorView()
     let logoView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIAsset.backgroundGray.color
-        
         imageView.addCornerRadius(radius: 12)
+        
+        imageView.layer.borderWidth = 0.2
+        imageView.layer.borderColor = UIAsset.fontGray.color.cgColor
         return imageView
     }()
     
@@ -86,6 +97,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
         layout()
         setupScreenShotDataSource()
         reloadScreenShotDataSource()
+        activityIndicator.startAnimating()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -95,7 +107,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
     func layout(){
         backgroundColor = UIAsset.white.color
         
-        [logoView, labelContainer, downloadButton, screenShotCollectionView].forEach {
+        [logoView, activityIndicator, labelContainer, downloadButton, screenShotCollectionView].forEach {
             addSubview($0)
         }
         
@@ -106,12 +118,19 @@ class SearchCollectionResultCell: UICollectionViewCell {
             make.width.equalTo(AppStoreSize.middleImageSize)
         }
         
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(logoView.snp.center)
+            make.width.equalTo(AppStoreSize.titleSize)
+            make.height.equalTo(AppStoreSize.titleSize)
+        }
+        
         labelContainer.snp.makeConstraints { make in
             make.top.equalToSuperview()
+            make.bottom.equalTo(logoView.snp.bottom).offset(-2)
             make.leading.equalTo(logoView.snp.trailing).offset(10)
-            make.trailing.equalToSuperview()
-            make.bottom.equalTo(logoView.snp.bottom).offset(-5)
+            make.trailing.equalTo(downloadButton.snp.leading).offset(-AppStoreSize.defaultPadding)
         }
+        
         
         downloadButton.snp.makeConstraints { make in
             make.top.equalTo(subTitleLabel.snp.top).offset(-AppStoreSize.captionSize * 0.5)
@@ -121,7 +140,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
         }
         
         screenShotCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(logoView.snp.bottom).offset(AppStoreSize.defaultPadding)
+            make.top.equalTo(logoView.snp.bottom)
             make.leading.equalTo(logoView.snp.leading)
             make.trailing.equalTo(downloadButton.snp.trailing)
             make.bottom.equalToSuperview()
@@ -138,25 +157,28 @@ class SearchCollectionResultCell: UICollectionViewCell {
         )
         
         subTitleLabel.attributedText = NSAttributedString(
-            string: item.description ?? "",
+            string: item.releaseNotes ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
-                .foregroundColor: UIAsset.fontGray.color
+                .foregroundColor: UIAsset.fontSemiBlack.color
             ]
         )
-        
+                
         logoView.load(url: item.artworkUrl512 ?? "")
         
-        ratingView.configure(rating: item.averageUserRating ?? 0, count: item.userRatingCount)
+        // Extension 으로 뺴면 왜 안 될까 ?
+        ratingView.arrangedSubviews.forEach {
+            ratingView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+        ratingView.smallRatingConfigure(rating: item.averageUserRating ?? 0, count: Int64(item.userRatingCount ?? 0))
         
-        
-        
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             if let itemScreenShots = item.screenshotUrls {
-                self.screenShots = itemScreenShots.map { AppScreenShot(image: $0) }
-                self.reloadScreenShotDataSource()
+                self?.screenShots = itemScreenShots.map { AppScreenShot(image: $0) }
+                self?.reloadScreenShotDataSource()
             } else {
-                self.reloadScreenShotDataSource()
+                self?.reloadScreenShotDataSource()
             }
         }
     }
@@ -164,7 +186,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
 
 
 extension SearchCollectionResultCell {
-    static func setupScreenShotCollectionViewCompositionalLayout() -> UICollectionViewFlowLayout {
+    static func setupScreenShotCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
                 
         let itemWidth = UIScreen.main.bounds.width * 0.3
@@ -178,13 +200,12 @@ extension SearchCollectionResultCell {
         return layout
     }
     
-    
     func setupScreenShotCollectionViewController() {
-        screenShotCollectionView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: SearchCollectionResultCell.setupScreenShotCollectionViewCompositionalLayout())
-                
+        screenShotCollectionView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: SearchCollectionResultCell.setupScreenShotCollectionViewFlowLayout())
+        
         screenShotCollectionView.register(
             ScreenShotCell.self,
-              forCellWithReuseIdentifier: ScreenShotCell.identifier
+            forCellWithReuseIdentifier: ScreenShotCell.identifier
         )
     }
     
