@@ -21,11 +21,12 @@ public class FeatureSearchDetailViewController: UIViewController {
     
     private var viewModel: FeatureSearchDetailViewModel
     
-    
     let logoView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIAsset.backgroundGray.color
         imageView.addCornerRadius(radius: 12)
+        imageView.layer.borderWidth = 0.2
+        imageView.layer.borderColor = UIAsset.fontGray.color.cgColor
         return imageView
     }()
     
@@ -77,7 +78,7 @@ public class FeatureSearchDetailViewController: UIViewController {
         button.setImage(image, for: .normal)
         button.tintColor = UIAsset.white.color
         button.backgroundColor = UIAsset.mainBlue.color
-        button.addCornerRadius(radius: 11)
+        button.addCornerRadius(radius: 12)
         
         button.tapPublisher
             .sink { _ in
@@ -89,44 +90,49 @@ public class FeatureSearchDetailViewController: UIViewController {
     }()
     
     private lazy var ratingView = UIStackView()
-    private lazy var categoryView: UIStackView = {
-        let rankLabel = UILabelFactory.build(text: "#4", font: AppStoreFont.demibold(ofSize: AppStoreSize.contentSize))
-        rankLabel.textColor = UIAsset.fontGray.color
-
-        let categoryLabel = UILabelFactory.build(text: "금융", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize - 2))
-        categoryLabel.textColor = UIAsset.fontGray.color
+    private lazy var ratingInfoLabelView = UILabel()
+    private lazy var ratingContainerView: UIStackView = {
+        let container = UIStackView(
+            arrangedSubviews: [ratingView, ratingInfoLabelView]
+        )
+        container.axis = .vertical
+        container.alignment = .leading
+        container.distribution = .fillEqually
         
+        return container
+    }()
+    
+    let rankLabel = UILabelFactory.build(text: "#4", font: AppStoreFont.demibold(ofSize: AppStoreSize.contentSize), textColor: UIAsset.fontSemiBlack.color)
+    let categoryLabel = UILabelFactory.build(text: "금융", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize - 2), textColor: UIAsset.fontGray.color)
+    private lazy var categoryView: UIStackView = {
         let container = UIStackView(
             arrangedSubviews: [rankLabel, categoryLabel]
         )
         container.axis = .vertical
         container.alignment = .leading
-        container.spacing = 5
+        container.distribution = .fillEqually
         return container
     }()
     
+    let ageLabel = UILabelFactory.build(text: "4+", font: AppStoreFont.demibold(ofSize: AppStoreSize.contentSize), textColor: UIAsset.fontSemiBlack.color)
+    let agePlaceholderLabel = UILabelFactory.build(text: "연령", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize - 2), textColor: UIAsset.fontGray.color)
     private lazy var ageView: UIStackView = {
-        let ageLabel = UILabelFactory.build(text: "4+", font: AppStoreFont.demibold(ofSize: AppStoreSize.contentSize))
-        ageLabel.textColor = UIAsset.fontGray.color
-
-        let categoryLabel = UILabelFactory.build(text: "연령", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize - 2))
-        categoryLabel.textColor = UIAsset.fontGray.color
-        
         let container = UIStackView(
-            arrangedSubviews: [ageLabel, categoryLabel]
+            arrangedSubviews: [ageLabel, agePlaceholderLabel]
         )
         container.axis = .vertical
         container.alignment = .leading
-        container.spacing = 5
+        container.distribution = .fillEqually
         return container
     }()
     
     private lazy var editionalView: UIStackView = {
         let stackView = UIStackView(
-            arrangedSubviews: [ratingView, categoryView, ageView]
+            arrangedSubviews: [ratingContainerView, categoryView, ageView]
         )
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
+        stackView.alignment = .center
         return stackView
     }()
     
@@ -183,14 +189,15 @@ public class FeatureSearchDetailViewController: UIViewController {
         editionalView.snp.makeConstraints { make in
             make.top.equalTo(logoView.snp.bottom).offset(AppStoreSize.defaultPadding)
             make.leading.equalTo(logoView.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-AppStoreSize.defaultPadding)
+            make.trailing.equalToSuperview().offset(-AppStoreSize.defaultPadding)
+            make.height.greaterThanOrEqualTo(AppStoreSize.titleSize + AppStoreSize.contentSize)
         }
         
         screenShotCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(editionalView.snp.bottom)
+            make.top.equalTo(editionalView.snp.bottom).offset(AppStoreSize.defaultPadding)
             make.leading.equalTo(logoView.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-AppStoreSize.defaultPadding)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-AppStoreSize.defaultPadding)
         }
     }
     
@@ -211,49 +218,89 @@ public class FeatureSearchDetailViewController: UIViewController {
             ]
         )
         
-        logoView.load(url: viewModel.item.artworkUrl512 ?? "") {
-            
-        }
+        logoView.load(url: viewModel.item.artworkUrl512 ?? "")
         
         ratingView.arrangedSubviews.forEach {
             ratingView.removeArrangedSubview($0)
             $0.removeFromSuperview()
         }
-        ratingView.configure(rating: viewModel.item.averageUserRating ?? 0, count: Int64(item.userRatingCount ?? 0))
+        ratingView.largeRatingConfigure(rating: viewModel.item.averageUserRating ?? 0)
+        ratingInfoLabelView.attributedText = NSAttributedString(
+            string: " \(viewModel.item.userRatingCount.abbreviateCount)개의 평가",
+            attributes: [
+                .font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
+                .foregroundColor: UIAsset.fontGray.color
+            ]
+        )
+        
+        ageLabel.attributedText = NSAttributedString(
+            string: viewModel.item.trackContentRating ?? "",
+            attributes: [
+                .font: AppStoreFont.regular(ofSize: AppStoreSize.contentSize),
+                .foregroundColor: UIAsset.fontSemiBlack.color
+            ]
+        )
+        
+        categoryLabel.attributedText = NSAttributedString(
+            string: viewModel.item.genres?.first ?? "",
+            attributes: [
+                .font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
+                .foregroundColor: UIAsset.fontGray.color
+            ]
+        )
     }
 }
 
 
 extension FeatureSearchDetailViewController {
-    static func setupScreenShotCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
+    static func setupScreenShotCollectionViewCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout() { sectionIndex, env in
+            let item = NSCollectionLayoutItem(
+                layoutSize: .init(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .fractionalHeight(1)
+                )
+            )
+            
+            let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: .init(
+                    widthDimension: .fractionalWidth(0.7),
+                    heightDimension: .fractionalHeight(0.97)
+                ),
+                subitems: [item]
+            )
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = 10
+            section.orthogonalScrollingBehavior = .groupPaging
+            return section
+        }
         
-        let itemWidth = UIScreen.main.bounds.width * 0.3
-        let itemHeight = UIScreen.main.bounds.height * 0.7
-        let itemSpacing: CGFloat = AppStoreSize.defaultPadding
-        
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        layout.minimumInteritemSpacing = itemSpacing
-        layout.scrollDirection = .horizontal
-        
+        layout.configuration.scrollDirection = .horizontal
         return layout
     }
     
     func setupScreenShotCollectionViewController() {
-        screenShotCollectionView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: SearchCollectionResultCell.setupScreenShotCollectionViewFlowLayout())
-                
+        screenShotCollectionView = .init(
+            frame: CGRect(x: 0, y: 0, width: 0, height: 0),
+            collectionViewLayout: FeatureSearchDetailViewController.setupScreenShotCollectionViewCompositionalLayout()
+        )
+        
+        screenShotCollectionView.showsVerticalScrollIndicator = false
+        screenShotCollectionView.isScrollEnabled = false
+        
         screenShotCollectionView.register(
-            ScreenDetailShotCell.self,
-              forCellWithReuseIdentifier: ScreenDetailShotCell.identifier
+            DetailScreenShotCell.self,
+            forCellWithReuseIdentifier: DetailScreenShotCell.identifier
         )
     }
     
     func setupScreenShotDataSource() {
         screenShotDataSource = .init(collectionView: screenShotCollectionView, cellProvider: { collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ScreenDetailShotCell.identifier,
+                withReuseIdentifier: DetailScreenShotCell.identifier,
                 for: indexPath
-            ) as! ScreenDetailShotCell
+            ) as! DetailScreenShotCell
             
             cell.configure(item: item)
             return cell

@@ -54,8 +54,10 @@ class SearchCollectionResultCell: UICollectionViewCell {
     let logoView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIAsset.backgroundGray.color
-        
         imageView.addCornerRadius(radius: 12)
+        
+        imageView.layer.borderWidth = 0.2
+        imageView.layer.borderColor = UIAsset.fontGray.color.cgColor
         return imageView
     }()
     
@@ -155,23 +157,21 @@ class SearchCollectionResultCell: UICollectionViewCell {
         )
         
         subTitleLabel.attributedText = NSAttributedString(
-            string: item.description ?? "",
+            string: item.releaseNotes ?? "",
             attributes: [
                 .font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize),
                 .foregroundColor: UIAsset.fontSemiBlack.color
             ]
         )
                 
-        logoView.load(url: item.artworkUrl512 ?? "") {
-            self.activityIndicator.stopAnimating()
-        }
+        logoView.load(url: item.artworkUrl512 ?? "")
         
         // Extension 으로 뺴면 왜 안 될까 ?
         ratingView.arrangedSubviews.forEach {
             ratingView.removeArrangedSubview($0)
             $0.removeFromSuperview()
         }
-        ratingView.configure(rating: item.averageUserRating ?? 0, count: Int64(item.userRatingCount ?? 0))
+        ratingView.smallRatingConfigure(rating: item.averageUserRating ?? 0, count: Int64(item.userRatingCount ?? 0))
         
         DispatchQueue.main.async { [weak self] in
             if let itemScreenShots = item.screenshotUrls {

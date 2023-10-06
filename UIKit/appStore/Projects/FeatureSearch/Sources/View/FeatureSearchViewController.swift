@@ -63,7 +63,6 @@ public class FeatureSearchViewController: UIViewController {
     }()
     
     private lazy var titleView: UIStackView = {
-        
         let widthSpacer = DividerFactory.build(width: CGFloat.greatestFiniteMagnitude)
         let contentView = UIStackView(
             arrangedSubviews: [titleLabel, widthSpacer, profileIcon]
@@ -82,6 +81,7 @@ public class FeatureSearchViewController: UIViewController {
                 let term = self.resultViewModel.histories[$0.item - 1]
                 DispatchQueue.main.async {
                     self.resultViewModel.fetchApp(for: term)
+                    self.searchController.searchBar.text = term
                     self.searchController.isActive = true
                     self.searchController.showsSearchResultsController = true
                 }
@@ -95,7 +95,6 @@ public class FeatureSearchViewController: UIViewController {
         super.viewDidLoad()
         settingSearchController()
         layout()
-        
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
@@ -133,7 +132,6 @@ public class FeatureSearchViewController: UIViewController {
     }
 }
 
-
 extension FeatureSearchViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let history = UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue)
@@ -155,7 +153,6 @@ extension FeatureSearchViewController: UITableViewDataSource {
         content.textProperties.numberOfLines = 1
         content.textProperties.lineBreakMode = .byTruncatingTail
         
-        
         cell.contentConfiguration = content
         
         if indexPath.row == 0 || indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
@@ -163,7 +160,6 @@ extension FeatureSearchViewController: UITableViewDataSource {
         } else {
             cell.separatorInset = UIEdgeInsets(top: 10, left: AppStoreSize.defaultPadding, bottom: 10, right: AppStoreSize.defaultPadding)
         }
-        
         
         return cell
     }

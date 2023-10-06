@@ -30,9 +30,13 @@ public final class FeatureSearchResultViewModel: ObservableObject {
             (UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue)?.tail as? [String] ?? [String]())
         }
         set {
-            guard var history = UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue) else { return }
+            guard var history = UserDefaults.standard.array(forKey: UserDefaultsKeys.searchHistory.rawValue) as? [String],
+                  let newValue = newValue.first,
+                  !history.contains(newValue)
+            else { return }
+
             if history.count > 10 { history.remove(at: 1) }
-            history += newValue
+            history.append(newValue)
             UserDefaults.standard.set(history, forKey: UserDefaultsKeys.searchHistory.rawValue)
         }
     }

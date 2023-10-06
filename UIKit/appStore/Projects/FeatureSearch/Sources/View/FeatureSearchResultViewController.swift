@@ -128,9 +128,9 @@ extension FeatureSearchResultViewController {
                     ),
                     subitems: [item]
                 )
+                
                 group.contentInsets = .init(top: AppStoreSize.defaultPadding, leading: AppStoreSize.defaultPadding, bottom: 5, trailing: 0)
                 let section = NSCollectionLayoutSection(group: group)
-                
                 return section
                 
             case .result:
@@ -150,7 +150,6 @@ extension FeatureSearchResultViewController {
                 )
                 
                 group.contentInsets = .init(top: AppStoreSize.defaultPadding, leading: AppStoreSize.defaultPadding, bottom: 5, trailing: AppStoreSize.defaultPadding)
-                
                 let section = NSCollectionLayoutSection(group: group)
                 return section
             }

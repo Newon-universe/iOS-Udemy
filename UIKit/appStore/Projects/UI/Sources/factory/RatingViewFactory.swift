@@ -47,7 +47,7 @@ extension UIStackView {
         return image
     }()
     
-    public func configure(
+    public func smallRatingConfigure(
         rating: Double = 0,
         size: CGFloat = AppStoreSize.captionSize,
         count: Int64?
@@ -65,17 +65,56 @@ extension UIStackView {
             }
             
             button.snp.makeConstraints { make in
-                make.width.equalTo(AppStoreSize.captionSize)
-                make.height.equalTo(AppStoreSize.captionSize)
+                make.width.equalTo(size)
+                make.height.equalTo(size)
             }
             
             self.addArrangedSubview(button)
         }
         
-        let label = UILabelFactory.build(text: " \(count.abbreviateCount)", font: AppStoreFont.regular(ofSize: AppStoreSize.captionSize), textColor: UIAsset.fontSemiBlack.color)
+        let label = UILabelFactory.build(
+            text: " \(count.abbreviateCount)",
+            font: AppStoreFont.regular(ofSize: size),
+            textColor: UIAsset.fontSemiBlack.color
+        )
         self.addArrangedSubview(label)
         self.tintColor = UIAsset.fontSemiBlack.color
         self.axis = .horizontal
+    }
+    
+    public func largeRatingConfigure(
+        rating: Double = 0,
+        size: CGFloat = AppStoreSize.contentSize
+    ){
+        let label = UILabelFactory.build(
+            text: " \(String(format: "%.1f", rating)) ",
+            font: AppStoreFont.regular(ofSize: size),
+            textColor: UIAsset.fontSemiBlack.color
+        )
         
+        self.addArrangedSubview(label)
+        
+        for i in 0 ..< 5 {
+            let button = UIButton()
+            
+            if i < Int(rating) {
+                button.setImage(UIStackView.starFillImage, for: .normal)
+            } else if Double(i) < rating {
+                button.setImage(UIStackView.starHalfImage, for: .normal)
+            } else {
+                button.setImage(UIStackView.starEmptyImage, for: .normal)
+            }
+            
+            button.snp.makeConstraints { make in
+                make.width.equalTo(size + 5)
+                make.height.equalTo(size)
+            }
+            
+            self.addArrangedSubview(button)
+        }
+        
+        self.tintColor = UIAsset.fontSemiBlack.color
+        self.axis = .horizontal
+        self.spacing = 0
     }
 }

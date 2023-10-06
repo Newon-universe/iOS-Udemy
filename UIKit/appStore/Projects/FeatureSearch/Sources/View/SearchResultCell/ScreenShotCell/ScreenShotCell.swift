@@ -19,6 +19,8 @@ class ScreenShotCell: UICollectionViewCell {
     private let screenView: UIImageView = {
         let view = UIImageView()
         view.addCornerRadius(radius: 15)
+        view.layer.borderWidth = 0.2
+        view.layer.borderColor = UIAsset.fontGray.color.cgColor
         return view
     }()
     
@@ -60,10 +62,6 @@ class ScreenShotCell: UICollectionViewCell {
     }
     
     func configure(item: AppScreenShot) {
-        screenView.load(url: item.image) {
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-            }
-        }
+        screenView.load(url: item.image)
     }
 }
