@@ -11,7 +11,7 @@ import Utils
 
 public enum Endpoint {
     
-    case fetchApp(term: String, country: String = "KR", limit: Int = 10)
+    case fetchApp(term: String, country: String = "KR", offset: Int = 0,limit: Int = 10)
     
     var request: URLRequest? {
         guard let url = self.url else { assertionFailure("URL is not valid"); return nil }
@@ -36,11 +36,12 @@ public enum Endpoint {
     
     private var queryItems: [URLQueryItem] {
         switch self {
-        case .fetchApp(let term, let country, let limit):
+        case .fetchApp(let term, let country, let offset, let limit):
             return [
                 URLQueryItem(name: "term", value: term),
                 URLQueryItem(name: "country", value: country),
                 URLQueryItem(name: "entity", value: "software"),
+                URLQueryItem(name: "offset", value: String(offset)),
                 URLQueryItem(name: "limit", value: String(limit)),
             ]
         }

@@ -43,6 +43,7 @@ public class FeatureSearchViewController: UIViewController {
         controller.searchBar.cancelButtonClickedPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
+                self?.resultViewModel.searchResults = []
                 self?.tableView.reloadData()
             }
             .store(in: &self.cancellabels)

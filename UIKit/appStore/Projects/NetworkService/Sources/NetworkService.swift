@@ -8,8 +8,6 @@
 import UIKit
 import Combine
 
-
-
 public class NetworkService<T: Decodable, E: Error> {
     public enum NetworkServiceError: Error {
         case networkError
@@ -54,7 +52,7 @@ public class NetworkService<T: Decodable, E: Error> {
         .resume()
     }
     
-    public static func fetchAsyncApp(with endpoint: Endpoint) async -> AnyPublisher<T, NetworkServiceError> {
+    public static func fetchAppWithCombine(with endpoint: Endpoint) -> AnyPublisher<T, NetworkServiceError> {
         guard let request = endpoint.request?.url else { return Fail(error: NetworkServiceError.noInternet).eraseToAnyPublisher() }
         
         return URLSession.shared.dataTaskPublisher(for: request)
@@ -82,4 +80,15 @@ public class NetworkService<T: Decodable, E: Error> {
             .eraseToAnyPublisher()
     }
     
+    public static func fetchAppWithAsync(with endpoint: Endpoint) async throws -> T {
+        guard let request = endpoint.request?.url else { throw NetworkServiceError.noInternet }
+        let (data, response) = try await URLSession.shared.data(from: request)
+
+        guard let httpResponse = response as? HTTPURLResponse, 200 ... 299 ~= httpResponse.statusCode else {
+            throw NetworkServiceError.networkError
+        }
+
+        let decodedData = try JSONDecoder().decode(T.self, from: data)
+        return decodedData
+    }
 }

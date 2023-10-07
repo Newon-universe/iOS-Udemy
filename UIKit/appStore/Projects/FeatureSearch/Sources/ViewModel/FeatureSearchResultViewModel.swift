@@ -17,13 +17,16 @@ public final class FeatureSearchResultViewModel: ObservableObject {
 //    struct Input {
 //        let searchPublisher: AnyPublisher<String, Never>
 //    }
-    
+//    
 //    struct Output {
 //        let updateViewPublisher: AnyPublisher<[iTuensDataResponseModel], Never>
 //    }
     
     private var cancellabels = Set<AnyCancellable>()
     @Published public var searchResults: [iTuensModel]
+    var currentTerm: String? = nil
+    
+    public var isPagination = false
     
     public var histories: [String] {
         get {
@@ -53,11 +56,40 @@ public final class FeatureSearchResultViewModel: ObservableObject {
     
     
     public func fetchApp(for searchTerm: String) {
-        NetworkService<iTuensDataResponseModel, Error>.fetchApp(with: Endpoint.fetchApp(term: searchTerm)) { result in
+        guard searchResults.count % 10 == 0 else { return }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
+        NetworkService<iTuensDataResponseModel, Error>.fetchApp(with: Endpoint.fetchApp(term: searchTerm, offset: searchResults.count)) { result in
             switch result {
-            case .success(let response): DispatchQueue.main.async { self.searchResults = response.results ?? [] }
-            case .failure(_): DispatchQueue.main.async { self.searchResults = [] }
+            case .success(let response): DispatchQueue.main.async { self.searchResults += response.results ?? []; self.isPagination = false }
+            case .failure(_): DispatchQueue.main.async { self.searchResults = []; self.isPagination = false }
             }
         }
+    }
+    
+    public func fetchAppAsync(for searchTerm: String) {
+        guard searchResults.count % 10 == 0 else { return }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
+        NetworkService<iTuensDataResponseModel, Error>.fetchAppWithCombine(with: .fetchApp(term: searchTerm, offset: searchResults.count))
+            .receive(on: DispatchQueue.main)
+            .sink { status in
+                switch status {
+                case .finished: break
+                case .failure(let error): print(error); self.searchResults = []
+                }
+            } receiveValue: { data in
+                self.searchResults = data.results ?? []
+            }
+            .store(in: &cancellabels)
+    }
+    
+    public func fetchAppAsync(for searchTerm: String) -> [iTuensDataResponseModel] {
+        guard searchResults.count % 10 == 0 else { return [] }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
     }
 }
