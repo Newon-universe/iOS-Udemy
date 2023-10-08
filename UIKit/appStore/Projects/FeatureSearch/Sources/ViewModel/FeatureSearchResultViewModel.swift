@@ -60,12 +60,32 @@ public final class FeatureSearchResultViewModel: ObservableObject {
         currentTerm = searchTerm
         
         DispatchQueue.main.async { self.isPagination = true }
-        NetworkService<iTuensDataResponseModel, Error>.fetchApp(with: Endpoint.fetchApp(term: searchTerm, offset: searchResults.count)) { result in
+        NetworkService<iTuensDataResponseModel>.fetchApp(with: Endpoint.fetchApp(term: searchTerm, offset: searchResults.count)) { result in
             switch result {
-            case .success(let response): DispatchQueue.main.async { self.searchResults += response.results ?? []; self.isPagination = false }
-            case .failure(_): DispatchQueue.main.async { self.searchResults = []; self.isPagination = false }
+            case .success(let response): DispatchQueue.main.async { self.searchResults += response.results ?? [] }
+            case .failure(_): DispatchQueue.main.async { self.searchResults = [] }
             }
+            self.isPagination = false
         }
+    }
+    
+    public func fetchAppCombine(for searchTerm: String) {
+        guard searchResults.count % 10 == 0 else { return }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
+        NetworkService<iTuensDataResponseModel>.fetchAppWithCombine(with: .fetchApp(term: searchTerm, offset: searchResults.count))
+            .receive(on: DispatchQueue.main)
+            .sink { status in
+                switch status {
+                case .finished: break
+                case .failure(let error): print(error)
+                }
+            } receiveValue: { data in
+                self.searchResults += data.results ?? []
+                DispatchQueue.main.async { self.isPagination = false }
+            }
+            .store(in: &cancellabels)
     }
     
     public func fetchAppAsync(for searchTerm: String) {
@@ -73,23 +93,16 @@ public final class FeatureSearchResultViewModel: ObservableObject {
         currentTerm = searchTerm
         
         DispatchQueue.main.async { self.isPagination = true }
-        NetworkService<iTuensDataResponseModel, Error>.fetchAppWithCombine(with: .fetchApp(term: searchTerm, offset: searchResults.count))
-            .receive(on: DispatchQueue.main)
-            .sink { status in
-                switch status {
-                case .finished: break
-                case .failure(let error): print(error); self.searchResults = []
-                }
-            } receiveValue: { data in
-                self.searchResults = data.results ?? []
-            }
-            .store(in: &cancellabels)
-    }
-    
-    public func fetchAppAsync(for searchTerm: String) -> [iTuensDataResponseModel] {
-        guard searchResults.count % 10 == 0 else { return [] }
-        currentTerm = searchTerm
         
-        DispatchQueue.main.async { self.isPagination = true }
+        Task {
+            let result = await NetworkService<iTuensDataResponseModel>.fetchAppWithAsync(with: .fetchApp(term: searchTerm, offset: searchResults.count))
+            switch result {
+            case .success(let data): self.searchResults += data.results ?? []
+            case .failure(let error): print(error)
+            }
+            
+            DispatchQueue.main.async { self.isPagination = false }
+        }
+        
     }
 }

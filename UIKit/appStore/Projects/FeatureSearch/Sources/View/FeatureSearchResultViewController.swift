@@ -198,7 +198,7 @@ extension FeatureSearchResultViewController {
         case .result:
             guard let term = viewModel.currentTerm else { break }
             if indexPath.item == viewModel.searchResults.count - 1 {
-                viewModel.fetchApp(for: term)
+                viewModel.fetchAppAsync(for: term)
             }
         }
     }

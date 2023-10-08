@@ -35,7 +35,7 @@ public class FeatureSearchViewController: UIViewController {
             .sink { [weak self] _ in
                 if let value = controller.searchBar.text {
                     self?.resultViewModel.histories = [value]
-                    self?.resultViewModel.fetchApp(for: value)
+                    self?.resultViewModel.fetchAppAsync(for: value)
                 }
             }
             .store(in: &self.cancellabels)

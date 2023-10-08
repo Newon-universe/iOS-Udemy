@@ -8,24 +8,21 @@
 import UIKit
 import Combine
 
-public class NetworkService<T: Decodable, E: Error> {
-    public enum NetworkServiceError: Error {
-        case networkError
-        case noInternet
-        case unknownNetworkError
-        case decodingError(DecodingError)
-        case serverError(String)
-    }
+public enum NetworkServiceError: Error {
+    case networkError
+    case noInternet
+    case unknownNetworkError
+    case decodingError
+    case serverError(String)
+    case unauthorized
+}
+
+public class NetworkService<T: Decodable> {
     
     public static func fetchApp(with endpoint: Endpoint, completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
         guard let request = endpoint.request else { return }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            if let error = error {
-                completion(.failure(.unknownNetworkError))
-                return
-            }
             
             if let response = response as? HTTPURLResponse, response.statusCode != 200 {
                 completion(.failure(.networkError))
@@ -37,8 +34,8 @@ public class NetworkService<T: Decodable, E: Error> {
                     let appSearchData = try decoder.decode(T.self, from: data)
                     completion(.success(appSearchData))
                 } catch let error {
-                    if let error = error as? DecodingError{
-                        completion(.failure(.decodingError(error)))
+                    if error is DecodingError{
+                        completion(.failure(.decodingError))
                     } else {
                         completion(.failure(.unknownNetworkError))
                     }
@@ -60,6 +57,10 @@ public class NetworkService<T: Decodable, E: Error> {
                 guard let httpResponse = response as? HTTPURLResponse, 200 ... 299 ~= httpResponse.statusCode else {
                     throw NetworkServiceError.networkError
                 }
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 401 else {
+                    throw NetworkServiceError.unauthorized
+                }
+                
                 return data
             }
             .decode(type: T.self, decoder: JSONDecoder())
@@ -71,8 +72,8 @@ public class NetworkService<T: Decodable, E: Error> {
                     default:
                         return NetworkServiceError.unknownNetworkError
                     }
-                } else if let decodingError = error as? DecodingError {
-                    return NetworkServiceError.decodingError(decodingError)
+                } else if error is DecodingError {
+                    return NetworkServiceError.decodingError
                 } else {
                     return NetworkServiceError.serverError(error.localizedDescription)
                 }
@@ -80,15 +81,30 @@ public class NetworkService<T: Decodable, E: Error> {
             .eraseToAnyPublisher()
     }
     
-    public static func fetchAppWithAsync(with endpoint: Endpoint) async throws -> T {
-        guard let request = endpoint.request?.url else { throw NetworkServiceError.noInternet }
-        let (data, response) = try await URLSession.shared.data(from: request)
-
-        guard let httpResponse = response as? HTTPURLResponse, 200 ... 299 ~= httpResponse.statusCode else {
-            throw NetworkServiceError.networkError
+    public static func fetchAppWithAsync(with endpoint: Endpoint) async -> Result<T, NetworkServiceError> {
+        guard let request = endpoint.request?.url else { return .failure(NetworkServiceError.noInternet) }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(from: request)
+            
+            guard let response = response as? HTTPURLResponse else {
+                return .failure(.noInternet)
+            }
+            
+            switch response.statusCode {
+            case 200...299:
+                guard let decodedResponse = try? JSONDecoder().decode(T.self, from: data) else {
+                    return .failure(.decodingError)
+                }
+                
+                return .success(decodedResponse)
+            case 401:
+                return .failure(.unauthorized)
+            default:
+                return .failure(.unknownNetworkError)
+            }
+        } catch {
+            return .failure(.unknownNetworkError)
         }
-
-        let decodedData = try JSONDecoder().decode(T.self, from: data)
-        return decodedData
     }
 }
