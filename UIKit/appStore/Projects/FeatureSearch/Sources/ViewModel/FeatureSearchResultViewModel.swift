@@ -14,13 +14,13 @@ import Utils
 
 public final class FeatureSearchResultViewModel: ObservableObject {
     
-//    struct Input {
-//        let searchPublisher: AnyPublisher<String, Never>
-//    }
-//    
-//    struct Output {
-//        let updateViewPublisher: AnyPublisher<[iTuensDataResponseModel], Never>
-//    }
+    struct Input {
+        let searchPublisher: AnyPublisher<String, Never>
+    }
+    
+    struct Output {
+        let updateViewPublisher: AnyPublisher<[iTuensDataResponseModel], Never>
+    }
     
     private var cancellabels = Set<AnyCancellable>()
     @Published public var searchResults: [iTuensModel]
@@ -55,6 +55,12 @@ public final class FeatureSearchResultViewModel: ObservableObject {
     }
     
     
+    
+    //MARK: - fetchApp...() 기능들은 네트워크 동일한 기능, 다르게 적용
+    // fetchApp() -> Completion 사용
+    // fetchAppCombine() -> Combine 사용
+    // fetchAppAsync() -> async, Result 사용
+    
     public func fetchApp(for searchTerm: String) {
         guard searchResults.count % 10 == 0 else { return }
         currentTerm = searchTerm
@@ -63,7 +69,7 @@ public final class FeatureSearchResultViewModel: ObservableObject {
         NetworkService<iTuensDataResponseModel>.fetchApp(with: Endpoint.fetchApp(term: searchTerm, offset: searchResults.count)) { result in
             switch result {
             case .success(let response): DispatchQueue.main.async { self.searchResults += response.results ?? [] }
-            case .failure(_): DispatchQueue.main.async { self.searchResults = [] }
+            case .failure(let error): print(error)
             }
             self.isPagination = false
         }

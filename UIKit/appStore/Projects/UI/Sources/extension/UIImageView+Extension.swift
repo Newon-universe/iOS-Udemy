@@ -7,20 +7,56 @@
 //
 
 import UIKit
+import Combine
+
+//MARK: - Replace with ImageCache class
+
+//extension UIImageView {
+//    static var imageCache = NSMutableDictionary()
+//    
+//    public func load(url: String) {
+//        if let data = UIImageView.imageCache.value(forKey: url),
+//           let image = data as? UIImage
+//        {
+//            DispatchQueue.main.async { self.image = image }
+//            return
+//        }
+//        
+//        guard let url = URL(string: url) else { return }
+//        let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+//        
+//        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+//            if let data = data, let image = UIImage(data: data) {
+//                UIImageView.imageCache.setValue(image, forKey: url.absoluteString)
+//                DispatchQueue.main.async {
+//                    self?.image = image
+//                }
+//            }
+//        }
+//        task.resume()
+//    }
+//}
 
 extension UIImageView {
-    public func load(url: String) {
+    private static let cache = ImageCache()
+    
+    public func load(from url: String) {
+        DispatchQueue.main.async { self.image = nil }
         guard let url = URL(string: url) else { return }
         
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
+        if let image = UIImageView.cache[url] {
+            DispatchQueue.main.async { self.image = image }
+            return
+        }
+        
+        let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                UIImageView.cache.insertImage(image, for: url)
+                DispatchQueue.main.async {
+                    self?.image = image
                 }
             }
-        }
+        }.resume()
     }
 }
-

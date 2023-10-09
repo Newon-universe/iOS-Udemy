@@ -20,6 +20,7 @@ public enum Endpoint {
         request.httpMethod = self.httpMethod
         request.httpBody = self.httpBody
         request.addValues(for: self)
+        request.cachePolicy = .returnCacheDataElseLoad
         
         return request
     }

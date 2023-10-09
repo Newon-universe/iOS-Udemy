@@ -218,7 +218,7 @@ public class FeatureSearchDetailViewController: UIViewController {
             ]
         )
         
-        logoView.load(url: viewModel.item.artworkUrl512 ?? "")
+        logoView.load(from: viewModel.item.artworkUrl512 ?? "")
         
         ratingView.arrangedSubviews.forEach {
             ratingView.removeArrangedSubview($0)
