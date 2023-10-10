@@ -13,13 +13,13 @@ import XCTest
 
 final class FeatureSearchTests: XCTestCase {
     
-    func test_fetchApp() {
+    func test_NetworkFetchApp() {
         // Given
         let expectation = XCTestExpectation(description: "Fetch App Expectation")
         let endpoint = Endpoint.fetchApp(term: "카카오파리채")
 
         // When
-        NetworkService<iTuensDataResponseModel, Error>.fetchApp(with: endpoint) { result in
+        NetworkService<iTuensDataResponseModel>.fetchApp(with: endpoint) { result in
             switch result {
             case .success(let response):
                 // Then

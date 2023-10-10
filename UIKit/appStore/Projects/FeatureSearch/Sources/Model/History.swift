@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct History: Hashable {
-    var title: String
+public struct History: Hashable {
+    public var title: String
     private let uid: String = UUID().uuidString
 }

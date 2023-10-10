@@ -26,7 +26,7 @@ public class FeatureSearchViewController: UIViewController {
         controller.searchBar.textDidChangePublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] value in
-                self?.resultController.reloadHistorySnapshot()
+                self?.resultController.reloadHistorySnapshot(currentText: value)
             }
             .store(in: &cancellabels)
         
@@ -35,7 +35,8 @@ public class FeatureSearchViewController: UIViewController {
             .sink { [weak self] _ in
                 if let value = controller.searchBar.text {
                     self?.resultViewModel.histories = [value]
-                    self?.resultViewModel.fetchAppAsync(for: value)
+                    self?.searchValueSubject.send(value)
+//                    self?.resultViewModel.fetchAppAsync(for: value)
                 }
             }
             .store(in: &self.cancellabels)
@@ -50,16 +51,11 @@ public class FeatureSearchViewController: UIViewController {
         
         return controller
     }()
+    private lazy var searchValueSubject: PassthroughSubject<String, Never> = .init()
     
     private let titleLabel: UILabel = UILabelFactory.build(text: "검색", font: AppStoreFont.bold(ofSize: AppStoreSize.titleSize))
     private lazy var profileIcon: UIButton = {
         let button = UIButtonFactory.build(image: UIImage(systemName: "person.crop.circle"))
-        
-        button.tapPublisher.sink { _ in
-            print("ProfileButton Clicked")
-        }
-        .store(in: &self.cancellabels)
-
         return button
     }()
     
@@ -121,6 +117,25 @@ public class FeatureSearchViewController: UIViewController {
         }
     }
     
+//    func bind() {
+//        let input = FeatureSearchResultViewModel.Input(
+//            searchPublisher: searchClickedValuePublisher,
+//            downloadButtonTapPublisher: <#T##AnyPublisher<Void, Never>#>,
+//            userButtonTapPublisher: profileIcon.tapPublisher
+//        )
+//        
+//        let output = resultViewModel.transform(input: input)
+//        
+//        output.fetchAppPublisher.sink { status in
+//            switch status {
+//            case .finished: break
+//            case .failure(let error): print(error)
+//            }
+//        } receiveValue: { value in
+//            <#code#>
+//        }.store(in: &cancellabels)
+//    }
+    
     private func settingSearchController() {
         searchController.searchBar.setValue("취소", forKey: "cancelButtonText")
         searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
@@ -130,6 +145,18 @@ public class FeatureSearchViewController: UIViewController {
         
         navigationItem.searchController = searchController
         navigationItem.titleView = titleView
+    }
+}
+
+extension FeatureSearchViewController {
+    
+    private var searchClickedValuePublisher: AnyPublisher<String, Never> {
+        return Publishers
+            .Zip(searchValueSubject, searchController.searchBar.searchButtonClickedPublisher)
+            .map { term, _ in
+                return term
+            }
+            .eraseToAnyPublisher()
     }
 }
 

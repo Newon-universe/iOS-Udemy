@@ -11,7 +11,7 @@ import Combine
 public enum NetworkServiceError: Error {
     case networkError
     case noInternet
-    case unknownNetworkError
+    case unknownError
     case decodingError
     case serverError(String)
     case unauthorized
@@ -37,13 +37,13 @@ public class NetworkService<T: Decodable> {
                     if error is DecodingError{
                         completion(.failure(.decodingError))
                     } else {
-                        completion(.failure(.unknownNetworkError))
+                        completion(.failure(.unknownError))
                     }
                     print(error.localizedDescription)
                     
                 }
             } else {
-                completion(.failure(.unknownNetworkError))
+                completion(.failure(.unknownError))
             }
         }
         .resume()
@@ -70,7 +70,7 @@ public class NetworkService<T: Decodable> {
                     case .notConnectedToInternet:
                         return NetworkServiceError.noInternet
                     default:
-                        return NetworkServiceError.unknownNetworkError
+                        return NetworkServiceError.unknownError
                     }
                 } else if error is DecodingError {
                     return NetworkServiceError.decodingError
@@ -101,10 +101,10 @@ public class NetworkService<T: Decodable> {
             case 401:
                 return .failure(.unauthorized)
             default:
-                return .failure(.unknownNetworkError)
+                return .failure(.unknownError)
             }
         } catch {
-            return .failure(.unknownNetworkError)
+            return .failure(.unknownError)
         }
     }
 }

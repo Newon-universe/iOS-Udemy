@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum DataSourceItem: Hashable {
+public enum DataSourceItem: Hashable {
     case searchResult(iTuensModel)
     case searchHistory(History)
 }

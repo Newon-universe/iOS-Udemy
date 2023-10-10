@@ -48,10 +48,11 @@ public class FeatureSearchResultViewController: UICollectionViewController {
             }).store(in: &cancellabels)
     }
     
-    func reloadHistorySnapshot() {
+    func reloadHistorySnapshot(currentText: String) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, DataSourceItem>()
+        let items = viewModel.historiesFilter(term: currentText)
         snapshot.appendSections([.history, .result])
-        snapshot.appendItems(viewModel.histories.compactMap { DataSourceItem.searchHistory(History(title: $0)) }.tail, toSection: .history)
+        snapshot.appendItems(items, toSection: .history)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
