@@ -97,7 +97,6 @@ class SearchCollectionResultCell: UICollectionViewCell {
         layout()
         setupScreenShotDataSource()
         reloadScreenShotDataSource()
-        activityIndicator.startAnimating()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -164,7 +163,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
             ]
         )
                 
-        logoView.load(url: item.artworkUrl512 ?? "")
+        logoView.load(from: item.artworkUrl512 ?? "")
         
         // Extension 으로 뺴면 왜 안 될까 ?
         ratingView.arrangedSubviews.forEach {

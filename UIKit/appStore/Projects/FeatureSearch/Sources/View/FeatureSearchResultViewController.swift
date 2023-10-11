@@ -25,7 +25,6 @@ public class FeatureSearchResultViewController: UICollectionViewController {
     }
     
     private var cancellabels = Set<AnyCancellable>()
-    private var isPaginating = false
     
     init(navigationController: UINavigationController?, viewModel: FeatureSearchResultViewModel) {
         self.viewModel = viewModel
@@ -49,10 +48,11 @@ public class FeatureSearchResultViewController: UICollectionViewController {
             }).store(in: &cancellabels)
     }
     
-    func reloadHistorySnapshot() {
+    func reloadHistorySnapshot(currentText: String) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, DataSourceItem>()
+        let items = viewModel.historiesFilter(term: currentText)
         snapshot.appendSections([.history, .result])
-        snapshot.appendItems(viewModel.histories.compactMap { DataSourceItem.searchHistory(History(title: $0)) }.tail, toSection: .history)
+        snapshot.appendItems(items, toSection: .history)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
@@ -104,6 +104,17 @@ extension FeatureSearchResultViewController {
                 return cell
             }
         })
+        
+        dataSource.supplementaryViewProvider = { [unowned self] (collectionView, kind, indexPath) in
+            guard let footerView = self.collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionFooter,
+                withReuseIdentifier: FooterIndicatorView.identifier,
+                for: indexPath
+            ) as? FooterIndicatorView else { fatalError() }
+            
+            footerView.toggleLoading(isEnabled: viewModel.isPagination)
+            return footerView
+        }
         
         self.collectionView.dataSource = self.dataSource
     }
@@ -178,5 +189,18 @@ extension FeatureSearchResultViewController {
         detailViewController.configure(item: item)
         
         self.featureNavigaionController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    public override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else { return }
+        
+        switch section {
+        case .history: break
+        case .result:
+            guard let term = viewModel.currentTerm else { break }
+            if indexPath.item == viewModel.searchResults.count - 1 {
+                viewModel.fetchAppAsync(for: term)
+            }
+        }
     }
 }

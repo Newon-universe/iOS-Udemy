@@ -41,7 +41,7 @@ public struct iTuensDataResponseModel: Codable, Hashable {
     }
 }
 
-public struct iTuensModel: Codable, Hashable {
+public struct iTuensModel: Codable, Hashable, Identifiable {
     public let isGameCenterEnabled: Bool?
     public let screenshotUrls: [String]?
     public let ipadScreenshotUrls: [String]?
@@ -86,6 +86,7 @@ public struct iTuensModel: Codable, Hashable {
     public let formattedPrice: String?
     public let averageUserRating: Double?
     public let userRatingCount: Int64?
+    public let id = UUID()
     
     private enum CodingKeys: String, CodingKey {
         case isGameCenterEnabled = "isGameCenterEnabled"

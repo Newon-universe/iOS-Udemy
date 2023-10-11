@@ -62,6 +62,6 @@ class ScreenShotCell: UICollectionViewCell {
     }
     
     func configure(item: AppScreenShot) {
-        screenView.load(url: item.image)
+        screenView.load(from: item.image)
     }
 }

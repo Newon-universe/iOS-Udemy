@@ -14,16 +14,23 @@ import Utils
 
 public final class FeatureSearchResultViewModel: ObservableObject {
     
-//    struct Input {
-//        let searchPublisher: AnyPublisher<String, Never>
-//    }
+    public struct Input {
+        let searchPublisher: AnyPublisher<String, Never>
+        let downloadButtonTapPublisher: AnyPublisher<Void, Never>
+        let userButtonTapPublisher: AnyPublisher<Void, Never>
+    }
     
-//    struct Output {
-//        let updateViewPublisher: AnyPublisher<[iTuensDataResponseModel], Never>
-//    }
+    public struct Output {
+        let fetchAppPublisher: AnyPublisher<iTuensDataResponseModel, NetworkServiceError>
+        let downloadPublisher: AnyPublisher<Void, Never>
+        let userPublisher: AnyPublisher<Void, Never>
+    }
     
     private var cancellabels = Set<AnyCancellable>()
     @Published public var searchResults: [iTuensModel]
+    var currentTerm: String? = nil
+    
+    public var isPagination = false
     
     public var histories: [String] {
         get {
@@ -41,6 +48,7 @@ public final class FeatureSearchResultViewModel: ObservableObject {
         }
     }
     
+    
     init(searchResults: iTuensDataResponseModel) {
         self.searchResults = searchResults.results ?? []
         
@@ -51,13 +59,116 @@ public final class FeatureSearchResultViewModel: ObservableObject {
         }
     }
     
+    func transform(input: Input) -> Output {
+        let searchPublisher = input.searchPublisher
+            .flatMap { [unowned self] term in
+                currentTerm = term
+                return Future<iTuensDataResponseModel, NetworkServiceError> { promise in
+                    Task {
+                        let data = await self.fetchAppAsync(for: term)
+                        switch data {
+                        case .success(let response):
+                            promise(.success(response))
+                        case .failure(let error):
+                            promise(.failure(error))
+                        }
+                    }
+                }
+            }
+            .eraseToAnyPublisher()
+        
+        let downloadButtonPublisher = input.downloadButtonTapPublisher.handleEvents(receiveOutput: { [unowned self] _ in
+            print("download button clicked")
+        }).flatMap {
+            return Just($0)
+        }.eraseToAnyPublisher()
+        
+        let userButtonTapPublisher = input.userButtonTapPublisher.handleEvents(receiveOutput: { [unowned self] _ in
+            print("user button clicked")
+        }).flatMap {
+            return Just($0)
+        }.eraseToAnyPublisher()
+        
+        return Output(fetchAppPublisher: searchPublisher, downloadPublisher: downloadButtonPublisher, userPublisher: userButtonTapPublisher)
+    }
+    
+    public func historiesFilter(term: String) -> [DataSourceItem] {
+        let item = histories
+            .compactMap { $0.hasPrefix(term) ? DataSourceItem.searchHistory(History(title: $0)) : nil }
+            .tail
+        
+        print(term, item, histories)
+        
+        return item
+    }
+    
+    //MARK: - fetchApp...() 기능들은 네트워크 동일한 기능, 다르게 적용
+    // fetchApp() -> Completion 사용
+    // fetchAppCombine() -> Combine 사용
+    // fetchAppAsync() -> async, Result 사용
     
     public func fetchApp(for searchTerm: String) {
-        NetworkService<iTuensDataResponseModel, Error>.fetchApp(with: Endpoint.fetchApp(term: searchTerm)) { result in
+        guard searchResults.count % 10 == 0 else { return }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
+        NetworkService<iTuensDataResponseModel>.fetchApp(with: Endpoint.fetchApp(term: searchTerm, offset: searchResults.count)) { result in
             switch result {
-            case .success(let response): DispatchQueue.main.async { self.searchResults = response.results ?? [] }
-            case .failure(_): DispatchQueue.main.async { self.searchResults = [] }
+            case .success(let response): DispatchQueue.main.async { self.searchResults += response.results ?? [] }
+            case .failure(let error): print(error)
             }
+            self.isPagination = false
         }
+    }
+    
+    public func fetchAppCombine(for searchTerm: String) {
+        guard searchResults.count % 10 == 0 else { return }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
+        NetworkService<iTuensDataResponseModel>.fetchAppWithCombine(with: .fetchApp(term: searchTerm, offset: searchResults.count))
+            .receive(on: DispatchQueue.main)
+            .sink { status in
+                switch status {
+                case .finished: break
+                case .failure(let error): print(error)
+                }
+            } receiveValue: { data in
+                self.searchResults += data.results ?? []
+                DispatchQueue.main.async { self.isPagination = false }
+            }
+            .store(in: &cancellabels)
+    }
+    
+    public func fetchAppAsync(for searchTerm: String) {
+        guard searchResults.count % 10 == 0 else { return }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
+        
+        Task {
+            let result = await NetworkService<iTuensDataResponseModel>.fetchAppWithAsync(with: .fetchApp(term: searchTerm, offset: searchResults.count))
+            switch result {
+            case .success(let data): self.searchResults += data.results ?? []
+            case .failure(let error): print(error)
+            }
+            
+            DispatchQueue.main.async { self.isPagination = false }
+        }
+    }
+    
+    public func fetchAppAsync(for searchTerm: String) async -> Result<iTuensDataResponseModel, NetworkServiceError>{
+        guard searchResults.count % 10 == 0 else { return .failure(.serverError("No results")) }
+        currentTerm = searchTerm
+        
+        DispatchQueue.main.async { self.isPagination = true }
+        
+        let result = await NetworkService<iTuensDataResponseModel>.fetchAppWithAsync(with: .fetchApp(term: searchTerm, offset: searchResults.count))
+        
+        switch result {
+        case .success(let data): return .success(data)
+        case .failure(let error): return .failure(error)
+        }
+        DispatchQueue.main.async { self.isPagination = false }
     }
 }
