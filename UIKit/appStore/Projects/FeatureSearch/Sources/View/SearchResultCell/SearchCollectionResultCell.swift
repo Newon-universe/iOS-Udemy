@@ -79,15 +79,15 @@ class SearchCollectionResultCell: UICollectionViewCell {
         button.backgroundColor = UIAsset.backgroundGray.color
         button.addCornerRadius(radius: 13)
         
-        button.tapPublisher
-            .sink { _ in
-                print("Search-Download button clicked")
-            }
-            .store(in: &self.cancellabels)
+//        button.tapPublisher
+//            .sink { _ in
+//                print("Search-Download button clicked")
+//            }
+//            .store(in: &self.cancellabels)
         
         return button
     }()
-    
+        
     private var screenShotCollectionView: UICollectionView!
     private var screenShotDataSource: UICollectionViewDiffableDataSource<ScreenshotEnum, AppScreenShot>!
     

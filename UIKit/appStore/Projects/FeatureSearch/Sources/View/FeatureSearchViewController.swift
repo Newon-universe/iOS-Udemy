@@ -120,7 +120,6 @@ public class FeatureSearchViewController: UIViewController {
 //    func bind() {
 //        let input = FeatureSearchResultViewModel.Input(
 //            searchPublisher: searchClickedValuePublisher,
-//            downloadButtonTapPublisher: <#T##AnyPublisher<Void, Never>#>,
 //            userButtonTapPublisher: profileIcon.tapPublisher
 //        )
 //        
