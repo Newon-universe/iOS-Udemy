@@ -79,11 +79,11 @@ class SearchCollectionResultCell: UICollectionViewCell {
         button.backgroundColor = UIAsset.backgroundGray.color
         button.addCornerRadius(radius: 13)
         
-//        button.tapPublisher
-//            .sink { _ in
-//                print("Search-Download button clicked")
-//            }
-//            .store(in: &self.cancellabels)
+        button.tapPublisher
+            .sink { _ in
+                print("Search-Download button clicked")
+            }
+            .store(in: &self.cancellabels)
         
         return button
     }()
@@ -183,7 +183,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
     }
 }
 
-
+//MARK: - CollectionView Extension
 extension SearchCollectionResultCell {
     static func setupScreenShotCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()

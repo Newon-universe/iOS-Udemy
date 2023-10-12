@@ -15,7 +15,7 @@ import Utils
 
 public class FeatureSearchResultViewController: UICollectionViewController {
     private weak var featureNavigaionController: UINavigationController?
-    var viewModel: FeatureSearchResultViewModel
+    private weak var viewModel: FeatureSearchResultViewModel?
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, DataSourceItem>!
     
@@ -41,7 +41,7 @@ public class FeatureSearchResultViewController: UICollectionViewController {
         setupCollectionViewController()
         setupDataSource()
         
-        self.viewModel.$searchResults
+        self.viewModel?.$searchResults
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak weakedSelf = self] _ in
                 weakedSelf?.reloadResultSnapshot()

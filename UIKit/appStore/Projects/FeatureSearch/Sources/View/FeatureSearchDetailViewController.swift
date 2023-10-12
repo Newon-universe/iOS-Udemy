@@ -19,7 +19,7 @@ public class FeatureSearchDetailViewController: UIViewController {
     private var screenShotCollectionView: UICollectionView!
     private var screenShotDataSource: UICollectionViewDiffableDataSource<ScreenshotEnum, AppScreenShot>!
     
-    private var viewModel: FeatureSearchDetailViewModel
+    private weak var viewModel: FeatureSearchDetailViewModel?
     
     let logoView: UIImageView = {
         let imageView = UIImageView()
@@ -202,6 +202,8 @@ public class FeatureSearchDetailViewController: UIViewController {
     }
     
     func configure(item: iTuensModel) {
+        guard let viewModel = viewModel else { return }
+        
         titleLabel.attributedText = NSAttributedString(
             string: viewModel.item.trackName ?? "",
             attributes: [
@@ -310,6 +312,8 @@ extension FeatureSearchDetailViewController {
     }
     
     func reloadScreenShotDataSource() {
+        guard let viewModel = self.viewModel else { return }
+        
         var snapshot = NSDiffableDataSourceSnapshot<ScreenshotEnum, AppScreenShot>()
         snapshot.appendSections([.main])
         snapshot.appendItems(viewModel.screenShots, toSection: .main)
