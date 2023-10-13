@@ -87,7 +87,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
         
         return button
     }()
-    
+        
     private var screenShotCollectionView: UICollectionView!
     private var screenShotDataSource: UICollectionViewDiffableDataSource<ScreenshotEnum, AppScreenShot>!
     
@@ -183,7 +183,7 @@ class SearchCollectionResultCell: UICollectionViewCell {
     }
 }
 
-
+//MARK: - CollectionView Extension
 extension SearchCollectionResultCell {
     static func setupScreenShotCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()

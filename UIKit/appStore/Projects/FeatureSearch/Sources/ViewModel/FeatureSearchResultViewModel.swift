@@ -16,13 +16,11 @@ public final class FeatureSearchResultViewModel: ObservableObject {
     
     public struct Input {
         let searchPublisher: AnyPublisher<String, Never>
-        let downloadButtonTapPublisher: AnyPublisher<Void, Never>
         let userButtonTapPublisher: AnyPublisher<Void, Never>
     }
     
     public struct Output {
         let fetchAppPublisher: AnyPublisher<iTuensDataResponseModel, NetworkServiceError>
-        let downloadPublisher: AnyPublisher<Void, Never>
         let userPublisher: AnyPublisher<Void, Never>
     }
     
@@ -77,24 +75,18 @@ public final class FeatureSearchResultViewModel: ObservableObject {
             }
             .eraseToAnyPublisher()
         
-        let downloadButtonPublisher = input.downloadButtonTapPublisher.handleEvents(receiveOutput: { [unowned self] _ in
-            print("download button clicked")
-        }).flatMap {
-            return Just($0)
-        }.eraseToAnyPublisher()
-        
         let userButtonTapPublisher = input.userButtonTapPublisher.handleEvents(receiveOutput: { [unowned self] _ in
             print("user button clicked")
         }).flatMap {
             return Just($0)
         }.eraseToAnyPublisher()
         
-        return Output(fetchAppPublisher: searchPublisher, downloadPublisher: downloadButtonPublisher, userPublisher: userButtonTapPublisher)
+        return Output(fetchAppPublisher: searchPublisher, userPublisher: userButtonTapPublisher)
     }
     
-    public func historiesFilter(term: String) -> [DataSourceItem] {
+    public func historiesFilter(term: String) -> [String] {
         let item = histories
-            .compactMap { $0.hasPrefix(term) ? DataSourceItem.searchHistory(History(title: $0)) : nil }
+            .compactMap { $0.containsIgnoringCase(term) ? $0 : nil }
             .tail
         
         print(term, item, histories)

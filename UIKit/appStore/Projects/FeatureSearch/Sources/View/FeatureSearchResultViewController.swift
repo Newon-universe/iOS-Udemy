@@ -15,7 +15,7 @@ import Utils
 
 public class FeatureSearchResultViewController: UICollectionViewController {
     private weak var featureNavigaionController: UINavigationController?
-    var viewModel: FeatureSearchResultViewModel
+    private weak var viewModel: FeatureSearchResultViewModel?
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, DataSourceItem>!
     
@@ -41,7 +41,7 @@ public class FeatureSearchResultViewController: UICollectionViewController {
         setupCollectionViewController()
         setupDataSource()
         
-        self.viewModel.$searchResults
+        self.viewModel?.$searchResults
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak weakedSelf = self] _ in
                 weakedSelf?.reloadResultSnapshot()
@@ -50,7 +50,7 @@ public class FeatureSearchResultViewController: UICollectionViewController {
     
     func reloadHistorySnapshot(currentText: String) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, DataSourceItem>()
-        let items = viewModel.historiesFilter(term: currentText)
+        let items = viewModel.historiesFilter(term: currentText).compactMap { DataSourceItem.searchHistory(History(title: $0)) }
         snapshot.appendSections([.history, .result])
         snapshot.appendItems(items, toSection: .history)
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -86,23 +86,29 @@ extension FeatureSearchResultViewController {
             
             switch section {
             case .history:
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: SearchCollectionHistoryCell.identifier,
-                    for: indexPath
-                ) as! SearchCollectionHistoryCell
-
-                cell.configure(item: self.viewModel.histories[indexPath.row])
-                return cell
+                if case .searchHistory(let history) = item {
+                    let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: SearchCollectionHistoryCell.identifier,
+                        for: indexPath
+                    ) as! SearchCollectionHistoryCell
+                    
+                    cell.configure(item: history.title)
+                    
+                    return cell
+                }
                 
             case .result:
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: SearchCollectionResultCell.identifier,
-                    for: indexPath
-                ) as! SearchCollectionResultCell
-                
-                cell.configure(item: self.viewModel.searchResults[indexPath.row])
-                return cell
+                if case .searchResult(let iTunesModel) = item {
+                            let cell = collectionView.dequeueReusableCell(
+                                withReuseIdentifier: SearchCollectionResultCell.identifier,
+                                for: indexPath
+                            ) as! SearchCollectionResultCell
+                            
+                            cell.configure(item: iTunesModel)
+                            return cell
+                        }
             }
+            return UICollectionViewCell()
         })
         
         dataSource.supplementaryViewProvider = { [unowned self] (collectionView, kind, indexPath) in
