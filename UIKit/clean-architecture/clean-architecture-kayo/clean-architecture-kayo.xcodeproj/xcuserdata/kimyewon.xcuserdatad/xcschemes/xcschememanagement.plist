@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>LoginUseCaseFactoryTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>clean-architecture-kayo.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B0F069A82B461A8A00A3A2EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0F069D42B465EF100A3A2EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0F069E12B465FED00A3A2EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0F069F32B46E4CB00A3A2EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
