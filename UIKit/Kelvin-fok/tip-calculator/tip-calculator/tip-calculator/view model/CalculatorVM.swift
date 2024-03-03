@@ -10,13 +10,15 @@ import Combine
 
 class CalculatorVM {
     
+    private var bill: Double = 100
+    private var SomeDatas = [1, 2, 3, 4, 5]
+    
     struct Input {
         let billPublisher: AnyPublisher<Double, Never>
         let tipPublisher: AnyPublisher<Tip, Never>
         let splitPublisher: AnyPublisher<Int, Never>
         let logoViewTapPublisher: AnyPublisher<Void, Never>
     }
-    
     struct Output {
         let updateViewPublisher: AnyPublisher<Result, Never>
         let resetCalculatorPublisher: AnyPublisher<Void, Never>
