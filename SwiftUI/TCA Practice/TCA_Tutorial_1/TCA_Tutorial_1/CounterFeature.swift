@@ -8,8 +8,8 @@
 import ComposableArchitecture
 import SwiftUI
 
-
-struct CounterFeature: Reducer {
+@Reducer
+struct CounterFeature {
     struct State {
         var count = 0
         var fact: String?
@@ -86,66 +86,120 @@ struct CounterFeature: Reducer {
 
 extension CounterFeature.State: Equatable {}
 
-
 struct ContentView: View {
     // The Store represents the runtime of your feature.
     // That is, it is the object that can process actions in order to update state, and it can execute effects and feed data from those effects back into the system.
     let store: StoreOf<CounterFeature>
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
+        
+        Form {
             VStack {
-                Text("\(viewStore.count)")
+                Text("\(store.count)")
                     .font(.largeTitle)
                     .padding()
                     .background(Color.black.opacity(0.1))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
-            
-            HStack {
-                Button("-") {
-                    viewStore.send(.decrementButtonTapped)
-                }
-                .font(.largeTitle)
-                .padding()
-                .background(Color.black.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                
-                Button("+") {
-                    viewStore.send(.incrementButtonTapped)
-                }
-                .font(.largeTitle)
-                .padding()
-                .background(Color.black.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-            }
-            
-            Button(viewStore.isTimerRunning ? "Stop timer" : "Start timer") {
-                viewStore.send(.toggleTimerButtonTapped)
-            }
-            .font(.largeTitle)
-            .padding()
-            .background(Color.black.opacity(0.1))
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            
-            
-            Button("Fact") {
-                viewStore.send(.factButtonTapped)
-            }
-            .font(.largeTitle)
-            .padding()
-            .background(Color.black.opacity(0.1))
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            
-            if viewStore.isLoading {
-                ProgressView()
-            } else if let fact = viewStore.fact {
-                Text(fact)
-                    .font(.largeTitle)
-                    .multilineTextAlignment(.center)
-                    .padding()
-            }
         }
+        
+        HStack {
+            Button("-") {
+                store.send(.decrementButtonTapped)
+            }
+            .font(.largeTitle)
+            .padding()
+            .background(Color.black.opacity(0.1))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            
+            Button("+") {
+                store.send(.incrementButtonTapped)
+            }
+            .font(.largeTitle)
+            .padding()
+            .background(Color.black.opacity(0.1))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+        }
+        
+        Button(store.isTimerRunning ? "Stop timer" : "Start timer") {
+            store.send(.toggleTimerButtonTapped)
+        }
+        .font(.largeTitle)
+        .padding()
+        .background(Color.black.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        
+        
+        Button("Fact") {
+            store.send(.factButtonTapped)
+        }
+        .font(.largeTitle)
+        .padding()
+        .background(Color.black.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        
+        if store.isLoading {
+            ProgressView()
+        } else if let fact = store.fact {
+            Text(fact)
+                .font(.largeTitle)
+                .multilineTextAlignment(.center)
+                .padding()
+        }
+        
+//        WithViewStore(self.store, observe: { $0 }) { viewStore in
+//            VStack {
+//                Text("\(viewStore.count)")
+//                    .font(.largeTitle)
+//                    .padding()
+//                    .background(Color.black.opacity(0.1))
+//                    .clipShape(RoundedRectangle(cornerRadius: 8))
+//            }
+//            
+//            HStack {
+//                Button("-") {
+//                    viewStore.send(.decrementButtonTapped)
+//                }
+//                .font(.largeTitle)
+//                .padding()
+//                .background(Color.black.opacity(0.1))
+//                .clipShape(RoundedRectangle(cornerRadius: 8))
+//                
+//                Button("+") {
+//                    viewStore.send(.incrementButtonTapped)
+//                }
+//                .font(.largeTitle)
+//                .padding()
+//                .background(Color.black.opacity(0.1))
+//                .clipShape(RoundedRectangle(cornerRadius: 8))
+//            }
+//            
+//            Button(viewStore.isTimerRunning ? "Stop timer" : "Start timer") {
+//                viewStore.send(.toggleTimerButtonTapped)
+//            }
+//            .font(.largeTitle)
+//            .padding()
+//            .background(Color.black.opacity(0.1))
+//            .clipShape(RoundedRectangle(cornerRadius: 8))
+//            
+//            
+//            Button("Fact") {
+//                viewStore.send(.factButtonTapped)
+//            }
+//            .font(.largeTitle)
+//            .padding()
+//            .background(Color.black.opacity(0.1))
+//            .clipShape(RoundedRectangle(cornerRadius: 8))
+//            
+//            if viewStore.isLoading {
+//                ProgressView()
+//            } else if let fact = viewStore.fact {
+//                Text(fact)
+//                    .font(.largeTitle)
+//                    .multilineTextAlignment(.center)
+//                    .padding()
+//            }
+//        }
     }
 }
 

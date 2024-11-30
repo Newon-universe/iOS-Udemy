@@ -9,8 +9,8 @@ import XCTest
 import ComposableArchitecture
 @testable import TCA_Tutorial_1
 
-@MainActor
 final class TCA_Tutorial_1Tests: XCTestCase {
+    @MainActor
     func testCounter() async {
         let store = TestStore(initialState: CounterFeature.State()) {
             CounterFeature()
@@ -24,6 +24,7 @@ final class TCA_Tutorial_1Tests: XCTestCase {
         }
     }
     
+    @MainActor
     func testTimer() async {
         let store = TestStore(initialState: CounterFeature.State()) {
             CounterFeature()
